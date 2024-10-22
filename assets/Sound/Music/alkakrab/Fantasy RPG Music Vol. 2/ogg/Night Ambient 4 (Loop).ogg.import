@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://xge43v11ex5s"
+path="res://.godot/imported/Night Ambient 4 (Loop).ogg-d2bdac377f39453d9c132e5555decb6f.oggvorbisstr"
+
+[deps]
+
+source_file="res://assets/Sound/Music/alkakrab/Fantasy RPG Music Vol. 2/ogg/Night Ambient 4 (Loop).ogg"
+dest_files=["res://.godot/imported/Night Ambient 4 (Loop).ogg-d2bdac377f39453d9c132e5555decb6f.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

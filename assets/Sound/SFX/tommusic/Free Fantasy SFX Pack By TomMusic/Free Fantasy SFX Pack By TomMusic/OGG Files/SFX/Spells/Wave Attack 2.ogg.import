@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://djgr778xc8i32"
+path="res://.godot/imported/Wave Attack 2.ogg-3ae9c917c59878d14ad530e53197dab0.oggvorbisstr"
+
+[deps]
+
+source_file="res://assets/Sound/SFX/tommusic/Free Fantasy SFX Pack By TomMusic/Free Fantasy SFX Pack By TomMusic/OGG Files/SFX/Spells/Wave Attack 2.ogg"
+dest_files=["res://.godot/imported/Wave Attack 2.ogg-3ae9c917c59878d14ad530e53197dab0.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://bxvfrcftf1qvj"
+path="res://.godot/imported/Ice Wall 2.ogg-17a0034f49ce239fc006c63a790fa197.oggvorbisstr"
+
+[deps]
+
+source_file="res://assets/Sound/SFX/tommusic/Free Fantasy SFX Pack By TomMusic/Free Fantasy SFX Pack By TomMusic/OGG Files/SFX/Spells/Ice Wall 2.ogg"
+dest_files=["res://.godot/imported/Ice Wall 2.ogg-17a0034f49ce239fc006c63a790fa197.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

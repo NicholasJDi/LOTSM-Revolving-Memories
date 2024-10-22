@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://brggh0pdg5v1c"
+path="res://.godot/imported/Action 3 Loop.ogg-33e9940158444729127436fd0085873a.oggvorbisstr"
+
+[deps]
+
+source_file="res://assets/Sound/Music/alkakrab/Fantasy RPG Music Pack Vol.3/Loops/ogg/Action 3 Loop.ogg"
+dest_files=["res://.godot/imported/Action 3 Loop.ogg-33e9940158444729127436fd0085873a.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

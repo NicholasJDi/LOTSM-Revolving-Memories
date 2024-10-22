@@ -1,0 +1,66 @@
+[gd_scene load_steps=3 format=3 uid="uid://d3x2xuu7jyiiu"]
+
+[ext_resource type="Script" path="res://Scripts/Menus/Options_Menu/reset_options.gd" id="1_t78ji"]
+[ext_resource type="FontFile" uid="uid://b8jac8to4l425" path="res://assets/Fonts/srtoasty/Sta.Toasty_font.ttf" id="2_ynx2x"]
+
+[node name="Reset_Options" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 501.0
+offset_top = 324.0
+offset_right = -651.0
+offset_bottom = -324.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+script = ExtResource("1_t78ji")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1.5, 1.5)
+
+[node name="Label" type="Label" parent="MarginContainer"]
+custom_minimum_size = Vector2(300, 110)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_ynx2x")
+theme_override_font_sizes/font_size = 18
+text = "WARNING:
+  This Will Quit The Game,
+  Reset All Options,
+  And Clear Any Unsaved Data.
+
+   Do You Want To Continue? 
+"
+
+[node name="Button" type="Button" parent="MarginContainer/Label"]
+custom_minimum_size = Vector2(130, 30)
+layout_mode = 2
+offset_top = 120.0
+offset_right = 130.0
+offset_bottom = 150.0
+theme_override_fonts/font = ExtResource("2_ynx2x")
+text = "Cancel"
+
+[node name="Button2" type="Button" parent="MarginContainer/Label"]
+custom_minimum_size = Vector2(130, 30)
+layout_mode = 2
+offset_left = 170.0
+offset_top = 120.0
+offset_right = 300.0
+offset_bottom = 150.0
+theme_override_fonts/font = ExtResource("2_ynx2x")
+text = "Confirm"
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="pressed" from="MarginContainer/Label/Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="MarginContainer/Label/Button2" to="." method="_on_button_2_pressed"]

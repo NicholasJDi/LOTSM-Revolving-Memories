@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://cn1u81kjm5jg6"
+path="res://.godot/imported/MI_SFX 30.mp3-fd41274aab7f9c9dcb858c0fe2a50f33.mp3str"
+
+[deps]
+
+source_file="res://assets/Sound/SFX/coloralpha/COLORALPHA 50 Menu Interface SFX/MP3/MI_SFX 30.mp3"
+dest_files=["res://.godot/imported/MI_SFX 30.mp3-fd41274aab7f9c9dcb858c0fe2a50f33.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

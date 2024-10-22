@@ -1,0 +1,47 @@
+[gd_scene load_steps=4 format=3 uid="uid://b8ccrt8vuveje"]
+
+[ext_resource type="Script" path="res://Scripts/Menus/Options_Menu/show_console_button.gd" id="1_kr2h8"]
+[ext_resource type="FontFile" uid="uid://b8jac8to4l425" path="res://assets/Fonts/srtoasty/Sta.Toasty_font.ttf" id="2_rl2os"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_fwxjg"]
+
+[node name="Show_Console_Button" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_kr2h8")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -20.0
+offset_right = 157.0
+offset_bottom = 12.0
+grow_vertical = 2
+
+[node name="VSeparator" type="VSeparator" parent="HBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 24
+theme_override_styles/separator = SubResource("StyleBoxEmpty_fwxjg")
+
+[node name="Label" type="Label" parent="HBoxContainer"]
+custom_minimum_size = Vector2(350, 32)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_rl2os")
+theme_override_font_sizes/font_size = 30
+text = "Console Visibility"
+vertical_alignment = 1
+
+[node name="Button" type="Button" parent="HBoxContainer"]
+custom_minimum_size = Vector2(124, 45)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_rl2os")
+theme_override_font_sizes/font_size = 30
+text = "Show"
+
+[connection signal="pressed" from="HBoxContainer/Button" to="." method="_on_button_pressed"]

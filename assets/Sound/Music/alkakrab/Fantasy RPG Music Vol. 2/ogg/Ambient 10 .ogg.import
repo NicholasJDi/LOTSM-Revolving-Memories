@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://dbehvpmddawcx"
+path="res://.godot/imported/Ambient 10 .ogg-e4c0410610cf7c840cc5e6b981980dce.oggvorbisstr"
+
+[deps]
+
+source_file="res://assets/Sound/Music/alkakrab/Fantasy RPG Music Vol. 2/ogg/Ambient 10 .ogg"
+dest_files=["res://.godot/imported/Ambient 10 .ogg-e4c0410610cf7c840cc5e6b981980dce.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

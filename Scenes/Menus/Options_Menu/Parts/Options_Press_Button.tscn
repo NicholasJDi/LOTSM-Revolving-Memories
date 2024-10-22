@@ -1,0 +1,53 @@
+[gd_scene load_steps=3 format=3 uid="uid://btla7w7k5hq2c"]
+
+[ext_resource type="FontFile" uid="uid://b8jac8to4l425" path="res://assets/Fonts/srtoasty/Sta.Toasty_font.ttf" id="2_k82ii"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_lnwkf"]
+
+[node name="Options_Press_Button" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -20.0
+offset_right = 40.0
+offset_bottom = 20.0
+grow_vertical = 2
+
+[node name="VSeparator" type="VSeparator" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 24
+theme_override_styles/separator = SubResource("StyleBoxEmpty_lnwkf")
+
+[node name="Label" type="Label" parent="HBoxContainer"]
+custom_minimum_size = Vector2(400, 30)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_k82ii")
+theme_override_font_sizes/font_size = 18
+text = "Unassigned"
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="HBoxContainer"]
+custom_minimum_size = Vector2(200, 30)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_k82ii")
+theme_override_font_sizes/font_size = 18
+text = "
+"
+vertical_alignment = 1
+
+[node name="Button" type="Button" parent="HBoxContainer"]
+custom_minimum_size = Vector2(200, 30)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_k82ii")
+theme_override_font_sizes/font_size = 18
+toggle_mode = true

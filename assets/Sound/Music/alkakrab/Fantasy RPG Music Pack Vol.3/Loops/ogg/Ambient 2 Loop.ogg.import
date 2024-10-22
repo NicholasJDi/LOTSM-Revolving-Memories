@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://ce4o60a3xmnw4"
+path="res://.godot/imported/Ambient 2 Loop.ogg-e94c371f448ebe42b70bfbe2e02579eb.oggvorbisstr"
+
+[deps]
+
+source_file="res://assets/Sound/Music/alkakrab/Fantasy RPG Music Pack Vol.3/Loops/ogg/Ambient 2 Loop.ogg"
+dest_files=["res://.godot/imported/Ambient 2 Loop.ogg-e94c371f448ebe42b70bfbe2e02579eb.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

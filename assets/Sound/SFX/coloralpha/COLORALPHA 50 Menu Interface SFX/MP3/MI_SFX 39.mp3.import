@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://dkfit8fgpk0ym"
+path="res://.godot/imported/MI_SFX 39.mp3-94435b8054fffed49e12ce1cda1d04f3.mp3str"
+
+[deps]
+
+source_file="res://assets/Sound/SFX/coloralpha/COLORALPHA 50 Menu Interface SFX/MP3/MI_SFX 39.mp3"
+dest_files=["res://.godot/imported/MI_SFX 39.mp3-94435b8054fffed49e12ce1cda1d04f3.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

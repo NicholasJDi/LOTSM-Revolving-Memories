@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://x73qkuc4h2iw"
+path="res://.godot/imported/Ambient 9.ogg-42c026242545794e8df6a0075e20c607.oggvorbisstr"
+
+[deps]
+
+source_file="res://assets/Sound/Music/alkakrab/Fantasy RPG Music Pack Vol.3/Tracks/ogg/Ambient 9.ogg"
+dest_files=["res://.godot/imported/Ambient 9.ogg-42c026242545794e8df6a0075e20c607.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

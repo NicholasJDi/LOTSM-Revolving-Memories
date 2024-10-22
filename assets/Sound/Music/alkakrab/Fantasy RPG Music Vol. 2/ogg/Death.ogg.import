@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://pndpt1sr6xgt"
+path="res://.godot/imported/Death.ogg-488d7539688124663348392b0145e548.oggvorbisstr"
+
+[deps]
+
+source_file="res://assets/Sound/Music/alkakrab/Fantasy RPG Music Vol. 2/ogg/Death.ogg"
+dest_files=["res://.godot/imported/Death.ogg-488d7539688124663348392b0145e548.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

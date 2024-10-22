@@ -1,0 +1,62 @@
+[gd_scene load_steps=5 format=3 uid="uid://ceph2t5ia72su"]
+
+[ext_resource type="FontFile" uid="uid://b8jac8to4l425" path="res://assets/Fonts/srtoasty/Sta.Toasty_font.ttf" id="1_p02xc"]
+[ext_resource type="Script" path="res://Scripts/Menus/Options_Menu/audio_slider_settings.gd" id="1_xt7p5"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_7p1wf"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_fx8rt"]
+
+[node name="Audio_Slider_Settings" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_xt7p5")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -20.0
+offset_right = 40.0
+offset_bottom = 20.0
+grow_vertical = 2
+theme_override_constants/separation = 42
+
+[node name="VSeparator" type="VSeparator" parent="HBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 25
+theme_override_styles/separator = SubResource("StyleBoxEmpty_7p1wf")
+
+[node name="Audio_Name" type="Label" parent="HBoxContainer"]
+custom_minimum_size = Vector2(350, 32)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_p02xc")
+theme_override_font_sizes/font_size = 20
+text = "Audio_Name"
+vertical_alignment = 1
+
+[node name="HSlider" type="HSlider" parent="HBoxContainer"]
+custom_minimum_size = Vector2(200, 32)
+layout_mode = 2
+size_flags_vertical = 1
+max_value = 1.0
+step = 0.01
+
+[node name="VSeparator3" type="VSeparator" parent="HBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 25
+theme_override_styles/separator = SubResource("StyleBoxEmpty_fx8rt")
+
+[node name="Audio_Num" type="Label" parent="HBoxContainer"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_p02xc")
+theme_override_font_sizes/font_size = 20
+text = "00
+"
+vertical_alignment = 1

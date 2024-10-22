@@ -1,0 +1,49 @@
+[gd_scene load_steps=3 format=3 uid="uid://cod64obpin5x0"]
+
+[ext_resource type="FontFile" uid="uid://b8jac8to4l425" path="res://assets/Fonts/srtoasty/Sta.Toasty_font.ttf" id="1_dhiwf"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_ju734"]
+font = ExtResource("1_dhiwf")
+font_size = 64
+font_color = Color(0.285055, 0.406522, 0.775844, 1)
+outline_size = 12
+outline_color = Color(0, 0, 1, 1)
+shadow_size = 24
+shadow_color = Color(0, 0, 0, 1)
+shadow_offset = Vector2(1, 2)
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 12
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 60
+
+[node name="Seporator" type="Control" parent="MarginContainer/VBoxContainer"]
+layout_direction = 1
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Game
+"
+label_settings = SubResource("LabelSettings_ju734")
+horizontal_alignment = 1
+vertical_alignment = 1

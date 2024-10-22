@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://dwdhf14orcjuy"
+path="res://.godot/imported/Dark 1.ogg-668ae6c51489c87236b4461795848764.oggvorbisstr"
+
+[deps]
+
+source_file="res://assets/Sound/Music/alkakrab/Fantasy RPG Music Pack Vol.3/Tracks/ogg/Dark 1.ogg"
+dest_files=["res://.godot/imported/Dark 1.ogg-668ae6c51489c87236b4461795848764.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

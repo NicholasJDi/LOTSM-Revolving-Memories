@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://dtqm21or6dm8t"
+path="res://.godot/imported/Ambient 1.mp3-c7680b282f7a8ae6cf2e322a91b43feb.mp3str"
+
+[deps]
+
+source_file="res://assets/Sound/Music/alkakrab/Fantasy RPG Music Pack/mp3/Ambient 1.mp3"
+dest_files=["res://.godot/imported/Ambient 1.mp3-c7680b282f7a8ae6cf2e322a91b43feb.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
