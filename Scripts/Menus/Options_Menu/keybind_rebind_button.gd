@@ -15,25 +15,27 @@ var button_is_toggled = false
 
 func _ready():
 	set_process_unhandled_key_input(false)
+	self.set_action_name()
 	if not action_name.is_empty():
-		self.set_action_name()
-		if SettingsDataContainer.loaded_settings_data.is_empty():
+		if SettingsDataContainer.Get_Data("controls", action_name) == null:
 			self.set_text_for_key()
 		elif can_change:
-			if SettingsDataContainer.get_controls(action_name, true):
+			if Global.Load == false:
 				self.load_keybinds()
-			else:
 				self.set_text_for_key()
 		else:
 			self.set_text_for_key()
+	else:
+		self.set_text_for_key()
 
 
 func load_keybinds():
-			var keyEvent = InputEventKey.new()
-			keyEvent.keycode = int(SettingsDataContainer.get_controls(action_name, false))
-			print("key_event_%s" % keyEvent)
-			self.rebind_action_key(keyEvent)
-			self.set_text_for_key()
+	var keyEvent = InputEventKey.new()
+	keyEvent.keycode = int(SettingsDataContainer.Get_Data("controls", action_name))
+	print("key_event_%s" % keyEvent)
+	self.rebind_action_key(keyEvent)
+	self.set_text_for_key()
+	Global.Load = true
 
 
 func set_action_name():
@@ -86,7 +88,7 @@ func rebind_action_key(inputevent : InputEventKey):
 	print(inputevent)
 	InputMap.action_erase_events(action_name)
 	InputMap.action_add_event(action_name, inputevent)
-	SettingsDataContainer.set_controls(action_name, inputevent)
+	SettingsDataContainer.Set_Data("controls", action_name, inputevent)
 	self.set_process_unhandled_key_input(true)
 	self.set_action_name()
 	self.set_text_for_key()

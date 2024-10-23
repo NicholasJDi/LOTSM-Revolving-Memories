@@ -6,8 +6,8 @@ var Resolution_Custom_X_Var = 0
 var Resolution_Custom_Y_Var = 0
 
 func _ready():
-	Resolution_Custom_X_Var = SettingsDataContainer.get_resolution_custom_x()
-	Resolution_Custom_Y_Var = SettingsDataContainer.get_resolution_custom_y()
+	Resolution_Custom_X_Var = SettingsDataContainer.Get_Data("graphics", "resolution_custom_x")
+	Resolution_Custom_Y_Var = SettingsDataContainer.Get_Data("graphics", "resolution_custom_y")
 	add_resolution_items()
 	option_button.item_selected.connect(on_resolution_selected)
 	SignalBus.Resolution.connect(Resolution)

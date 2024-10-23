@@ -31,6 +31,6 @@ func Load_Data(Type : String):
 		var _passed_result = json.parse(json_string)
 		Loaded_Data = json.get_data()
 	if Type == "Settings":
-		SettingsDataContainer.on_settings_data_loaded(Loaded_Data)
+		SettingsDataContainer.On_Data_Loaded(Loaded_Data)
 	elif Type == "Console":
 		Console.on_console_data_loaded(Loaded_Data)

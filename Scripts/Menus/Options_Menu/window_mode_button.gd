@@ -18,8 +18,8 @@ func _ready():
 
 
 func load_data():
-	option_button.select(SettingsDataContainer.get_window_mode_index())
-	on_window_mode_selected(SettingsDataContainer.get_window_mode_index())
+	option_button.select(SettingsDataContainer.Get_Data("graphics", "window_mode_index"))
+	on_window_mode_selected(SettingsDataContainer.Get_Data("graphics", "window_mode_index"))
 
 
 func add_window_mode_items():
@@ -28,14 +28,14 @@ func add_window_mode_items():
 
 
 func on_window_mode_selected(index):
-	SettingsDataContainer.set_graphics(1, index)
+	SettingsDataContainer.Set_Data("graphics", "window_mode_index", index)
 	match index:
 		0: # Full-Screen
 			DisplayServer.window_set_flag(DisplayServer.WINDOW_FLAG_RESIZE_DISABLED, false)
 			DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_MAXIMIZED)
 			DisplayServer.window_set_flag(DisplayServer.WINDOW_FLAG_BORDERLESS, true)
 			SignalBus.Emit_Resolution(false)
-			SettingsDataContainer.set_graphics(2, false)
+			SettingsDataContainer.Set_Data("graphics", "window_mode_windowed", false)
 			SignalBus.Emit_Resolution_Custom(false)
 			Console.Print("Settings", "Output", "window_mode_select_full-screen")
 		1: # Window Mode
@@ -44,7 +44,7 @@ func on_window_mode_selected(index):
 			DisplayServer.window_set_flag(DisplayServer.WINDOW_FLAG_BORDERLESS, false)
 			DisplayServer.window_set_size(Vector2i(1152, 648))
 			SignalBus.Emit_Resolution(true)
-			SettingsDataContainer.set_graphics(2, true)
+			SettingsDataContainer.Set_Data("graphics", "window_mode_windowed", true)
 			SignalBus.Emit_Resolution_Custom(false)
 			Console.Print("Settings", "Output", "window_mode_select_window_mode")
 		2: # borderless Window
@@ -53,7 +53,7 @@ func on_window_mode_selected(index):
 			DisplayServer.window_set_flag(DisplayServer.WINDOW_FLAG_BORDERLESS, true)
 			DisplayServer.window_set_size(Vector2i(1152, 648))
 			SignalBus.Emit_Resolution(true)
-			SettingsDataContainer.set_graphics(2, true)
+			SettingsDataContainer.Set_Data("graphics", "window_mode_windowed", true)
 			SignalBus.Emit_Resolution_Custom(false)
 			Console.Print("Settings", "Output", "window_mode_select_borderless_window")
 		3: # Borderless Full-Screen
@@ -61,6 +61,6 @@ func on_window_mode_selected(index):
 			DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
 			DisplayServer.window_set_flag(DisplayServer.WINDOW_FLAG_BORDERLESS, true)
 			SignalBus.Emit_Resolution(false)
-			SettingsDataContainer.set_graphics(2, false)
+			SettingsDataContainer.Set_Data("graphics", "window_mode_windowed", false)
 			SignalBus.Emit_Resolution_Custom(false)
 			Console.Print("Settings", "Output", "window_mode_select_borderless_full-screen")

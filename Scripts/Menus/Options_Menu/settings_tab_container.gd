@@ -10,7 +10,7 @@ var Resolution_Toggle
 func _ready():
 	SignalBus.Resolution.connect(Resolution)
 	SignalBus.Resolution_Custom.connect(Resolution_Custom)
-	resolution_mode_button.visible = SettingsDataContainer.get_window_mode_windowed()
+	resolution_mode_button.visible = SettingsDataContainer.Get_Data("graphics", "window_mode_windowed")
 
 
 func Resolution(value):

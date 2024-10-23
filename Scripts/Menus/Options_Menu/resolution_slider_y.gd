@@ -5,8 +5,8 @@ extends Control
 
 
 func _ready():
-	h_slider.value = SettingsDataContainer.get_resolution_custom_y()
-	label_num.text = str(SettingsDataContainer.get_resolution_custom_y())
+	h_slider.value = SettingsDataContainer.Get_Data("graphics", "resolution_custom_y")
+	label_num.text = str(SettingsDataContainer.Get_Data("graphics", "resolution_custom_y"))
 	SignalBus.Resolution_Custom_Confirm.connect(Resolution_Custom_Confirm)
 	h_slider.value_changed.connect(On_Value_Changed)
 

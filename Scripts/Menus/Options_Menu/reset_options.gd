@@ -26,7 +26,7 @@ func _on_button_pressed():
 func _on_button_2_pressed():
 	if Confirm_Enabled:
 		Confirm_Enabled = false
-		DirAccess.remove_absolute(SaveManager.SETTINGS_SAVE_PATH)
+		DirAccess.remove_absolute(SaveManager.Data_Path["Settings"])
 		get_tree().quit(0)
 		Console.Print("Save", "Output", "reset_options")
 		Console.Print("Global", "Output", "quit_game")
