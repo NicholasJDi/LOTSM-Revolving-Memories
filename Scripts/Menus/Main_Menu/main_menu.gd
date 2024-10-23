@@ -17,6 +17,7 @@ func On_Options_Menu_Exit():
 func _on_play_pressed():
 	get_tree().change_scene_to_file("res://Scenes/Levels/Level_0.tscn")
 	Console.Print("Scene", "Output", "load_level_0")
+	Global.load = true
 
 
 func _on_options_pressed():

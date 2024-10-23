@@ -15,27 +15,25 @@ var button_is_toggled = false
 
 func _ready():
 	set_process_unhandled_key_input(false)
-	self.set_action_name()
+	set_action_name()
 	if not action_name.is_empty():
 		if SettingsDataContainer.Get_Data("controls", action_name) == null:
-			self.set_text_for_key()
+			set_text_for_key(false)
 		elif can_change:
-			if Global.Load == false:
-				self.load_keybinds()
-				self.set_text_for_key()
+			load_keybinds()
+			set_text_for_key(true)
 		else:
-			self.set_text_for_key()
+			set_text_for_key(false)
 	else:
-		self.set_text_for_key()
+		set_text_for_key(false)
 
 
 func load_keybinds():
-	var keyEvent = InputEventKey.new()
-	keyEvent.keycode = int(SettingsDataContainer.Get_Data("controls", action_name))
-	print("key_event_%s" % keyEvent)
-	self.rebind_action_key(keyEvent)
-	self.set_text_for_key()
-	Global.Load = true
+	if not Global.load:
+		var keyEvent = InputEventKey.new()
+		keyEvent.keycode = int(SettingsDataContainer.Get_Data("controls", action_name))
+		print("key_event_%s" % keyEvent)
+		rebind_action_key(keyEvent)
 
 
 func set_action_name():
@@ -44,11 +42,12 @@ func set_action_name():
 		label_2.text = "Unable To Change"
 
 
-func set_text_for_key():
+func set_text_for_key(Load : bool):
 	if can_change:
 		var action_event = InputMap.action_get_events(action_name)
 		var action_keycode = OS.get_keycode_string(action_event[0].physical_keycode)
 		button.text = action_keycode
+		Console.Print("Global","Global",action_keycode)
 		print("set_%s" % action_name)
 		print("val = %s" % action_keycode)
 	else:
@@ -65,23 +64,23 @@ func _on_button_toggled(button_pressed: bool):
 			button.text = "Press Any Key..."
 			set_process_unhandled_key_input(button_pressed)
 			for keybind_button in get_tree().get_nodes_in_group("keybind_button"):  
-				if keybind_button.action_name != self.action_name:
+				if keybind_button.action_name != action_name:
 					keybind_button.button.toggle_mode = false
 					keybind_button.set_process_unhandled_key_input(false)
 			
 		else:
 			if not action_name.is_empty():
 				for keybind_button in get_tree().get_nodes_in_group("keybind_button"):  
-					if keybind_button.action_name != self.action_name:
+					if keybind_button.action_name != action_name:
 						keybind_button.button.toggle_mode = true
 						keybind_button.set_process_unhandled_key_input(true)
-						self.set_text_for_key()
+						set_text_for_key(false)
 
 
 func _unhandled_key_input(inputevent):
-	if self.button_is_toggled:
-		self.rebind_action_key(inputevent)
-		self.button.button_pressed = false
+	if button_is_toggled:
+		rebind_action_key(inputevent)
+		button.button_pressed = false
 
 
 func rebind_action_key(inputevent : InputEventKey):
@@ -89,6 +88,6 @@ func rebind_action_key(inputevent : InputEventKey):
 	InputMap.action_erase_events(action_name)
 	InputMap.action_add_event(action_name, inputevent)
 	SettingsDataContainer.Set_Data("controls", action_name, inputevent)
-	self.set_process_unhandled_key_input(true)
-	self.set_action_name()
-	self.set_text_for_key()
+	set_process_unhandled_key_input(true)
+	set_action_name()
+	set_text_for_key(false)

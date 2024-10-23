@@ -42,6 +42,11 @@ func _ready() -> void:
 
 
 func _input(event: InputEvent) -> void:
+	if event.is_action_pressed("console_show"):
+		if ConsoleWindow.visible:
+			ConsoleWindow.hide()
+		else:
+			ConsoleWindow.show()
 	if input_field.has_focus() and event.is_action_pressed("console_lose_focus"):
 		input_field.release_focus()
 	if input_field.has_focus() and event.is_action_pressed("console_last_command"):
