@@ -45,7 +45,6 @@ func _ready():
 	SignalBus.Game_Frozen.connect(Game_Frozen)
 
 func _physics_process(_delta):
-	frozen = Global.Paused
 	if not frozen and get_window().has_focus():
 		if animated_sprite.animation == "jump_start" and is_on_floor():
 			animated_sprite.play("jump_end")

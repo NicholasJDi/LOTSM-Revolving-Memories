@@ -61,7 +61,7 @@ layout_mode = 2
 
 [node name="Title" type="Label" parent="Main_Menu/VBoxContainer"]
 layout_mode = 2
-text = "The Legend Of The Silver Moon"
+text = "Legend Of The Silver Moon"
 label_settings = SubResource("LabelSettings_6wdit")
 horizontal_alignment = 1
 vertical_alignment = 1

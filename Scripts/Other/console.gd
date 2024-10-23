@@ -168,6 +168,6 @@ func use_command(text):
 		Console.Print("Help", "Error", "Command Not Found")
 	elif success == "Syn":
 		Console.Print("Help", "Error", "Invalid Syntax")
-	SaveManager.save_console_data(Console.create_storage_dictionary())
+	SaveManager.Save_Data(Console.create_storage_dictionary(), "Console")
 	if success == "Qui":
 		get_tree().quit()
