@@ -2,8 +2,11 @@ extends Node
 
 # Exit Options Menu
 signal Exit_Options_Menu
+signal Exit_Options_Menu_External
 func Emit_Exit_Options_Menu():
 	Exit_Options_Menu.emit()
+func Emit_Exit_Options_Menu_External():
+	Exit_Options_Menu_External.emit()
 
 # Game Frozen
 signal Game_Frozen

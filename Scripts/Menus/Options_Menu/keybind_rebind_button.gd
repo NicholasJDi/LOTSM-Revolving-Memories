@@ -18,18 +18,18 @@ func _ready():
 	set_action_name()
 	if not action_name.is_empty():
 		if SettingsDataContainer.Get_Data("controls", action_name) == null:
-			set_text_for_key(false)
+			set_text_for_key()
 		elif can_change:
 			load_keybinds()
-			set_text_for_key(true)
+			set_text_for_key()
 		else:
-			set_text_for_key(false)
+			set_text_for_key()
 	else:
-		set_text_for_key(false)
+		set_text_for_key()
 
 
 func load_keybinds():
-	if not Global.load:
+	if not Global.Load:
 		var keyEvent = InputEventKey.new()
 		keyEvent.keycode = int(SettingsDataContainer.Get_Data("controls", action_name))
 		print("key_event_%s" % keyEvent)
@@ -42,7 +42,7 @@ func set_action_name():
 		label_2.text = "Unable To Change"
 
 
-func set_text_for_key(Load : bool):
+func set_text_for_key():
 	if can_change:
 		var action_event = InputMap.action_get_events(action_name)
 		var action_keycode = OS.get_keycode_string(action_event[0].physical_keycode)
@@ -74,7 +74,7 @@ func _on_button_toggled(button_pressed: bool):
 					if keybind_button.action_name != action_name:
 						keybind_button.button.toggle_mode = true
 						keybind_button.set_process_unhandled_key_input(true)
-						set_text_for_key(false)
+						set_text_for_key()
 
 
 func _unhandled_key_input(inputevent):
@@ -90,4 +90,4 @@ func rebind_action_key(inputevent : InputEventKey):
 	SettingsDataContainer.Set_Data("controls", action_name, inputevent)
 	set_process_unhandled_key_input(true)
 	set_action_name()
-	set_text_for_key(false)
+	set_text_for_key()

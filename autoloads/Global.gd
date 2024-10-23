@@ -1,3 +1,3 @@
 extends Node
 
-var load = false
+var Load = false

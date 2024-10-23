@@ -12,7 +12,7 @@ func _ready():
 
 
 func Resolution_Custom_Confirm():
-	SettingsDataContainer.set_graphics(4, h_slider.value)
+	SettingsDataContainer.Set_Data("graphics", "resolution_custom_y", h_slider.value)
 	SignalBus.Emit_Resolution_Custom_Y(h_slider.value)
 
 
