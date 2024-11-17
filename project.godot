@@ -10,9 +10,9 @@ config_version=5
 
 [application]
 
-config/name="Legend Of The Silver Moon:"
+config/name="Legend Of The Silver Moon: Revolving Memories"
 config/description="A Platformer Game"
-config/version="0.03"
+config/version="0.03 (Alpha Dev)"
 run/main_scene="res://Scenes/Menus/Main_Menu.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
 config/icon="res://icon.svg"
@@ -28,10 +28,9 @@ Global="*res://autoloads/Global.gd"
 
 [display]
 
+window/size/mode=3
 window/size/initial_position_type=3
-window/size/resizable=false
 window/subwindows/embed_subwindows=false
-window/stretch/mode="viewport"
 window/per_pixel_transparency/allowed=true
 
 [input]

@@ -33,7 +33,7 @@ func _on_button_2_pressed():
 
 
 func _on_tab_container_tab_selected(tab: int):
-	if tab == 4:
+	if tab == 3:
 		var button_timer = 6
 		timer.start(1)
 		button_timer = button_timer - 1
@@ -62,6 +62,6 @@ func _on_tab_container_tab_selected(tab: int):
 
 
 func _on_tab_container_tab_hovered(tab: int) -> void:
-	if tab == 4:
-		if tab_container.current_tab != 4:
+	if tab == 3:
+		if tab_container.current_tab != 3:
 			Last_Selected_Tab = tab_container.current_tab

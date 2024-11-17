@@ -5,7 +5,7 @@
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_lnwkf"]
 
-[node name="Hotkey_Rebind_Button" type="Control" groups=["keybind_button"]]
+[node name="Hotkey_Rebind_Button" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -13,6 +13,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_n33cd")
+metadata/_edit_horizontal_guides_ = [631.0]
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
 layout_mode = 1
@@ -50,8 +51,6 @@ vertical_alignment = 1
 [node name="Button" type="Button" parent="HBoxContainer"]
 custom_minimum_size = Vector2(200, 30)
 layout_mode = 2
+focus_mode = 1
 theme_override_fonts/font = ExtResource("2_t1j2f")
 theme_override_font_sizes/font_size = 18
-toggle_mode = true
-
-[connection signal="toggled" from="HBoxContainer/Button" to="." method="_on_button_toggled"]

@@ -19,23 +19,23 @@ func _ready():
 
 
 func load_data():
-	on_value_changed(SettingsDataContainer.Get_Data("sound", index_to_name()))
+	on_value_changed(SettingsDataContainer.Storage_Dict.sound[index_to_name()])
 
 
 func index_to_name():
 	match bus_index:
 		0:
-			return "master_music_volume"
-		1:
-			return "master_sfx_volume"
-		2:
 			return "master_volume"
+		1:
+			return "master_music_volume"
+		2:
+			return "master_sfx_volume"
 		3:
-			return "music_boss_volume"
+			return "music_menu_volume"
 		4:
 			return "music_game_volume"
 		5:
-			return "music_menu_volume"
+			return "music_boss_volume"
 		6:
 			return "sfx_environment_volume"
 		7:
@@ -66,4 +66,4 @@ func set_slider_value():
 func on_value_changed(value):
 	AudioServer.set_bus_volume_db(bus_index, linear_to_db(value))
 	set_num_text()
-	SettingsDataContainer.Set_Data("sound", index_to_name(), value)
+	SettingsDataContainer.Storage_Dict.sound[index_to_name()] = value
