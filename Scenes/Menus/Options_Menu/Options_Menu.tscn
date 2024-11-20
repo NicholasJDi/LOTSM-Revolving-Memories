@@ -1,11 +1,11 @@
 [gd_scene load_steps=5 format=3 uid="uid://4x6fafcgdalm"]
 
 [ext_resource type="Script" path="res://Scripts/Menus/Options_Menu/options_menu.gd" id="1_v8u0g"]
-[ext_resource type="FontFile" uid="uid://b8jac8to4l425" path="res://assets/Fonts/srtoasty/Sta.Toasty_font.ttf" id="3_dlava"]
+[ext_resource type="FontFile" uid="uid://bl6ovrue03k0f" path="res://assets/Fonts/minecraftia/Minecraftia.ttf" id="2_bp3et"]
 [ext_resource type="PackedScene" uid="uid://dp7cpjffhxsu7" path="res://Scenes/Menus/Options_Menu/Containers/Settings_Tab_Container.tscn" id="4_4namd"]
 
-[sub_resource type="LabelSettings" id="LabelSettings_b35p0"]
-font = ExtResource("3_dlava")
+[sub_resource type="LabelSettings" id="LabelSettings_3nri1"]
+font = ExtResource("2_bp3et")
 font_size = 32
 font_color = Color(0.564618, 0.667501, 0.930408, 1)
 outline_size = 6
@@ -42,7 +42,7 @@ theme_override_constants/separation = -42
 [node name="Title2" type="Label" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
 text = "Options"
-label_settings = SubResource("LabelSettings_b35p0")
+label_settings = SubResource("LabelSettings_3nri1")
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -64,7 +64,7 @@ offset_right = 75.0
 offset_bottom = -16.0
 grow_horizontal = 2
 grow_vertical = 0
-theme_override_fonts/font = ExtResource("3_dlava")
+theme_override_fonts/font = ExtResource("2_bp3et")
 theme_override_font_sizes/font_size = 18
 text = "Back"
 

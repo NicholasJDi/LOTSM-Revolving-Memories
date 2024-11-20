@@ -6,7 +6,7 @@ extends Control
 
 func _ready():
 	SignalBus.Exit_Options_Menu.connect(On_Options_Menu_Exit)
-	Console.Print("Menu", "Output", "load_main_menu")
+	ConsoleWindow.Print("Menu", "Output", "load_main_menu")
 
 
 func On_Options_Menu_Exit():
@@ -16,16 +16,15 @@ func On_Options_Menu_Exit():
 
 func _on_play_pressed():
 	get_tree().change_scene_to_file("res://Scenes/Levels/Level_0.tscn")
-	Console.Print("Scene", "Output", "load_level_0")
-	Global.Load = true
+	ConsoleWindow.Print("Scene", "Output", "load_level_0")
 
 
 func _on_options_pressed():
 	options_menu.visible = true
 	main_menu.visible = false
-	Console.Print("Menu", "Output", "load_options_menu")
+	ConsoleWindow.Print("Menu", "Output", "load_options_menu")
 
 
 func _on_quit_pressed():
-	Console.Print("Global", "Output", "quit_game")
+	ConsoleWindow.Print("Global", "Output", "quit_game")
 	get_tree().quit()

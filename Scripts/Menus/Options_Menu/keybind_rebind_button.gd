@@ -18,7 +18,7 @@ func _ready() -> void:
 		if SettingsDataContainer.Storage_Dict.controls[action_name] == null:
 			set_text_for_key()
 		else:
-			var input = SettingsDataContainer.Storage_Dict.controls[action_name]
+			var input = str(SettingsDataContainer.Storage_Dict.controls[action_name])
 			var inputString = input.replace('InputEventKey: ', '')
 			var inputRawArray = inputString.split(",")
 			for inputItem in inputRawArray:
@@ -31,7 +31,7 @@ func _ready() -> void:
 					button.text = OS.get_keycode_string(int(keycode))
 					var action_events = InputMap.action_get_events(action_name)
 					var action_event = action_events[0]
-					Console.Print("Global", "Output", action_event)
+					ConsoleWindow.Print("Global", "Output", action_event)
 
 func _process(_delta: float) -> void:
 	if button.has_focus() and action == "":
@@ -56,4 +56,3 @@ func set_text_for_key() -> void:
 	var action_event = action_events[0]
 	var action_keycode = OS.get_keycode_string(action_event.physical_keycode)
 	button.text = action_keycode
-	Console.Print("Global", "Output", action_event)

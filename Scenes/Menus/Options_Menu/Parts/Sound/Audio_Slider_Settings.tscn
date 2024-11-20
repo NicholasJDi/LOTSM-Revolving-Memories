@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://ceph2t5ia72su"]
 
-[ext_resource type="FontFile" uid="uid://b8jac8to4l425" path="res://assets/Fonts/srtoasty/Sta.Toasty_font.ttf" id="1_p02xc"]
 [ext_resource type="Script" path="res://Scripts/Menus/Options_Menu/audio_slider_settings.gd" id="1_xt7p5"]
+[ext_resource type="FontFile" uid="uid://bl6ovrue03k0f" path="res://assets/Fonts/minecraftia/Minecraftia.ttf" id="2_q63pk"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_7p1wf"]
 
@@ -35,7 +35,7 @@ theme_override_styles/separator = SubResource("StyleBoxEmpty_7p1wf")
 [node name="Audio_Name" type="Label" parent="HBoxContainer"]
 custom_minimum_size = Vector2(350, 32)
 layout_mode = 2
-theme_override_fonts/font = ExtResource("1_p02xc")
+theme_override_fonts/font = ExtResource("2_q63pk")
 theme_override_font_sizes/font_size = 20
 text = "Audio_Name"
 vertical_alignment = 1
@@ -56,7 +56,7 @@ theme_override_styles/separator = SubResource("StyleBoxEmpty_fx8rt")
 [node name="Audio_Num" type="Label" parent="HBoxContainer"]
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
-theme_override_fonts/font = ExtResource("1_p02xc")
+theme_override_fonts/font = ExtResource("2_q63pk")
 theme_override_font_sizes/font_size = 20
 text = "00
 "

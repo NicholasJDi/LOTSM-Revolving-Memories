@@ -2,13 +2,13 @@
 
 importer="font_data_dynamic"
 type="FontFile"
-uid="uid://b8jac8to4l425"
-path="res://.godot/imported/Sta.Toasty_font.ttf-8da1c7c1143a2b73bab881a48f5ca2f9.fontdata"
+uid="uid://bl6ovrue03k0f"
+path="res://.godot/imported/Minecraftia.ttf-80d1badb28569a4fbb68d02042c514df.fontdata"
 
 [deps]
 
-source_file="res://assets/Fonts/srtoasty/Sta.Toasty_font.ttf"
-dest_files=["res://.godot/imported/Sta.Toasty_font.ttf-8da1c7c1143a2b73bab881a48f5ca2f9.fontdata"]
+source_file="res://assets/Fonts/minecraftia/Minecraftia.ttf"
+dest_files=["res://.godot/imported/Minecraftia.ttf-80d1badb28569a4fbb68d02042c514df.fontdata"]
 
 [params]
 

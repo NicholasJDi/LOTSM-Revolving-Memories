@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://ce48xkvgs1ech"]
 
 [ext_resource type="Script" path="res://Scripts/Menus/Options_Menu/keybind_rebind_button.gd" id="1_n33cd"]
-[ext_resource type="FontFile" uid="uid://b8jac8to4l425" path="res://assets/Fonts/srtoasty/Sta.Toasty_font.ttf" id="2_t1j2f"]
+[ext_resource type="FontFile" uid="uid://bl6ovrue03k0f" path="res://assets/Fonts/minecraftia/Minecraftia.ttf" id="2_xucgs"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_lnwkf"]
 
@@ -34,7 +34,7 @@ theme_override_styles/separator = SubResource("StyleBoxEmpty_lnwkf")
 custom_minimum_size = Vector2(400, 30)
 layout_mode = 2
 size_flags_horizontal = 3
-theme_override_fonts/font = ExtResource("2_t1j2f")
+theme_override_fonts/font = ExtResource("2_xucgs")
 theme_override_font_sizes/font_size = 18
 text = "Unassigned"
 vertical_alignment = 1
@@ -42,15 +42,20 @@ vertical_alignment = 1
 [node name="Label2" type="Label" parent="HBoxContainer"]
 custom_minimum_size = Vector2(200, 30)
 layout_mode = 2
-theme_override_fonts/font = ExtResource("2_t1j2f")
+theme_override_fonts/font = ExtResource("2_xucgs")
 theme_override_font_sizes/font_size = 18
 text = "
 "
 vertical_alignment = 1
 
+[node name="VSeparator2" type="VSeparator" parent="HBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 24
+theme_override_styles/separator = SubResource("StyleBoxEmpty_lnwkf")
+
 [node name="Button" type="Button" parent="HBoxContainer"]
 custom_minimum_size = Vector2(200, 30)
 layout_mode = 2
 focus_mode = 1
-theme_override_fonts/font = ExtResource("2_t1j2f")
+theme_override_fonts/font = ExtResource("2_xucgs")
 theme_override_font_sizes/font_size = 18

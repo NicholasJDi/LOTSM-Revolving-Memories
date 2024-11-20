@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://b8ccrt8vuveje"]
 
 [ext_resource type="Script" path="res://Scripts/Menus/Options_Menu/show_console_button.gd" id="1_kr2h8"]
-[ext_resource type="FontFile" uid="uid://b8jac8to4l425" path="res://assets/Fonts/srtoasty/Sta.Toasty_font.ttf" id="2_rl2os"]
+[ext_resource type="FontFile" uid="uid://bl6ovrue03k0f" path="res://assets/Fonts/minecraftia/Minecraftia.ttf" id="2_e0i4q"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_fwxjg"]
 
@@ -32,7 +32,7 @@ theme_override_styles/separator = SubResource("StyleBoxEmpty_fwxjg")
 [node name="Label" type="Label" parent="HBoxContainer"]
 custom_minimum_size = Vector2(350, 32)
 layout_mode = 2
-theme_override_fonts/font = ExtResource("2_rl2os")
+theme_override_fonts/font = ExtResource("2_e0i4q")
 theme_override_font_sizes/font_size = 30
 text = "Console Visibility"
 vertical_alignment = 1
@@ -40,7 +40,7 @@ vertical_alignment = 1
 [node name="Button" type="Button" parent="HBoxContainer"]
 custom_minimum_size = Vector2(124, 45)
 layout_mode = 2
-theme_override_fonts/font = ExtResource("2_rl2os")
+theme_override_fonts/font = ExtResource("2_e0i4q")
 theme_override_font_sizes/font_size = 30
 text = "Show"
 

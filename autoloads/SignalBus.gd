@@ -1,5 +1,8 @@
 extends Node
 
+func _ready() -> void:
+	self.process_mode = Node.PROCESS_MODE_ALWAYS
+
 # Exit Options Menu
 signal Exit_Options_Menu
 signal Exit_Options_Menu_External

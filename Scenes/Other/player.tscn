@@ -1,7 +1,8 @@
-[gd_scene load_steps=28 format=3 uid="uid://dxoyhhainhhyv"]
+[gd_scene load_steps=29 format=3 uid="uid://dxoyhhainhhyv"]
 
 [ext_resource type="Texture2D" uid="uid://c4vi5kl203eb1" path="res://assets/Textures/vilrink/AdventureCharacter_Spreadsheet.png" id="1_knk32"]
 [ext_resource type="Script" path="res://Scripts/Other/player.gd" id="1_wpvhi"]
+[ext_resource type="PackedScene" uid="uid://cod64obpin5x0" path="res://Scenes/UIs/UI.tscn" id="3_7eor7"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_o20ky"]
 atlas = ExtResource("1_knk32")
@@ -212,6 +213,22 @@ shape = SubResource("RectangleShape2D_uyc8m")
 [node name="Timer" type="Timer" parent="."]
 wait_time = 0.5
 autostart = true
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(3, 3)
+process_callback = 0
+limit_smoothed = true
+position_smoothing_enabled = true
+drag_horizontal_enabled = true
+drag_vertical_enabled = true
+drag_left_margin = 0.25
+drag_top_margin = 0.25
+drag_right_margin = 0.25
+drag_bottom_margin = 0.25
+editor_draw_limits = true
+editor_draw_drag_margin = true
+
+[node name="UI" parent="Camera2D" instance=ExtResource("3_7eor7")]
 
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

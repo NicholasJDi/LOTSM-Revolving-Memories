@@ -271,17 +271,3 @@ bus = &"SFX - Player"
 [node name="crouch_sfx5" type="AudioStreamPlayer2D" parent="Player/SFX/crouch_sfx"]
 stream = ExtResource("15_s1odn")
 bus = &"SFX - Player"
-
-[node name="Camera2D" type="Camera2D" parent="Player"]
-zoom = Vector2(3, 3)
-process_callback = 0
-limit_smoothed = true
-position_smoothing_enabled = true
-drag_horizontal_enabled = true
-drag_vertical_enabled = true
-drag_left_margin = 0.25
-drag_top_margin = 0.25
-drag_right_margin = 0.25
-drag_bottom_margin = 0.25
-editor_draw_limits = true
-editor_draw_drag_margin = true

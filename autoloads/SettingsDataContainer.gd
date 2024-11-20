@@ -22,11 +22,9 @@ var Storage_Dict = {
 	}
 	}
 
-
-func Get_Save_Data() -> Dictionary:
-	return Storage_Dict
-
+func _ready() -> void:
+	self.process_mode = Node.PROCESS_MODE_ALWAYS
 
 func On_Data_Loaded(Data : Dictionary) -> void:
-	Console.Print("Save", "Output", "loaded_save_data: %s" % Data)
+	ConsoleWindow.Print("Save", "Output", "loaded_save_data: %s" % Data)
 	Storage_Dict = Data
