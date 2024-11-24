@@ -7,22 +7,26 @@
 
 [node name="Hotkey_Rebind_Button" type="Control"]
 layout_mode = 3
-anchors_preset = 15
+anchors_preset = 14
+anchor_top = 0.5
 anchor_right = 1.0
-anchor_bottom = 1.0
+anchor_bottom = 0.5
 grow_horizontal = 2
 grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
 script = ExtResource("1_n33cd")
 metadata/_edit_horizontal_guides_ = [631.0]
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
 layout_mode = 1
-anchors_preset = 4
+anchors_preset = 14
 anchor_top = 0.5
+anchor_right = 1.0
 anchor_bottom = 0.5
 offset_top = -15.0
-offset_right = 836.0
 offset_bottom = 15.0
+grow_horizontal = 2
 grow_vertical = 2
 
 [node name="VSeparator" type="VSeparator" parent="HBoxContainer"]
@@ -50,7 +54,7 @@ vertical_alignment = 1
 
 [node name="VSeparator2" type="VSeparator" parent="HBoxContainer"]
 layout_mode = 2
-theme_override_constants/separation = 24
+theme_override_constants/separation = 42
 theme_override_styles/separator = SubResource("StyleBoxEmpty_lnwkf")
 
 [node name="Button" type="Button" parent="HBoxContainer"]
@@ -59,3 +63,8 @@ layout_mode = 2
 focus_mode = 1
 theme_override_fonts/font = ExtResource("2_xucgs")
 theme_override_font_sizes/font_size = 18
+
+[node name="VSeparator3" type="VSeparator" parent="HBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 24
+theme_override_styles/separator = SubResource("StyleBoxEmpty_lnwkf")

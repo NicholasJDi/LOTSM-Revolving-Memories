@@ -1,0 +1,275 @@
+[gd_scene load_steps=6 format=3 uid="uid://x88arosxsd2o"]
+
+[ext_resource type="Script" path="res://Scripts/Menus/Play_Menu/play_menu.gd" id="1_ah63h"]
+[ext_resource type="FontFile" uid="uid://bl6ovrue03k0f" path="res://assets/Fonts/minecraftia/Minecraftia.ttf" id="2_ji4cs"]
+[ext_resource type="PackedScene" uid="uid://cacymv3yxmlvm" path="res://Scenes/Menus/Play_Menu/save_file.tscn" id="2_upbsw"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_1gdwe"]
+font = ExtResource("2_ji4cs")
+font_size = 56
+font_color = Color(0.564618, 0.667501, 0.930408, 1)
+outline_size = 6
+outline_color = Color(0.00819378, 0.235508, 1, 1)
+shadow_size = 16
+shadow_color = Color(0, 0, 0, 1)
+shadow_offset = Vector2(1, 2)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_es3l0"]
+
+[node name="Play_Menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("1_ah63h")
+save_file_scene = ExtResource("2_upbsw")
+
+[node name="Load_Menu" type="MarginContainer" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 64
+theme_override_constants/margin_top = 64
+theme_override_constants/margin_right = 64
+theme_override_constants/margin_bottom = 64
+
+[node name="PanelContainer" type="PanelContainer" parent="Load_Menu"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Load_Menu/PanelContainer"]
+layout_mode = 2
+theme_override_constants/separation = 18
+
+[node name="Title_Bar" type="PanelContainer" parent="Load_Menu/PanelContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="Load_Menu/PanelContainer/VBoxContainer/Title_Bar"]
+layout_mode = 2
+theme_override_constants/margin_left = 30
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Load_Menu/PanelContainer/VBoxContainer/Title_Bar/MarginContainer"]
+layout_mode = 2
+
+[node name="Control" type="Control" parent="Load_Menu/PanelContainer/VBoxContainer/Title_Bar/MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+
+[node name="Button" type="Button" parent="Load_Menu/PanelContainer/VBoxContainer/Title_Bar/MarginContainer/HBoxContainer/Control"]
+custom_minimum_size = Vector2(120, 50)
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -25.0
+offset_right = 120.0
+offset_bottom = 25.0
+grow_vertical = 2
+pivot_offset = Vector2(23, 0)
+theme_override_font_sizes/font_size = 24
+text = "Back"
+
+[node name="Label" type="Label" parent="Load_Menu/PanelContainer/VBoxContainer/Title_Bar/MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+theme_override_font_sizes/font_size = 50
+text = "Choose A Save File"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="File_List" type="ScrollContainer" parent="Load_Menu/PanelContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+horizontal_scroll_mode = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Load_Menu/PanelContainer/VBoxContainer/File_List"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 32
+
+[node name="Main" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 12
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Main"]
+layout_mode = 2
+theme_override_constants/separation = 60
+
+[node name="Seporator" type="Control" parent="Main/VBoxContainer"]
+layout_direction = 1
+layout_mode = 2
+
+[node name="Title" type="Label" parent="Main/VBoxContainer"]
+layout_mode = 2
+text = "Legend Of The Silver Moon"
+label_settings = SubResource("LabelSettings_1gdwe")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="Main"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/separation = 24
+alignment = 1
+
+[node name="Seporator" type="Control" parent="Main/VBoxContainer2"]
+layout_direction = 1
+layout_mode = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="Main/VBoxContainer2"]
+custom_minimum_size = Vector2(170, 190)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Main/VBoxContainer2/PanelContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/separation = 24
+
+[node name="New" type="Button" parent="Main/VBoxContainer2/PanelContainer/VBoxContainer"]
+custom_minimum_size = Vector2(130, 32)
+layout_mode = 2
+size_flags_stretch_ratio = 0.0
+theme_override_fonts/font = ExtResource("2_ji4cs")
+theme_override_font_sizes/font_size = 18
+text = "New"
+
+[node name="Load" type="Button" parent="Main/VBoxContainer2/PanelContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_ji4cs")
+theme_override_font_sizes/font_size = 18
+text = "Load"
+
+[node name="Back" type="Button" parent="Main/VBoxContainer2/PanelContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_ji4cs")
+theme_override_font_sizes/font_size = 18
+text = "Back"
+
+[node name="New_Save" type="MarginContainer" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 200
+theme_override_constants/margin_top = 64
+theme_override_constants/margin_right = 200
+theme_override_constants/margin_bottom = 64
+
+[node name="PanelContainer" type="PanelContainer" parent="New_Save"]
+layout_mode = 2
+size_flags_vertical = 4
+
+[node name="VBoxContainer" type="VBoxContainer" parent="New_Save/PanelContainer"]
+layout_mode = 2
+theme_override_constants/separation = 18
+
+[node name="Title_Bar" type="PanelContainer" parent="New_Save/PanelContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="New_Save/PanelContainer/VBoxContainer/Title_Bar"]
+layout_mode = 2
+theme_override_constants/margin_left = 30
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="HBoxContainer" type="HBoxContainer" parent="New_Save/PanelContainer/VBoxContainer/Title_Bar/MarginContainer"]
+layout_mode = 2
+
+[node name="Control" type="Control" parent="New_Save/PanelContainer/VBoxContainer/Title_Bar/MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+
+[node name="Button" type="Button" parent="New_Save/PanelContainer/VBoxContainer/Title_Bar/MarginContainer/HBoxContainer/Control"]
+custom_minimum_size = Vector2(120, 50)
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -25.0
+offset_right = 120.0
+offset_bottom = 25.0
+grow_vertical = 2
+pivot_offset = Vector2(23, 0)
+theme_override_font_sizes/font_size = 24
+text = "Back"
+
+[node name="Label" type="Label" parent="New_Save/PanelContainer/VBoxContainer/Title_Bar/MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+theme_override_font_sizes/font_size = 50
+text = "New Save File"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="New_Save/PanelContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 24
+theme_override_constants/margin_right = 24
+theme_override_constants/margin_bottom = 24
+
+[node name="VBoxContainer" type="VBoxContainer" parent="New_Save/PanelContainer/VBoxContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="LineEdit" type="LineEdit" parent="New_Save/PanelContainer/VBoxContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 28
+placeholder_text = "New Game"
+max_length = 32
+
+[node name="Label" type="Label" parent="New_Save/PanelContainer/VBoxContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.576471, 0.576471, 0.576471, 1)
+text = "Will Be Saved As: new_game"
+
+[node name="HSeparator" type="HSeparator" parent="New_Save/PanelContainer/VBoxContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 18
+theme_override_styles/separator = SubResource("StyleBoxEmpty_es3l0")
+
+[node name="Start" type="Button" parent="New_Save/PanelContainer/VBoxContainer/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 72)
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Start Your Adventure"
+
+[connection signal="pressed" from="Load_Menu/PanelContainer/VBoxContainer/Title_Bar/MarginContainer/HBoxContainer/Control/Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="Main/VBoxContainer2/PanelContainer/VBoxContainer/New" to="." method="_on_new_pressed"]
+[connection signal="pressed" from="Main/VBoxContainer2/PanelContainer/VBoxContainer/Load" to="." method="_on_load_pressed"]
+[connection signal="pressed" from="Main/VBoxContainer2/PanelContainer/VBoxContainer/Back" to="." method="_on_back_pressed"]
+[connection signal="pressed" from="New_Save/PanelContainer/VBoxContainer/Title_Bar/MarginContainer/HBoxContainer/Control/Button" to="." method="_on_button_pressed"]
+[connection signal="text_changed" from="New_Save/PanelContainer/VBoxContainer/MarginContainer/VBoxContainer/LineEdit" to="." method="_on_line_edit_text_changed"]
+[connection signal="pressed" from="New_Save/PanelContainer/VBoxContainer/MarginContainer/VBoxContainer/Start" to="." method="_on_start_pressed"]

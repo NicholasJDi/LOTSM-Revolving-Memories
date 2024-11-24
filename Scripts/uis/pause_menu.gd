@@ -27,7 +27,7 @@ func _process(_delta: float) -> void:
 		pause()
 
 func _input(event: InputEvent) -> void:
-	if Input.is_action_just_pressed("pause"):
+	if event.is_action_pressed("pause"):
 		if get_tree().paused:
 			resume()
 		else:
@@ -40,9 +40,10 @@ func _on_resume_pressed() -> void:
 func _on_options_pressed() -> void:
 	options_menu.visible = true
 	menu.visible = false
-	ConsoleWindow.Print("Menu", "Output", "load_options_menu")
+	ConsoleWindow.Print("load_options_menu", "Menu", "Output")
 
 
 func _on_exit_pressed() -> void:
 	get_tree().paused = false
+	SaveManager.Save_File_Save(SettingsDataContainer.save_file_data.data, SettingsDataContainer.save_file_data.file.location)
 	get_tree().change_scene_to_file("res://Scenes/Menus/Main_Menu.tscn")

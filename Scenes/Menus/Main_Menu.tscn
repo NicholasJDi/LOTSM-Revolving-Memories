@@ -1,10 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://djfpyvlfj6qik"]
+[gd_scene load_steps=9 format=3 uid="uid://djfpyvlfj6qik"]
 
 [ext_resource type="Script" path="res://Scripts/Menus/Main_Menu/main_menu.gd" id="1_d2srq"]
 [ext_resource type="Texture2D" uid="uid://dxxq37daehguu" path="res://assets/Textures/NicholasJDi/Back.png" id="2_qc2fh"]
 [ext_resource type="PackedScene" uid="uid://4x6fafcgdalm" path="res://Scenes/Menus/Options_Menu/Options_Menu.tscn" id="3_m43vj"]
 [ext_resource type="FontFile" uid="uid://bl6ovrue03k0f" path="res://assets/Fonts/minecraftia/Minecraftia.ttf" id="4_htgj1"]
 [ext_resource type="AudioStream" uid="uid://w8kl1f86qdu6" path="res://assets/Sound/Music/alkakrab/Fantasy RPG Music Pack Vol.3/Loops/ogg/Ambient 4 Loop.ogg" id="5_1qjls"]
+[ext_resource type="PackedScene" uid="uid://x88arosxsd2o" path="res://Scenes/Menus/Play_Menu/play_menu.tscn" id="5_vu1w7"]
 [ext_resource type="AudioStream" uid="uid://ds668qylgsr02" path="res://assets/Sound/SFX/tommusic/Free Fantasy SFX Pack By TomMusic/Free Fantasy SFX Pack By TomMusic/OGG Files/BGS Loops/Forest Day/Forest Day.ogg" id="6_fa1ul"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_6wdit"]
@@ -66,28 +67,38 @@ label_settings = SubResource("LabelSettings_6wdit")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Main_Menu"]
+[node name="VBoxContainer2" type="VBoxContainer" parent="Main_Menu"]
 layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/separation = 24
 alignment = 1
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Main_Menu/HBoxContainer"]
-layout_mode = 2
-theme_override_constants/separation = 18
-alignment = 1
-
-[node name="Seporator" type="Control" parent="Main_Menu/HBoxContainer/VBoxContainer"]
+[node name="Seporator" type="Control" parent="Main_Menu/VBoxContainer2"]
 layout_direction = 1
 layout_mode = 2
 
-[node name="Play" type="Button" parent="Main_Menu/HBoxContainer/VBoxContainer"]
-custom_minimum_size = Vector2(150, 32)
+[node name="PanelContainer" type="PanelContainer" parent="Main_Menu/VBoxContainer2"]
+custom_minimum_size = Vector2(170, 190)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Main_Menu/VBoxContainer2/PanelContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/separation = 24
+
+[node name="Play" type="Button" parent="Main_Menu/VBoxContainer2/PanelContainer/VBoxContainer"]
+custom_minimum_size = Vector2(130, 32)
 layout_mode = 2
 size_flags_stretch_ratio = 0.0
 theme_override_fonts/font = ExtResource("4_htgj1")
 theme_override_font_sizes/font_size = 18
 text = "Play"
 
-[node name="Options" type="Button" parent="Main_Menu/HBoxContainer/VBoxContainer"]
+[node name="Options" type="Button" parent="Main_Menu/VBoxContainer2/PanelContainer/VBoxContainer"]
 custom_minimum_size = Vector2(0, 32)
 layout_mode = 2
 theme_override_fonts/font = ExtResource("4_htgj1")
@@ -95,13 +106,17 @@ theme_override_font_sizes/font_size = 18
 text = "Options
 "
 
-[node name="Quit" type="Button" parent="Main_Menu/HBoxContainer/VBoxContainer"]
+[node name="Quit" type="Button" parent="Main_Menu/VBoxContainer2/PanelContainer/VBoxContainer"]
 custom_minimum_size = Vector2(0, 32)
 layout_mode = 2
 theme_override_fonts/font = ExtResource("4_htgj1")
 theme_override_font_sizes/font_size = 18
 text = "Quit
 "
+
+[node name="Play_Menu" parent="." instance=ExtResource("5_vu1w7")]
+visible = false
+layout_mode = 1
 
 [node name="MusicStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("5_1qjls")
@@ -115,6 +130,6 @@ autoplay = true
 bus = &"SFX - Environment"
 parameters/looping = true
 
-[connection signal="pressed" from="Main_Menu/HBoxContainer/VBoxContainer/Play" to="." method="_on_play_pressed"]
-[connection signal="pressed" from="Main_Menu/HBoxContainer/VBoxContainer/Options" to="." method="_on_options_pressed"]
-[connection signal="pressed" from="Main_Menu/HBoxContainer/VBoxContainer/Quit" to="." method="_on_quit_pressed"]
+[connection signal="pressed" from="Main_Menu/VBoxContainer2/PanelContainer/VBoxContainer/Play" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="Main_Menu/VBoxContainer2/PanelContainer/VBoxContainer/Options" to="." method="_on_options_pressed"]
+[connection signal="pressed" from="Main_Menu/VBoxContainer2/PanelContainer/VBoxContainer/Quit" to="." method="_on_quit_pressed"]

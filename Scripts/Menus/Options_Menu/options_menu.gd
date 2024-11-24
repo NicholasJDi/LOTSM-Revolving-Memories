@@ -8,13 +8,13 @@ func _ready() -> void:
 
 
 func _on_back_pressed() -> void:
-	SignalBus.Emit_Exit_Options_Menu()
-	ConsoleWindow.Print("Save", "Output", "save_options_data: %s" % SettingsDataContainer.Storage_Dict)
-	SaveManager.Save_Data(SettingsDataContainer.Storage_Dict, "Settings")
-	ConsoleWindow.Print("Menu", "Output", "load_main_menu")
+	exit()
 
 func exit():
 	SignalBus.Emit_Exit_Options_Menu()
-	ConsoleWindow.Print("Save", "Output", "save_options_data: %s" % SettingsDataContainer.Storage_Dict)
-	SaveManager.Save_Data(SettingsDataContainer.Storage_Dict,"Settings")
-	ConsoleWindow.Print("Menu", "Output", "load_main_menu")
+	ConsoleWindow.Print("save_options_data: %s" % SettingsDataContainer.Storage_Dict, "Save", "Output")
+	SaveManager.Save_Data(SettingsDataContainer.Storage_Dict, "Settings")
+	if get_parent().name == "Main_Menu":
+		ConsoleWindow.Print("load_main_menu", "Menu", "Output")
+	elif get_parent().name == "Pause_Menu":
+		ConsoleWindow.Print("load_pause_menu", "Menu", "Output")

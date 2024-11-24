@@ -13,6 +13,7 @@ var last_commands : Array = [
 
 var Types = {
 	"Global" : {"color" : "#ffffff", "visible" : "true"},
+	"Debug" : {"color" : "#b87400", "visible" : "true"},
 	"Help" : {"color" : "#ff9700", "visible" : "null"},
 	"Player" : {"color" : "#c50000", "visible" : "true"},
 	"Scene" : {"color" : "#0c48ff", "visible" : "true"},
@@ -71,7 +72,7 @@ func _on_console_window_focus_exited() -> void:
 	input_field.release_focus()
 
 
-func Print(Type : String, Level : String, Text):
+func Print(Text, Type : String = "Debug", Level : String = "Output"):
 	add_message(Type, Level, str(Text))
 
 
@@ -83,34 +84,34 @@ func use_command(text):
 	if last_commands.size() == 11:
 		last_commands.pop_back()
 	if text == "/help" or text == "/h":
-		ConsoleWindow.Print("Help", "Global", "Commands:\n/help Or /h Shows This Menu\n/name (name) Change The Name The Console Refers To You As\n/scene (scene) Force The Game To Change To Another Scene\n/hide (type) Hides A Specific Output Type.\n/show (type) Shows A Specific Output Type.\n/quit Forces The Game To Close")
+		ConsoleWindow.Print("Commands:\n/help Or /h Shows This Menu\n/name (name) Change The Name The Console Refers To You As\n/scene (scene) Force The Game To Change To Another Scene\n/hide (type) Hides A Specific Output Type.\n/show (type) Shows A Specific Output Type.\n/quit Forces The Game To Close", "Help", "Global")
 		success = "Suc"
 	elif text.begins_with("/name"):
 		if text == "/name" or text == "/name " or text == "/name help" or  text == "/name h":
-			ConsoleWindow.Print("Help", "Global", "/name Usage:\n/name (name) Change The Name The Console Refers To You As")
+			ConsoleWindow.Print("/name Usage:\n/name (name) Change The Name The Console Refers To You As", "Help", "Global")
 			success = "Suc"
 		else:
 			var tempusername = text.replace("/name ", "")
 			if tempusername.count(tempusername, 0, 14):
 				username = text.replace("/name ", "")
 				input_label.text = "[" + username + "]"
-				ConsoleWindow.Print("Help", "Global", "Success! The Console Will Now Refer To You As %s" % username)
+				ConsoleWindow.Print("Success! The Console Will Now Refer To You As %s" % username, "Help", "Global")
 				success = "Suc"
 			else:
-				ConsoleWindow.Print("Help", "Error", "Name Too Long, Max: 14 Given: %s" % tempusername.length())
+				ConsoleWindow.Print("Name Too Long, Max: 14 Given: %s" % tempusername.length(), "Help", "Error")
 				success = "Err"
 	elif text.begins_with("/scene"):
 		if text == "/scene" or text == "/scene " or text == "/scene help" or  text == "/scene h":
-			ConsoleWindow.Print("Help", "Global", "/scene Usage:\n/scene (scene) Force The Game To Change To Another Scene\nValues:\nmain menu, level 0.")
+			ConsoleWindow.Print("/scene Usage:\n/scene (scene) Force The Game To Change To Another Scene\nValues:\nmain menu, level 0.", "Help", "Global")
 			success = "Suc"
 		else:
 			if text.replace("/scene ", "") == "main menu":
-				ConsoleWindow.Print("Help", "Global", "Success! Loading Scene Main_Menu")
+				ConsoleWindow.Print("Success! Loading Scene Main_Menu", "Help", "Global")
 				get_tree().change_scene_to_file("res://Scenes/Menus/Main_Menu.tscn")
 				get_tree().paused = false
 				success = "Suc"
 			elif text.replace("/scene ", "") == "level 0":
-				ConsoleWindow.Print("Help", "Global", "Success! Loading Scene Level_0")
+				ConsoleWindow.Print("Success! Loading Scene Level_0", "Help", "Global")
 				get_tree().change_scene_to_file("res://Scenes/Levels/Level_0.tscn")
 				get_tree().paused = false
 				success = "Suc"
@@ -120,7 +121,7 @@ func use_command(text):
 		var temp_data = text.replace("/hide ", "")
 		temp_data = temp_data.capitalize()
 		if text == "/hide" or text == "/hide " or text == "/hide help" or  text == "/hide h":
-			ConsoleWindow.Print("Help", "Global", "/hide Usage:\n/hide (type) Hides A Specific Output Type.\nValues:\nglobal, player, scene, menu, ui, item, save, settings")
+			ConsoleWindow.Print("/hide Usage:\n/hide (type) Hides A Specific Output Type.\nValues:\nglobal, player, scene, menu, ui, item, save, settings", "Help", "Global")
 			success = "Suc"
 		elif temp_data == "Global" or temp_data == "Player" or temp_data == "Scene" or temp_data == "Menu" or temp_data == "Ui" or temp_data == "Item" or temp_data == "Save" or temp_data == "Settings":
 			if Types[temp_data].visible == "true": 
@@ -128,7 +129,7 @@ func use_command(text):
 				ConsoleWindow.Print("Help", "Global", "Success! Type Has Been Hidden")
 				success = "Suc"
 			else:
-				ConsoleWindow.Print("Help", "Error", "Type Already Hidden")
+				ConsoleWindow.Print("Type Already Hidden", "Help", "Error")
 				success = "Err"
 		else:
 			success = "Syn"
@@ -136,15 +137,15 @@ func use_command(text):
 		var temp_data = text.replace("/show ", "")
 		temp_data = temp_data.capitalize()
 		if text == "/show" or text == "/show " or text == "/show help" or  text == "/show h":
-			ConsoleWindow.Print("Help", "Global", "/show Usage:\n/show (type) Shows A Specific Output Type.\nValues:\nglobal, player, scene, menu, ui, item, save, settings")
+			ConsoleWindow.Print("/show Usage:\n/show (type) Shows A Specific Output Type.\nValues:\nglobal, player, scene, menu, ui, item, save, settings", "Help", "Global")
 			success = "Suc"
 		elif temp_data == "Global" or temp_data == "Player" or temp_data == "Scene" or temp_data == "Menu" or temp_data == "Ui" or temp_data == "Item" or temp_data == "Save" or temp_data == "Settings":
 			if Types[temp_data].visible == "false": 
 				Types[temp_data].visible = "true"
-				ConsoleWindow.Print("Help", "Global", "Success! Type Has Been Shown")
+				ConsoleWindow.Print("Success! Type Has Been Shown", "Help", "Global")
 				success = "Suc"
 			else:
-				ConsoleWindow.Print("Help", "Error", "Type Already Shown")
+				ConsoleWindow.Print("Type Already Shown", "Help", "Error")
 				success = "Err"
 		else:
 			success = "Syn"
@@ -152,14 +153,14 @@ func use_command(text):
 		if text == "/quit" or text == "/quit ":
 			success = "Qui"
 		elif text == "/quit help" or text == "/quit h":
-			ConsoleWindow.Print("Help", "Global", "/quit Usage:\n/quit Forces The Game To Close.")
+			ConsoleWindow.Print("/quit Usage:\n/quit Forces The Game To Close.", "Help", "Global")
 			success = "Suc"
 		else:
 			success = "Syn"
 	if success == "Not":
-		ConsoleWindow.Print("Help", "Error", "Command Not Found")
+		ConsoleWindow.Print("Command Not Found", "Help", "Error")
 	elif success == "Syn":
-		ConsoleWindow.Print("Help", "Error", "Invalid Syntax")
+		ConsoleWindow.Print("Invalid Syntax", "Help", "Error")
 	SaveManager.Save_Data(ConsoleWindow.create_storage_dictionary(), "Console")
 	if success == "Qui":
 		get_tree().quit()

@@ -2,7 +2,7 @@ extends Node
 
 const Data_Path : Dictionary = {
 	"Settings" : "user://Settings/Options.txt",
-	"Console" : "user://Settings/Console.txt",
+	"Console" : "user://Settings/Console.dat",
 }
 
 var settings_data_dict = {}
@@ -14,22 +14,47 @@ func _ready() -> void:
 	Load_Data("Settings")
 	Load_Data("Console")
 
-func Save_File_Save(Data : Dictionary, Name : String) -> void:
+func Save_File_Get(Name : String) -> String:
 	Name = Name.to_lower()
 	Name = Name.replace(" ", "_")
 	var File = "user://Saves/" + Name
-	var num : int = 0
-	while  FileAccess.file_exists(File):
+	var num : int = 1
+	if FileAccess.file_exists(File + ".save"):
+		File = File + "1"
+	while  FileAccess.file_exists(File + ".save"):
 		var temp = File
-		if num == 0:
-			temp = temp + "0"
 		temp = temp.left(temp.length() - str(num).length())
 		num = num + 1
 		File = temp + str(num)
 	File = File + ".save"
+	return File
+
+func Save_File_Save(Data : Dictionary, File : String, New : bool = false) -> void:
+	if New:
+		SettingsDataContainer.save_file_data.file.location = File
+		SettingsDataContainer.save_file_data.file.date_created = Time.get_datetime_string_from_system().replace("T", "-")
+	var temp_data = {
+	"file":{
+		"location":SettingsDataContainer.save_file_data.file.location,
+		"date_created":SettingsDataContainer.save_file_data.file.date_created,
+		"last_played":Time.get_datetime_string_from_system().replace("T", "-")},
+	"data":Data
+	}
 	var save_data_file = FileAccess.open(File, FileAccess.WRITE)
-	var json_data_string = JSON.stringify(Data)
+	var json_data_string = JSON.stringify(temp_data)
 	save_data_file.store_line(json_data_string)
+
+func Save_File_Load(File : String) -> void:
+	if not FileAccess.file_exists(File):
+		return
+	var save_data_file = FileAccess.open(File, FileAccess.READ)
+	var Loaded_Data : Dictionary = {}
+	while save_data_file.get_position() < save_data_file.get_length():
+		var json_string = save_data_file.get_line()
+		var json = JSON.new()
+		var _passed_result = json.parse(json_string)
+		Loaded_Data = json.get_data()
+	SettingsDataContainer.save_file_data = Loaded_Data
 
 func Save_Data(Data : Dictionary, Type : String) -> void:
 	var File = Data_Path[Type]

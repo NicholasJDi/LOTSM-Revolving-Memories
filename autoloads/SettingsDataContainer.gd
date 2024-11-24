@@ -1,5 +1,14 @@
 extends Node
 
+var save_file_data = {
+	"file":{
+	"location":"",
+	"date_created":"",
+	"last_played":""
+	},
+	"data":{}
+	}
+
 var Storage_Dict = {
 	"accsesability":{
 	},
@@ -26,5 +35,5 @@ func _ready() -> void:
 	self.process_mode = Node.PROCESS_MODE_ALWAYS
 
 func On_Data_Loaded(Data : Dictionary) -> void:
-	ConsoleWindow.Print("Save", "Output", "loaded_save_data: %s" % Data)
+	ConsoleWindow.Print("loaded_save_data: %s" % Data, "Save", "Output")
 	Storage_Dict = Data

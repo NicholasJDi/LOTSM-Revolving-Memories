@@ -31,13 +31,11 @@ func _ready() -> void:
 					button.text = OS.get_keycode_string(int(keycode))
 					var action_events = InputMap.action_get_events(action_name)
 					var action_event = action_events[0]
-					ConsoleWindow.Print("Global", "Output", action_event)
 
 func _process(_delta: float) -> void:
 	if button.has_focus() and action == "":
 		if not button.text == "Press Any Key..":
 			button.text = "Press Any Key.."
-		
 	else:
 		if button.text == "Press Any Key..":
 			set_text_for_key()
