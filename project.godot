@@ -12,7 +12,7 @@ config_version=5
 
 config/name="Legend Of The Silver Moon: - Revolving Memories"
 config/description="A Platformer Game"
-config/version="0.03 (Alpha Dev)"
+config/version="0.04 (Alpha Dev)"
 run/main_scene="res://Scenes/Menus/Main_Menu.tscn"
 config/use_custom_user_dir=true
 config/custom_user_dir_name="Legend Of The Silver Moon - Revolving Memories"
@@ -108,6 +108,11 @@ pause={
 "events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":4194305,"key_label":0,"unicode":0,"location":0,"echo":false,"script":null)
 ]
 }
+dash={
+"deadzone": 0.5,
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":81,"key_label":0,"unicode":113,"location":0,"echo":false,"script":null)
+]
+}
 
 [input_devices]
 
@@ -120,6 +125,7 @@ pointing/android/enable_pan_and_scale_gestures=true
 2d_physics/layer_2="Ground"
 2d_physics/layer_3="Ground-One-Way"
 2d_physics/layer_4="Deadly"
+2d_physics/layer_9="Checkpoint"
 
 [rendering]
 

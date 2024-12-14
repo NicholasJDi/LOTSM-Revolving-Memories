@@ -18,7 +18,7 @@ var Types = {
 	"Player" : {"color" : "#c50000", "visible" : "true"},
 	"Scene" : {"color" : "#0c48ff", "visible" : "true"},
 	"Menu" : {"color" : "#9300b8", "visible" : "true"},
-	"UI" : {"color" : "#00a000", "visible" : "true"},
+	"Ui" : {"color" : "#00a000", "visible" : "true"},
 	"Item" : {"color" : "#ad6c00", "visible" : "true"},
 	"Save" : {"color" : "#ffb000", "visible" : "true"},
 	"Settings" : {"color" : "#5c5c5c", "visible" : "true"},
@@ -84,7 +84,7 @@ func use_command(text):
 	if last_commands.size() == 11:
 		last_commands.pop_back()
 	if text == "/help" or text == "/h":
-		ConsoleWindow.Print("Commands:\n/help Or /h Shows This Menu\n/name (name) Change The Name The Console Refers To You As\n/scene (scene) Force The Game To Change To Another Scene\n/hide (type) Hides A Specific Output Type.\n/show (type) Shows A Specific Output Type.\n/quit Forces The Game To Close", "Help", "Global")
+		ConsoleWindow.Print("Commands:\n/help Or /h Shows This Menu.\n/name (name) Change The Name The Console Refers To You As.\n/list (list) Shows Lists Of Important Data.\n/scene (scene) Force The Game To Change To Another Scene.\n/reload Reloads The Current Scene.\n/hide (type) Hides A Specific Output Type.\n/show (type) Shows A Specific Output Type.\n/quit Forces The Game To Close.", "Help", "Global")
 		success = "Suc"
 	elif text.begins_with("/name"):
 		if text == "/name" or text == "/name " or text == "/name help" or  text == "/name h":
@@ -100,33 +100,63 @@ func use_command(text):
 			else:
 				ConsoleWindow.Print("Name Too Long, Max: 14 Given: %s" % tempusername.length(), "Help", "Error")
 				success = "Err"
+	elif text.begins_with("/list"):
+		if text == "/list" or text == "/list " or text == "/list help" or  text == "/list h":
+			ConsoleWindow.Print("/list Usage:\n/list (list) Shows Lists Of Important Data\nValues:\noutput visibility.", "Help", "Global")
+			success = "Suc"
+		elif text == "/list output visibility":
+			ConsoleWindow.Print("Current Output Visibility:\nGlobal: " + ConsoleWindow.Types.Global.visible.capitalize() + "\nDebug: " + ConsoleWindow.Types.Debug.visible.capitalize() + "\nPlayer: " + ConsoleWindow.Types.Player.visible.capitalize() + "\nScene: " + ConsoleWindow.Types.Scene.visible.capitalize() + "\nMenu: " + ConsoleWindow.Types.Menu.visible.capitalize() + "\nUi: " + ConsoleWindow.Types.Ui.visible.capitalize() + "\nItem: " + ConsoleWindow.Types.Item.visible.capitalize() + "\nSave: " + ConsoleWindow.Types.Save.visible.capitalize() + "\nSettings: " + ConsoleWindow.Types.Settings.visible.capitalize(), "Help", "Global")
+			success = "Suc"
+		else:
+			success = "Syn"
+	elif text.begins_with("/clear"):
+		if text == "/clear " or text == "/clear help" or  text == "/clear h":
+			ConsoleWindow.Print("/clear Usage:\n/clear Clears All Previus Consoe Log Data.", "Help", "Global")
+			success = "Suc"
+		elif text == "/clear":
+			console_log.text = ""
+			ConsoleWindow.Print("Success! Previous Console Log Data Has Been Cleared", "Help", "Global")
+			success = "Suc"
+		else:
+			success = "Syn"
 	elif text.begins_with("/scene"):
 		if text == "/scene" or text == "/scene " or text == "/scene help" or  text == "/scene h":
 			ConsoleWindow.Print("/scene Usage:\n/scene (scene) Force The Game To Change To Another Scene\nValues:\nmain menu, level 0.", "Help", "Global")
 			success = "Suc"
+		elif text.replace("/scene ", "") == "main menu":
+			ConsoleWindow.Print("Success! Loading Scene Main_Menu", "Help", "Global")
+			get_tree().change_scene_to_file("res://Scenes/Menus/Main_Menu.tscn")
+			get_tree().paused = false
+			success = "Suc"
+		elif text.replace("/scene ", "") == "level 0":
+			ConsoleWindow.Print("Success! Loading Scene Level_0", "Help", "Global")
+			get_tree().change_scene_to_file("res://Scenes/Levels/Level_0.tscn")
+			get_tree().paused = false
+			success = "Suc"
 		else:
-			if text.replace("/scene ", "") == "main menu":
-				ConsoleWindow.Print("Success! Loading Scene Main_Menu", "Help", "Global")
-				get_tree().change_scene_to_file("res://Scenes/Menus/Main_Menu.tscn")
-				get_tree().paused = false
-				success = "Suc"
-			elif text.replace("/scene ", "") == "level 0":
-				ConsoleWindow.Print("Success! Loading Scene Level_0", "Help", "Global")
-				get_tree().change_scene_to_file("res://Scenes/Levels/Level_0.tscn")
-				get_tree().paused = false
-				success = "Suc"
-			else:
-				success = "Syn"
+			success = "Syn"
+	elif text.begins_with("/reload"):
+		if text == "/reload " or text == "/reload help" or  text == "/reload h":
+			ConsoleWindow.Print("/reload Usage:\n/reload Reloads The Current Scene", "Help", "Global")
+			success = "Suc"
+		elif text == "/reload":
+			if not SettingsDataContainer.save_file_data.is_empty():
+				SaveManager.Save_File_Load(SettingsDataContainer.save_file_data.file.location)
+			get_tree().reload_current_scene()
+			ConsoleWindow.Print("Success! Reloading Current Scene", "Help", "Global")
+			success = "Suc"
+		else:
+			success = "Syn"
 	elif text.begins_with("/hide"):
 		var temp_data = text.replace("/hide ", "")
 		temp_data = temp_data.capitalize()
 		if text == "/hide" or text == "/hide " or text == "/hide help" or  text == "/hide h":
-			ConsoleWindow.Print("/hide Usage:\n/hide (type) Hides A Specific Output Type.\nValues:\nglobal, player, scene, menu, ui, item, save, settings", "Help", "Global")
+			ConsoleWindow.Print("/hide Usage:\n/hide (type) Hides A Specific Output Type.\nValues:\nglobal, player, scene, menu, ui, item, save, settings.", "Help", "Global")
 			success = "Suc"
 		elif temp_data == "Global" or temp_data == "Player" or temp_data == "Scene" or temp_data == "Menu" or temp_data == "Ui" or temp_data == "Item" or temp_data == "Save" or temp_data == "Settings":
 			if Types[temp_data].visible == "true": 
 				Types[temp_data].visible = "false"
-				ConsoleWindow.Print("Help", "Global", "Success! Type Has Been Hidden")
+				ConsoleWindow.Print("Success! Type Has Been Hidden", "Help", "Global")
 				success = "Suc"
 			else:
 				ConsoleWindow.Print("Type Already Hidden", "Help", "Error")
@@ -137,10 +167,10 @@ func use_command(text):
 		var temp_data = text.replace("/show ", "")
 		temp_data = temp_data.capitalize()
 		if text == "/show" or text == "/show " or text == "/show help" or  text == "/show h":
-			ConsoleWindow.Print("/show Usage:\n/show (type) Shows A Specific Output Type.\nValues:\nglobal, player, scene, menu, ui, item, save, settings", "Help", "Global")
+			ConsoleWindow.Print("/show Usage:\n/show (type) Shows A Specific Output Type.\nValues:\nglobal, player, scene, menu, ui, item, save, settings.", "Help", "Global")
 			success = "Suc"
 		elif temp_data == "Global" or temp_data == "Player" or temp_data == "Scene" or temp_data == "Menu" or temp_data == "Ui" or temp_data == "Item" or temp_data == "Save" or temp_data == "Settings":
-			if Types[temp_data].visible == "false": 
+			if Types[temp_data].visible == "false":
 				Types[temp_data].visible = "true"
 				ConsoleWindow.Print("Success! Type Has Been Shown", "Help", "Global")
 				success = "Suc"

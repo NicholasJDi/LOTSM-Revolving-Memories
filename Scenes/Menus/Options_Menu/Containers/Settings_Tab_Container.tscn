@@ -131,6 +131,9 @@ layout_mode = 2
 [node name="jump" parent="TabContainer/Controls/ScrollContainer/VBoxContainer" instance=ExtResource("2_gbnvi")]
 layout_mode = 2
 
+[node name="dash" parent="TabContainer/Controls/ScrollContainer/VBoxContainer" instance=ExtResource("2_gbnvi")]
+layout_mode = 2
+
 [node name="interact" parent="TabContainer/Controls/ScrollContainer/VBoxContainer" instance=ExtResource("2_gbnvi")]
 layout_mode = 2
 

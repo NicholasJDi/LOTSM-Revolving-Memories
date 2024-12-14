@@ -20,17 +20,16 @@ func On_Play_Menu_Exit():
 	play_menu.visible = false
 	ConsoleWindow.Print("load_main_menu", "Menu", "Output")
 
+
 func _on_play_pressed():
 	play_menu.visible = true
 	main_menu.visible = false
 	ConsoleWindow.Print("load_play_menu", "Menu", "Output")
 
-
 func _on_options_pressed():
 	options_menu.visible = true
 	main_menu.visible = false
 	ConsoleWindow.Print("load_options_menu", "Menu", "Output")
-
 
 func _on_quit_pressed():
 	ConsoleWindow.Print("quit_game", "Global", "Output")

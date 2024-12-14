@@ -5,8 +5,6 @@ const Data_Path : Dictionary = {
 	"Console" : "user://Settings/Console.dat",
 }
 
-var settings_data_dict = {}
-
 func _ready() -> void:
 	self.process_mode = Node.PROCESS_MODE_ALWAYS
 	DirAccess.make_dir_absolute("user://Settings")
@@ -31,8 +29,14 @@ func Save_File_Get(Name : String) -> String:
 
 func Save_File_Save(Data : Dictionary, File : String, New : bool = false) -> void:
 	if New:
+		if FileAccess.file_exists(File):
+			ConsoleWindow.Print("Failed To Create File, Error Context: File Already Exists", "Save", "Error")
+			return
 		SettingsDataContainer.save_file_data.file.location = File
 		SettingsDataContainer.save_file_data.file.date_created = Time.get_datetime_string_from_system().replace("T", "-")
+	elif not FileAccess.file_exists(File):
+		ConsoleWindow.Print("Failed To Save File, Error Context: File Does Not Exist", "Save", "Error")
+		return
 	var temp_data = {
 	"file":{
 		"location":SettingsDataContainer.save_file_data.file.location,
@@ -46,6 +50,7 @@ func Save_File_Save(Data : Dictionary, File : String, New : bool = false) -> voi
 
 func Save_File_Load(File : String) -> void:
 	if not FileAccess.file_exists(File):
+		ConsoleWindow.Print("Failed To Load File, Error Context: File Does Not Exist", "Save", "Error")
 		return
 	var save_data_file = FileAccess.open(File, FileAccess.READ)
 	var Loaded_Data : Dictionary = {}

@@ -9,20 +9,25 @@ extends Control
 
 @export var save_file_scene : PackedScene = null
 @onready var v_box_container : VBoxContainer = $Load_Menu/PanelContainer/VBoxContainer/File_List/VBoxContainer
-@onready var h_separator_bottom: HSeparator = $Load_Menu/PanelContainer/VBoxContainer/File_List/VBoxContainer/HSeparator_Bottom
 
 var new_save_file : String
 
 func _ready() -> void:
 	new_save_file = SaveManager.Save_File_Get("New Game")
 	label.text = "Will Be Saved As: " + new_save_file.replace("user://Saves/", "").replace(".save", "")
-	if not DirAccess.get_files_at("user://Saves").is_empty():
-		for File in DirAccess.get_files_at("user://Saves"):
-			SaveManager.Save_File_Load("user://Saves".path_join(File))
-			var new_scene = save_file_scene.instantiate()
-			v_box_container.add_child(new_scene)
-	else:
+	for File in DirAccess.get_files_at("user://Saves"):
+		SaveManager.Save_File_Load("user://Saves".path_join(File))
+		var new_scene = save_file_scene.instantiate()
+		v_box_container.add_child(new_scene)
+
+func _process(_delta: float) -> void:
+	if DirAccess.get_files_at("user://Saves").is_empty():
 		Load.disabled = true
+		if load_menu.visible:
+			load_menu.visible = false
+			main. visible = true
+	else:
+		Load.disabled = false
 
 func _on_load_pressed() -> void:
 	load_menu.visible = true
@@ -53,6 +58,7 @@ func _on_line_edit_text_changed(new_text: String) -> void:
 		label.text = "Will Be Saved As: " + new_save_file.replace("user://Saves/", "").replace(".save", "")
 
 func _on_start_pressed() -> void:
-	SaveManager.Save_File_Save({}, new_save_file, true)
+	SettingsDataContainer.save_file_data = SettingsDataContainer.default_save_file_data
+	SaveManager.Save_File_Save(SettingsDataContainer.default_save_file_data.data, new_save_file, true)
 	SaveManager.Save_File_Load(new_save_file)
 	get_tree().change_scene_to_file("res://Scenes/Levels/Level_0.tscn")

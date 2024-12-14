@@ -36,6 +36,25 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("2_qc2fh")
 
+[node name="VersionContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 12
+
+[node name="Version" type="Label" parent="VersionContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 8
+theme_override_colors/font_color = Color(1, 1, 1, 0.752941)
+text = "Version: 0.03 (Alpha Dev)"
+
 [node name="Options_Menu" parent="." instance=ExtResource("3_m43vj")]
 visible = false
 layout_mode = 1

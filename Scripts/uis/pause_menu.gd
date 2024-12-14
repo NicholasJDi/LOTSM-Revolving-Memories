@@ -5,6 +5,10 @@ extends ColorRect
 @onready var menu: PanelContainer = $Menu
 @onready var options_menu: OptionsMenu = $Options_Menu
 
+@onready var save: Button = $Menu/MarginContainer/VBoxContainer/Save
+@onready var timer: Timer = $Timer
+
+
 func _ready() -> void:
 	SignalBus.Exit_Options_Menu.connect(On_Options_Menu_Exit)
 
@@ -33,17 +37,22 @@ func _input(event: InputEvent) -> void:
 		else:
 			pause()
 
+
 func _on_resume_pressed() -> void:
 	resume()
-
 
 func _on_options_pressed() -> void:
 	options_menu.visible = true
 	menu.visible = false
 	ConsoleWindow.Print("load_options_menu", "Menu", "Output")
 
+func _on_save_pressed() -> void:
+	SaveManager.Save_File_Save(SettingsDataContainer.save_file_data.data, SettingsDataContainer.save_file_data.file.location)
+	save.text = "Saved!"
+	timer.start(1)
+	await timer.timeout
+	save.text = "Save"
 
 func _on_exit_pressed() -> void:
 	get_tree().paused = false
-	SaveManager.Save_File_Save(SettingsDataContainer.save_file_data.data, SettingsDataContainer.save_file_data.file.location)
 	get_tree().change_scene_to_file("res://Scenes/Menus/Main_Menu.tscn")

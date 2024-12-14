@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://dxoyhhainhhyv"]
+[gd_scene load_steps=30 format=3 uid="uid://dxoyhhainhhyv"]
 
 [ext_resource type="Texture2D" uid="uid://c4vi5kl203eb1" path="res://assets/Textures/vilrink/AdventureCharacter_Spreadsheet.png" id="1_knk32"]
 [ext_resource type="Script" path="res://Scripts/Other/player.gd" id="1_wpvhi"]
@@ -52,25 +52,17 @@ region = Rect2(96, 0, 48, 48)
 atlas = ExtResource("1_knk32")
 region = Rect2(144, 0, 48, 48)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_v7nt5"]
-atlas = ExtResource("1_knk32")
-region = Rect2(0, 144, 48, 48)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_qllui"]
-atlas = ExtResource("1_knk32")
-region = Rect2(48, 144, 48, 48)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_sst0j"]
-atlas = ExtResource("1_knk32")
-region = Rect2(48, 144, 48, 48)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_m5mo8"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_2o2xw"]
 atlas = ExtResource("1_knk32")
 region = Rect2(96, 144, 48, 48)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_0kiwm"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_fc12i"]
 atlas = ExtResource("1_knk32")
 region = Rect2(144, 144, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uo5kc"]
+atlas = ExtResource("1_knk32")
+region = Rect2(0, 144, 48, 48)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_vfq85"]
 atlas = ExtResource("1_knk32")
@@ -95,6 +87,14 @@ region = Rect2(192, 96, 48, 48)
 [sub_resource type="AtlasTexture" id="AtlasTexture_2ujhc"]
 atlas = ExtResource("1_knk32")
 region = Rect2(240, 96, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3lclj"]
+atlas = ExtResource("1_knk32")
+region = Rect2(144, 672, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iue5w"]
+atlas = ExtResource("1_knk32")
+region = Rect2(192, 672, 48, 48)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_sgrli"]
 animations = [{
@@ -146,27 +146,16 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_v7nt5")
+"texture": SubResource("AtlasTexture_2o2xw")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_qllui")
+"texture": SubResource("AtlasTexture_fc12i")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uo5kc")
 }],
 "loop": false,
-"name": &"jump_end",
-"speed": 10.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_sst0j")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_m5mo8")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_0kiwm")
-}],
-"loop": false,
-"name": &"jump_start",
+"name": &"jump",
 "speed": 5.0
 }, {
 "frames": [{
@@ -191,24 +180,64 @@ animations = [{
 "loop": true,
 "name": &"walk",
 "speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3lclj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_iue5w")
+}],
+"loop": true,
+"name": &"wall",
+"speed": 2.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_uyc8m"]
-size = Vector2(11, 17)
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_yakbs"]
+radius = 4.5
+height = 14.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_t0wn5"]
+radius = 1.28565
 
 [node name="Player" type="CharacterBody2D"]
-collision_mask = 14
+collision_mask = 6
+floor_constant_speed = true
+floor_snap_length = 5.0
 script = ExtResource("1_wpvhi")
+metadata/_edit_horizontal_guides_ = [19.0]
+metadata/_edit_vertical_guides_ = [-194.0]
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_sgrli")
 animation = &"idle"
 autoplay = "idle"
-frame_progress = 0.787461
+
+[node name="Death_Hitbox" type="Area2D" parent="."]
+collision_mask = 8
+input_pickable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Death_Hitbox"]
+position = Vector2(0, 1)
+scale = Vector2(1.1, 1.1)
+shape = SubResource("CapsuleShape2D_yakbs")
+debug_color = Color(0.7, 0, 0, 0.286275)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-0.5, -0.5)
-shape = SubResource("RectangleShape2D_uyc8m")
+position = Vector2(0, 1)
+shape = SubResource("CapsuleShape2D_yakbs")
+debug_color = Color(0, 0.618333, 0.7, 0.419608)
+
+[node name="Checkpoint_Hitbox" type="Area2D" parent="."]
+collision_mask = 256
+input_pickable = false
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Checkpoint_Hitbox"]
+position = Vector2(0, 1)
+scale = Vector2(1.1, 1.1)
+shape = SubResource("CircleShape2D_t0wn5")
+debug_color = Color(0.7, 0.653333, 0, 0.286275)
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 0.5
@@ -219,16 +248,20 @@ zoom = Vector2(3, 3)
 process_callback = 0
 limit_smoothed = true
 position_smoothing_enabled = true
+position_smoothing_speed = 6.0
 drag_horizontal_enabled = true
 drag_vertical_enabled = true
 drag_left_margin = 0.25
-drag_top_margin = 0.25
 drag_right_margin = 0.25
-drag_bottom_margin = 0.25
 editor_draw_limits = true
 editor_draw_drag_margin = true
 
 [node name="UI" parent="Camera2D" instance=ExtResource("3_7eor7")]
 
+[node name="SFX" type="Node2D" parent="."]
+
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
+[connection signal="area_entered" from="Death_Hitbox" to="." method="_on_death_hitbox_area_entered"]
+[connection signal="body_entered" from="Death_Hitbox" to="." method="_on_death_hitbox_body_entered"]
+[connection signal="area_entered" from="Checkpoint_Hitbox" to="." method="_on_checkpoint_hitbox_area_entered"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

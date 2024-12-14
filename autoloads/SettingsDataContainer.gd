@@ -1,19 +1,35 @@
 extends Node
 
-var save_file_data = {
+var default_save_file_data = {
 	"file":{
 	"location":"",
 	"date_created":"",
 	"last_played":""
-	},
-	"data":{}
+	}, # file
+	"data":{
+	"player":{
+	"time" : 0.0,
+	"zoom":{"x":3.0,"y":3.0},
+	"location":{"x":0,"y":0},
+	"checkpoint":{"x":0,"y":0},
+	"level" : "0",
+	"powers":0
+	}, # player
+	"world" : {
+	"level_0" : {
+	} # level 0
+	} # world
+	} # data
 	}
+
+var save_file_data : Dictionary
 
 var Storage_Dict = {
 	"accsesability":{
 	},
 	"controls":{
 	"crouch":null,
+	"dash":null,
 	"interact":null,
 	"jump":null,
 	"move_left":null,
@@ -33,6 +49,7 @@ var Storage_Dict = {
 
 func _ready() -> void:
 	self.process_mode = Node.PROCESS_MODE_ALWAYS
+	save_file_data = default_save_file_data
 
 func On_Data_Loaded(Data : Dictionary) -> void:
 	ConsoleWindow.Print("loaded_save_data: %s" % Data, "Save", "Output")

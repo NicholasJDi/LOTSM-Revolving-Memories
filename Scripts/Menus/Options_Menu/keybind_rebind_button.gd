@@ -29,8 +29,6 @@ func _ready() -> void:
 					InputMap.action_erase_events(action_name)
 					InputMap.action_add_event(action_name, event)
 					button.text = OS.get_keycode_string(int(keycode))
-					var action_events = InputMap.action_get_events(action_name)
-					var action_event = action_events[0]
 
 func _process(_delta: float) -> void:
 	if button.has_focus() and action == "":
