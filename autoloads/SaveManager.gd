@@ -13,19 +13,10 @@ func _ready() -> void:
 	Load_Data("Console")
 
 func Save_File_Get(Name : String) -> String:
-	Name = Name.to_lower()
-	Name = Name.replace(" ", "_")
-	var File = "user://Saves/" + Name
-	var num : int = 1
-	if FileAccess.file_exists(File + ".save"):
-		File = File + "1"
-	while  FileAccess.file_exists(File + ".save"):
-		var temp = File
-		temp = temp.left(temp.length() - str(num).length())
-		num = num + 1
-		File = temp + str(num)
-	File = File + ".save"
-	return File
+	Name = "user://Saves/" + Name.to_lower().replace(" ", "_") + ".save"
+	if FileAccess.file_exists(Name):
+		return "Error: File Already Exists"
+	return Name
 
 func Save_File_Save(Data : Dictionary, File : String, New : bool = false) -> void:
 	if New:

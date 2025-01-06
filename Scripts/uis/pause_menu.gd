@@ -13,9 +13,10 @@ func _ready() -> void:
 	SignalBus.Exit_Options_Menu.connect(On_Options_Menu_Exit)
 
 func pause() -> void:
-	get_tree().paused = true
-	self.show()
-	main_ui.hide()
+	if not get_parent().get_parent().get_parent().invincible:
+		get_tree().paused = true
+		self.show()
+		main_ui.hide()
 
 func resume() -> void:
 	get_tree().paused = false

@@ -16,7 +16,8 @@ func _ready() -> void:
 
 func _on_load_pressed() -> void:
 	SaveManager.Save_File_Load(save_path)
-	get_tree().change_scene_to_file("res://Scenes/Levels/Level_0.tscn")
+	get_tree().change_scene_to_file("res://Scenes/Levels/Level_" + SettingsDataContainer.save_file_data.data.player.level + ".tscn")
+
 
 func _on_delete_pressed() -> void:
 	DirAccess.remove_absolute(save_path)

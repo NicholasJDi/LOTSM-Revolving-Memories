@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Scripts/Menus/Play_Menu/play_menu.gd" id="1_ah63h"]
 [ext_resource type="FontFile" uid="uid://bl6ovrue03k0f" path="res://assets/Fonts/minecraftia/Minecraftia.ttf" id="2_ji4cs"]
-[ext_resource type="PackedScene" uid="uid://cacymv3yxmlvm" path="res://Scenes/Menus/Play_Menu/save_file.tscn" id="2_upbsw"]
+[ext_resource type="PackedScene" uid="uid://cacymv3yxmlvm" path="res://Scenes/Menus/Play_Menu/Save_File.tscn" id="2_upbsw"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_1gdwe"]
 font = ExtResource("2_ji4cs")
@@ -265,6 +265,8 @@ custom_minimum_size = Vector2(0, 72)
 layout_mode = 2
 theme_override_font_sizes/font_size = 32
 text = "Start Your Adventure"
+
+[node name="Timer" type="Timer" parent="New_Save/PanelContainer/VBoxContainer/MarginContainer/VBoxContainer"]
 
 [connection signal="pressed" from="Load_Menu/PanelContainer/VBoxContainer/Title_Bar/MarginContainer/HBoxContainer/Control/Button" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="Main/VBoxContainer2/PanelContainer/VBoxContainer/New" to="." method="_on_new_pressed"]

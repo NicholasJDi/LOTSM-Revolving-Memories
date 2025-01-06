@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://4x6fafcgdalm" path="res://Scenes/Menus/Options_Menu/Options_Menu.tscn" id="3_m43vj"]
 [ext_resource type="FontFile" uid="uid://bl6ovrue03k0f" path="res://assets/Fonts/minecraftia/Minecraftia.ttf" id="4_htgj1"]
 [ext_resource type="AudioStream" uid="uid://w8kl1f86qdu6" path="res://assets/Sound/Music/alkakrab/Fantasy RPG Music Pack Vol.3/Loops/ogg/Ambient 4 Loop.ogg" id="5_1qjls"]
-[ext_resource type="PackedScene" uid="uid://x88arosxsd2o" path="res://Scenes/Menus/Play_Menu/play_menu.tscn" id="5_vu1w7"]
+[ext_resource type="PackedScene" uid="uid://x88arosxsd2o" path="res://Scenes/Menus/Play_Menu/Play_Menu.tscn" id="5_vu1w7"]
 [ext_resource type="AudioStream" uid="uid://ds668qylgsr02" path="res://assets/Sound/SFX/tommusic/Free Fantasy SFX Pack By TomMusic/Free Fantasy SFX Pack By TomMusic/OGG Files/BGS Loops/Forest Day/Forest Day.ogg" id="6_fa1ul"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_6wdit"]

@@ -121,7 +121,7 @@ func use_command(text):
 			success = "Syn"
 	elif text.begins_with("/scene"):
 		if text == "/scene" or text == "/scene " or text == "/scene help" or  text == "/scene h":
-			ConsoleWindow.Print("/scene Usage:\n/scene (scene) Force The Game To Change To Another Scene\nValues:\nmain menu, level 0.", "Help", "Global")
+			ConsoleWindow.Print("/scene Usage:\n/scene (scene) Force The Game To Change To Another Scene\nValues:\nmain menu, level 1.", "Help", "Global")
 			success = "Suc"
 		elif text.replace("/scene ", "") == "main menu":
 			ConsoleWindow.Print("Success! Loading Scene Main_Menu", "Help", "Global")
@@ -129,8 +129,8 @@ func use_command(text):
 			get_tree().paused = false
 			success = "Suc"
 		elif text.replace("/scene ", "") == "level 0":
-			ConsoleWindow.Print("Success! Loading Scene Level_0", "Help", "Global")
-			get_tree().change_scene_to_file("res://Scenes/Levels/Level_0.tscn")
+			ConsoleWindow.Print("Success! Loading Scene Level_1", "Help", "Global")
+			get_tree().change_scene_to_file("res://Scenes/Levels/Level_1.tscn")
 			get_tree().paused = false
 			success = "Suc"
 		else:

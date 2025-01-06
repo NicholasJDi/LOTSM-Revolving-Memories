@@ -1,7 +1,6 @@
-[gd_scene load_steps=9 format=3 uid="uid://dp7cpjffhxsu7"]
+[gd_scene load_steps=8 format=3 uid="uid://dp7cpjffhxsu7"]
 
 [ext_resource type="FontFile" uid="uid://bl6ovrue03k0f" path="res://assets/Fonts/minecraftia/Minecraftia.ttf" id="1_1wml5"]
-[ext_resource type="Script" path="res://Scripts/Menus/Options_Menu/settings_tab_container.gd" id="1_pyegl"]
 [ext_resource type="PackedScene" uid="uid://ce48xkvgs1ech" path="res://Scenes/Menus/Options_Menu/Parts/Controls/Keybind_Rebind_Button.tscn" id="2_gbnvi"]
 [ext_resource type="PackedScene" uid="uid://ceph2t5ia72su" path="res://Scenes/Menus/Options_Menu/Parts/Sound/Audio_Slider_Settings.tscn" id="2_j7yic"]
 [ext_resource type="PackedScene" uid="uid://b8ccrt8vuveje" path="res://Scenes/Menus/Options_Menu/Parts/Accsesability/Show_Console_Button.tscn" id="4_xlxek"]
@@ -20,7 +19,6 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_pyegl")
 
 [node name="TabContainer" type="TabContainer" parent="."]
 layout_mode = 1
@@ -132,6 +130,12 @@ layout_mode = 2
 layout_mode = 2
 
 [node name="dash" parent="TabContainer/Controls/ScrollContainer/VBoxContainer" instance=ExtResource("2_gbnvi")]
+layout_mode = 2
+
+[node name="slide" parent="TabContainer/Controls/ScrollContainer/VBoxContainer" instance=ExtResource("2_gbnvi")]
+layout_mode = 2
+
+[node name="wall_grab" parent="TabContainer/Controls/ScrollContainer/VBoxContainer" instance=ExtResource("2_gbnvi")]
 layout_mode = 2
 
 [node name="interact" parent="TabContainer/Controls/ScrollContainer/VBoxContainer" instance=ExtResource("2_gbnvi")]

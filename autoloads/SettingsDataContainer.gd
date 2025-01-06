@@ -17,7 +17,9 @@ var default_save_file_data = {
 	}, # player
 	"world" : {
 	"level_0" : {
-	} # level 0
+	}, # level 0
+	"level_1" : {
+	} # level 1
 	} # world
 	} # data
 	}
@@ -33,7 +35,9 @@ var Storage_Dict = {
 	"interact":null,
 	"jump":null,
 	"move_left":null,
-	"move_right":null
+	"move_right":null,
+	"slide":null,
+	"wall_grab":null
 	},
 	"sound":{
 	"master_music_volume":0.5,

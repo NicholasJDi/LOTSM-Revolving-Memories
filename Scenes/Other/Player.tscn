@@ -1,8 +1,12 @@
-[gd_scene load_steps=30 format=3 uid="uid://dxoyhhainhhyv"]
+[gd_scene load_steps=34 format=3 uid="uid://dxoyhhainhhyv"]
 
 [ext_resource type="Texture2D" uid="uid://c4vi5kl203eb1" path="res://assets/Textures/vilrink/AdventureCharacter_Spreadsheet.png" id="1_knk32"]
 [ext_resource type="Script" path="res://Scripts/Other/player.gd" id="1_wpvhi"]
 [ext_resource type="PackedScene" uid="uid://cod64obpin5x0" path="res://Scenes/UIs/UI.tscn" id="3_7eor7"]
+[ext_resource type="AudioStream" uid="uid://bbx8ialkoaj3n" path="res://assets/Sound/SFX/tommusic/Free Fantasy SFX Pack By TomMusic/Free Fantasy SFX Pack By TomMusic/OGG Files/SFX/Footsteps/Stone/Stone Run 1.ogg" id="4_cb8e3"]
+[ext_resource type="AudioStream" uid="uid://bdxdb2dl0dt83" path="res://assets/Sound/SFX/tommusic/Free Fantasy SFX Pack By TomMusic/Free Fantasy SFX Pack By TomMusic/OGG Files/SFX/Footsteps/Stone/Stone Walk 3.ogg" id="5_ix00a"]
+[ext_resource type="AudioStream" uid="uid://c6cttbbiovaci" path="res://assets/Sound/SFX/tommusic/Free Fantasy SFX Pack By TomMusic/Free Fantasy SFX Pack By TomMusic/OGG Files/SFX/Footsteps/Stone/Stone Jump.ogg" id="6_0grft"]
+[ext_resource type="AudioStream" uid="uid://csib2d1n21dp8" path="res://assets/Sound/SFX/tommusic/Free Fantasy SFX Pack By TomMusic/Free Fantasy SFX Pack By TomMusic/OGG Files/SFX/Footsteps/Stone/Stone Land.ogg" id="7_lj7b5"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_o20ky"]
 atlas = ExtResource("1_knk32")
@@ -64,6 +68,10 @@ region = Rect2(144, 144, 48, 48)
 atlas = ExtResource("1_knk32")
 region = Rect2(0, 144, 48, 48)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_4fimr"]
+atlas = ExtResource("1_knk32")
+region = Rect2(0, 672, 48, 48)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_vfq85"]
 atlas = ExtResource("1_knk32")
 region = Rect2(0, 96, 48, 48)
@@ -91,10 +99,6 @@ region = Rect2(240, 96, 48, 48)
 [sub_resource type="AtlasTexture" id="AtlasTexture_3lclj"]
 atlas = ExtResource("1_knk32")
 region = Rect2(144, 672, 48, 48)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_iue5w"]
-atlas = ExtResource("1_knk32")
-region = Rect2(192, 672, 48, 48)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_sgrli"]
 animations = [{
@@ -160,6 +164,14 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_4fimr")
+}],
+"loop": false,
+"name": &"slide",
+"speed": 2.5
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_vfq85")
 }, {
 "duration": 1.0,
@@ -184,13 +196,10 @@ animations = [{
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_3lclj")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_iue5w")
 }],
-"loop": true,
+"loop": false,
 "name": &"wall",
-"speed": 2.0
+"speed": 1.0
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_yakbs"]
@@ -213,35 +222,34 @@ sprite_frames = SubResource("SpriteFrames_sgrli")
 animation = &"idle"
 autoplay = "idle"
 
-[node name="Death_Hitbox" type="Area2D" parent="."]
-collision_mask = 8
-input_pickable = false
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Death_Hitbox"]
-position = Vector2(0, 1)
-scale = Vector2(1.1, 1.1)
-shape = SubResource("CapsuleShape2D_yakbs")
-debug_color = Color(0.7, 0, 0, 0.286275)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="Hitbox" type="CollisionShape2D" parent="."]
 position = Vector2(0, 1)
 shape = SubResource("CapsuleShape2D_yakbs")
 debug_color = Color(0, 0.618333, 0.7, 0.419608)
 
-[node name="Checkpoint_Hitbox" type="Area2D" parent="."]
+[node name="Checkpoint_Hitbox" type="Area2D" parent="Hitbox"]
+position = Vector2(0, -1)
 collision_mask = 256
 input_pickable = false
 monitorable = false
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Checkpoint_Hitbox"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox/Checkpoint_Hitbox"]
 position = Vector2(0, 1)
 scale = Vector2(1.1, 1.1)
 shape = SubResource("CircleShape2D_t0wn5")
 debug_color = Color(0.7, 0.653333, 0, 0.286275)
 
-[node name="Timer" type="Timer" parent="."]
-wait_time = 0.5
-autostart = true
+[node name="Death_Hitbox" type="Area2D" parent="Hitbox"]
+show_behind_parent = true
+position = Vector2(0, -1)
+collision_mask = 8
+input_pickable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox/Death_Hitbox"]
+position = Vector2(0, 1)
+scale = Vector2(1.1, 1.1)
+shape = SubResource("CapsuleShape2D_yakbs")
+debug_color = Color(0.7, 0, 0, 0.286275)
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(3, 3)
@@ -260,8 +268,34 @@ editor_draw_drag_margin = true
 
 [node name="SFX" type="Node2D" parent="."]
 
+[node name="Walk" type="AudioStreamPlayer2D" parent="SFX"]
+stream = ExtResource("4_cb8e3")
+bus = &"SFX - Player"
+
+[node name="Crouch" type="AudioStreamPlayer2D" parent="SFX"]
+stream = ExtResource("5_ix00a")
+bus = &"SFX - Player"
+
+[node name="Jump" type="AudioStreamPlayer2D" parent="SFX"]
+stream = ExtResource("6_0grft")
+bus = &"SFX - Player"
+
+[node name="Land" type="AudioStreamPlayer2D" parent="SFX"]
+stream = ExtResource("7_lj7b5")
+bus = &"SFX - Player"
+area_mask = 2
+
+[node name="Timers" type="Node2D" parent="."]
+
+[node name="DeathTimer" type="Timer" parent="Timers"]
+wait_time = 0.5
+autostart = true
+
+[node name="MovementTimer" type="Timer" parent="Timers"]
+
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
-[connection signal="area_entered" from="Death_Hitbox" to="." method="_on_death_hitbox_area_entered"]
-[connection signal="body_entered" from="Death_Hitbox" to="." method="_on_death_hitbox_body_entered"]
-[connection signal="area_entered" from="Checkpoint_Hitbox" to="." method="_on_checkpoint_hitbox_area_entered"]
-[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="area_entered" from="Hitbox/Checkpoint_Hitbox" to="." method="_on_checkpoint_hitbox_area_entered"]
+[connection signal="area_entered" from="Hitbox/Death_Hitbox" to="." method="_on_death_hitbox_area_entered"]
+[connection signal="body_entered" from="Hitbox/Death_Hitbox" to="." method="_on_death_hitbox_body_entered"]
+[connection signal="timeout" from="Timers/DeathTimer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="Timers/MovementTimer" to="." method="_on_movement_timer_timeout"]

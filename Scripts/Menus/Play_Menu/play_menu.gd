@@ -6,6 +6,8 @@ extends Control
 @onready var new_save: MarginContainer = $New_Save
 @onready var label: Label = $New_Save/PanelContainer/VBoxContainer/MarginContainer/VBoxContainer/Label
 @onready var Load: Button = $Main/VBoxContainer2/PanelContainer/VBoxContainer/Load
+@onready var start: Button = $New_Save/PanelContainer/VBoxContainer/MarginContainer/VBoxContainer/Start
+@onready var timer: Timer = $New_Save/PanelContainer/VBoxContainer/MarginContainer/VBoxContainer/Timer
 
 @export var save_file_scene : PackedScene = null
 @onready var v_box_container : VBoxContainer = $Load_Menu/PanelContainer/VBoxContainer/File_List/VBoxContainer
@@ -32,7 +34,7 @@ func _process(_delta: float) -> void:
 func _on_load_pressed() -> void:
 	load_menu.visible = true
 	main.visible = false
-	ConsoleWindow.Print("load_load_menu", "Menu", "Output")
+	ConsoleWindow.Print("load_load_save_menu", "Menu", "Output")
 
 func _on_button_pressed() -> void:
 	main.visible = true
@@ -59,6 +61,17 @@ func _on_line_edit_text_changed(new_text: String) -> void:
 
 func _on_start_pressed() -> void:
 	SettingsDataContainer.save_file_data = SettingsDataContainer.default_save_file_data
+	if new_save_file == "Error: File Already Exists":
+			start.text = "Error: File Already Exists"
+			ConsoleWindow.Print("Failed To Create Save File, Error Context: File Already Exists", "Save", "Error")
+			timer.start(1)
+			await timer.timeout
+			start.text = "Start Your Adventure"
+			return
+	match new_save_file.replace("user://Saves/", "").replace(".save", ""):
+		"dev":
+			get_tree().change_scene_to_file("res://Scenes/Levels/Level_dev.tscn")
+			SettingsDataContainer.save_file_data.data.player.level = "dev"
+		_:
+			get_tree().change_scene_to_file("res://Scenes/Levels/Level_0.tscn")
 	SaveManager.Save_File_Save(SettingsDataContainer.default_save_file_data.data, new_save_file, true)
-	SaveManager.Save_File_Load(new_save_file)
-	get_tree().change_scene_to_file("res://Scenes/Levels/Level_0.tscn")
