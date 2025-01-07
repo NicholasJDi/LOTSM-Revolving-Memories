@@ -2,10 +2,11 @@ class_name OptionsMenu
 extends Control
 
 @onready var back: Button = $Back
+@onready var sound: MarginContainer = $MarginContainer/VBoxContainer/TabContainer/Sound
+
 
 func _ready() -> void:
 	SignalBus.Exit_Options_Menu_External.connect(exit)
-
 
 func _on_back_pressed() -> void:
 	exit()

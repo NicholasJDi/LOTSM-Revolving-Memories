@@ -1,6 +1,7 @@
 extends Control
 
 @onready var button: Button = $HBoxContainer/Button
+@onready var timer: Timer = $Timer
 
 
 func _process(_delta) -> void:
@@ -14,3 +15,6 @@ func _on_button_pressed() -> void:
 		ConsoleWindow.hide()
 	else:
 		ConsoleWindow.show()
+		timer.start(0.1)
+		await timer.timeout
+		get_window().grab_focus()

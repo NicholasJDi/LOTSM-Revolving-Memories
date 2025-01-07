@@ -14,11 +14,15 @@ func _ready():
 	SignalBus.Exit_Options_Menu.connect(on_options_menu_exit)
 
 func on_options_menu_exit():
-	Confirm_Enabled = false
-	tab_container.current_tab = Last_Selected_Tab
+	last()
 
 func _on_button_pressed():
+	last()
+
+func last():
 	Confirm_Enabled = false
+	if Last_Selected_Tab == -1:
+		Last_Selected_Tab = tab_container.get_previous_tab()
 	tab_container.current_tab = Last_Selected_Tab
 
 func _on_button_2_pressed():
@@ -58,7 +62,6 @@ func _on_tab_selected(tab: int) -> void:
 	else:
 		Confirm_Enabled = false
 
-func _on_tab_hovered(tab: int) -> void:
-	if tab == 3:
-		if tab_container.current_tab != 3:
-			Last_Selected_Tab = tab_container.current_tab
+func _on_tab_hovered(_tab: int) -> void:
+	if tab_container.current_tab != 3:
+		Last_Selected_Tab = tab_container.current_tab

@@ -16,6 +16,8 @@ grow_vertical = 2
 size_flags_horizontal = 3
 script = ExtResource("1_kr2h8")
 
+[node name="Timer" type="Timer" parent="."]
+
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
 layout_mode = 1
 anchors_preset = 14
