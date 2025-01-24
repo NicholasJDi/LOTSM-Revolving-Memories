@@ -8,7 +8,6 @@ func _ready() -> void:
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("console_show"):
-		if ConsoleWindow.visible:
-			ConsoleWindow.hide()
-		else:
-			ConsoleWindow.show()
+		ConsoleWindow.visible = !ConsoleWindow.visible
+	if event.is_action_pressed("timer_show"):
+		timer = !timer

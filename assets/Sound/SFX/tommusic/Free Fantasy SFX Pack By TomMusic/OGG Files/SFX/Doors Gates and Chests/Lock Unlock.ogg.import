@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://0tofcn3j5lrv"
+path="res://.godot/imported/Lock Unlock.ogg-a50eed224b5ada39a316d40d773c12e9.oggvorbisstr"
+
+[deps]
+
+source_file="res://assets/Sound/SFX/tommusic/Free Fantasy SFX Pack By TomMusic/OGG Files/SFX/Doors Gates and Chests/Lock Unlock.ogg"
+dest_files=["res://.godot/imported/Lock Unlock.ogg-a50eed224b5ada39a316d40d773c12e9.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

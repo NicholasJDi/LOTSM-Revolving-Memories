@@ -1,10 +1,11 @@
-[gd_scene load_steps=12 format=3 uid="uid://4x6fafcgdalm"]
+[gd_scene load_steps=13 format=3 uid="uid://4x6fafcgdalm"]
 
 [ext_resource type="Script" path="res://Scripts/Menus/Options_Menu/options_menu.gd" id="1_v8u0g"]
 [ext_resource type="FontFile" uid="uid://bl6ovrue03k0f" path="res://assets/Fonts/minecraftia/Minecraftia.ttf" id="2_bp3et"]
 [ext_resource type="PackedScene" uid="uid://ceph2t5ia72su" path="res://Scenes/Menus/Options_Menu/Parts/Sound/Audio_Slider_Settings.tscn" id="3_4dtb6"]
 [ext_resource type="PackedScene" uid="uid://ce48xkvgs1ech" path="res://Scenes/Menus/Options_Menu/Parts/Controls/Keybind_Rebind_Button.tscn" id="4_4rm0o"]
 [ext_resource type="PackedScene" uid="uid://b8ccrt8vuveje" path="res://Scenes/Menus/Options_Menu/Parts/Accsesability/Show_Console_Button.tscn" id="5_vian4"]
+[ext_resource type="PackedScene" uid="uid://1658bscxaaq5" path="res://Scenes/Menus/Options_Menu/Parts/Accsesability/Show_Timer_Button.tscn" id="6_en7wc"]
 [ext_resource type="PackedScene" uid="uid://d3x2xuu7jyiiu" path="res://Scenes/Menus/Options_Menu/Parts/⟳/Reset_Options.tscn" id="6_lvc10"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_jx0rt"]
@@ -84,7 +85,7 @@ theme_override_constants/separation = 64
 
 [node name="HSeparator_Top" type="HSeparator" parent="MarginContainer/VBoxContainer/TabContainer/Sound/ScrollContainer/VBoxContainer"]
 layout_mode = 2
-theme_override_constants/separation = 12
+theme_override_constants/separation = 0
 theme_override_styles/separator = SubResource("StyleBoxEmpty_jx0rt")
 
 [node name="Master" parent="MarginContainer/VBoxContainer/TabContainer/Sound/ScrollContainer/VBoxContainer" instance=ExtResource("3_4dtb6")]
@@ -121,7 +122,7 @@ bus_name = "SFX - Player"
 
 [node name="HSeparator_Bottom" type="HSeparator" parent="MarginContainer/VBoxContainer/TabContainer/Sound/ScrollContainer/VBoxContainer"]
 layout_mode = 2
-theme_override_constants/separation = 12
+theme_override_constants/separation = 0
 theme_override_styles/separator = SubResource("StyleBoxEmpty_jx0rt")
 
 [node name="Controls" type="MarginContainer" parent="MarginContainer/VBoxContainer/TabContainer"]
@@ -145,7 +146,7 @@ theme_override_constants/separation = 64
 
 [node name="HSeparator_Top" type="HSeparator" parent="MarginContainer/VBoxContainer/TabContainer/Controls/ScrollContainer/VBoxContainer"]
 layout_mode = 2
-theme_override_constants/separation = 12
+theme_override_constants/separation = 0
 theme_override_styles/separator = SubResource("StyleBoxEmpty_jx0rt")
 
 [node name="move_left" parent="MarginContainer/VBoxContainer/TabContainer/Controls/ScrollContainer/VBoxContainer" instance=ExtResource("4_4rm0o")]
@@ -169,6 +170,9 @@ layout_mode = 2
 [node name="wall_grab" parent="MarginContainer/VBoxContainer/TabContainer/Controls/ScrollContainer/VBoxContainer" instance=ExtResource("4_4rm0o")]
 layout_mode = 2
 
+[node name="swap_powers" parent="MarginContainer/VBoxContainer/TabContainer/Controls/ScrollContainer/VBoxContainer" instance=ExtResource("4_4rm0o")]
+layout_mode = 2
+
 [node name="interact" parent="MarginContainer/VBoxContainer/TabContainer/Controls/ScrollContainer/VBoxContainer" instance=ExtResource("4_4rm0o")]
 layout_mode = 2
 
@@ -186,7 +190,7 @@ action = "Scroll Down"
 
 [node name="HSeparator_Bottom" type="HSeparator" parent="MarginContainer/VBoxContainer/TabContainer/Controls/ScrollContainer/VBoxContainer"]
 layout_mode = 2
-theme_override_constants/separation = 12
+theme_override_constants/separation = 0
 theme_override_styles/separator = SubResource("StyleBoxEmpty_jx0rt")
 
 [node name="Accsesability" type="MarginContainer" parent="MarginContainer/VBoxContainer/TabContainer"]
@@ -210,14 +214,19 @@ theme_override_constants/separation = 64
 
 [node name="HSeparator_Top" type="HSeparator" parent="MarginContainer/VBoxContainer/TabContainer/Accsesability/ScrollContainer/VBoxContainer"]
 layout_mode = 2
+theme_override_constants/separation = 0
 theme_override_styles/separator = SubResource("StyleBoxEmpty_jx0rt")
 
 [node name="ShowConsleButton" parent="MarginContainer/VBoxContainer/TabContainer/Accsesability/ScrollContainer/VBoxContainer" instance=ExtResource("5_vian4")]
 layout_mode = 2
 size_flags_vertical = 0
 
+[node name="ShowTimerButton" parent="MarginContainer/VBoxContainer/TabContainer/Accsesability/ScrollContainer/VBoxContainer" instance=ExtResource("6_en7wc")]
+layout_mode = 2
+
 [node name="HSeparator_Bottom" type="HSeparator" parent="MarginContainer/VBoxContainer/TabContainer/Accsesability/ScrollContainer/VBoxContainer"]
 layout_mode = 2
+theme_override_constants/separation = 0
 theme_override_styles/separator = SubResource("StyleBoxEmpty_jx0rt")
 
 [node name="⟳" type="Control" parent="MarginContainer/VBoxContainer/TabContainer"]

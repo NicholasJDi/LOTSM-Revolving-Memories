@@ -4,24 +4,23 @@ extends ColorRect
 @onready var main_ui: MarginContainer = $"../Main_UI"
 @onready var menu: PanelContainer = $Menu
 @onready var options_menu: OptionsMenu = $Options_Menu
+@onready var power_swapper: ColorRect = $"../Power_Swapper"
 
 @onready var save: Button = $Menu/MarginContainer/VBoxContainer/Save
 @onready var timer: Timer = $Timer
 
 
-func _ready() -> void:
-	SignalBus.Exit_Options_Menu.connect(On_Options_Menu_Exit)
-
 func pause() -> void:
-	if not get_parent().get_parent().get_parent().invincible:
+	if not $"..".get_parent().get_parent().invincible and not power_swapper.visible:
 		get_tree().paused = true
-		self.show()
+		show()
 		main_ui.hide()
 
 func resume() -> void:
-	get_tree().paused = false
-	main_ui.show()
-	self.hide()
+	if not power_swapper.visible:
+		get_tree().paused = false
+		main_ui.show()
+		hide()
 
 func On_Options_Menu_Exit():
 	menu.visible = true

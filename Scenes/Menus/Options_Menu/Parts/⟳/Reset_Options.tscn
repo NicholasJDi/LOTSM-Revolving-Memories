@@ -79,5 +79,5 @@ text = "Confirm"
 [node name="Timer" type="Timer" parent="."]
 one_shot = true
 
-[connection signal="pressed" from="MarginContainer/Control/Label/Cancel" to="." method="_on_button_pressed"]
-[connection signal="pressed" from="MarginContainer/Control/Label/Confirm" to="." method="_on_button_2_pressed"]
+[connection signal="pressed" from="MarginContainer/Control/Label/Cancel" to="." method="_on_cancel_pressed"]
+[connection signal="pressed" from="MarginContainer/Control/Label/Confirm" to="." method="_on_confirm_pressed"]

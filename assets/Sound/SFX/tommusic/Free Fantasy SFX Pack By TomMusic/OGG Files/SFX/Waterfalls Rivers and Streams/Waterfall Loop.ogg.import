@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://dlpqrl5je5xou"
+path="res://.godot/imported/Waterfall Loop.ogg-36b15f3ad557db110f8f35d7dd3fc5e0.oggvorbisstr"
+
+[deps]
+
+source_file="res://assets/Sound/SFX/tommusic/Free Fantasy SFX Pack By TomMusic/OGG Files/SFX/Waterfalls Rivers and Streams/Waterfall Loop.ogg"
+dest_files=["res://.godot/imported/Waterfall Loop.ogg-36b15f3ad557db110f8f35d7dd3fc5e0.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

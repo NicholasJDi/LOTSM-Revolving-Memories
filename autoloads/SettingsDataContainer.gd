@@ -13,7 +13,7 @@ var default_save_file_data = {
 	"location":{"x":0,"y":0},
 	"checkpoint":{"x":0,"y":0},
 	"level" : "0",
-	"powers":0
+	"powers":1
 	}, # player
 	"world" : {
 	"level_0" : {
@@ -37,6 +37,7 @@ var Storage_Dict = {
 	"move_left":null,
 	"move_right":null,
 	"slide":null,
+	"swap_powers":null,
 	"wall_grab":null
 	},
 	"sound":{

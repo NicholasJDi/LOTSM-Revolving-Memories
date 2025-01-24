@@ -1,10 +1,12 @@
-[gd_scene load_steps=8 format=3 uid="uid://cod64obpin5x0"]
+[gd_scene load_steps=10 format=3 uid="uid://cod64obpin5x0"]
 
 [ext_resource type="FontFile" uid="uid://bl6ovrue03k0f" path="res://assets/Fonts/minecraftia/Minecraftia.ttf" id="1_j6b60"]
 [ext_resource type="Script" path="res://Scripts/Other/timer.gd" id="2_bqkqm"]
 [ext_resource type="Script" path="res://Scripts/uis/pause_menu.gd" id="2_w0mxb"]
 [ext_resource type="Shader" path="res://Resources/Blur.gdshader" id="3_0bw8f"]
+[ext_resource type="Script" path="res://Scripts/uis/power_swapper.gd" id="3_vvanb"]
 [ext_resource type="PackedScene" uid="uid://4x6fafcgdalm" path="res://Scenes/Menus/Options_Menu/Options_Menu.tscn" id="4_2t1ob"]
+[ext_resource type="Script" path="res://Scripts/uis/power_swapper_button.gd" id="4_g5ncs"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_oakvf"]
 font = ExtResource("1_j6b60")
@@ -22,6 +24,7 @@ shader_parameter/lod = 0.5
 
 [node name="UI" type="CanvasLayer"]
 process_mode = 1
+metadata/_edit_horizontal_guides_ = [12393.0]
 
 [node name="Main_UI" type="MarginContainer" parent="."]
 anchors_preset = 15
@@ -31,10 +34,10 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-theme_override_constants/margin_left = 24
-theme_override_constants/margin_top = 24
-theme_override_constants/margin_right = 24
-theme_override_constants/margin_bottom = 24
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 12
 
 [node name="Control" type="Control" parent="Main_UI"]
 layout_mode = 2
@@ -61,16 +64,17 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="Timer" type="Label" parent="Main_UI/Control/Overlays"]
-custom_minimum_size = Vector2(134, 32)
+custom_minimum_size = Vector2(110, 32)
 layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -134.0
+offset_left = -110.0
 offset_bottom = 32.0
 grow_horizontal = 0
 size_flags_vertical = 1
-text = "00:00:00.000"
+text = "00:00:00.0
+"
 horizontal_alignment = 1
 vertical_alignment = 1
 script = ExtResource("2_bqkqm")
@@ -83,6 +87,148 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="Power_Swapper" type="ColorRect" parent="."]
+process_mode = 3
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+color = Color(0, 0, 0, 0.196078)
+script = ExtResource("3_vvanb")
+
+[node name="ColorRect" type="ColorRect" parent="Power_Swapper"]
+material = SubResource("ShaderMaterial_1q3h8")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.588235)
+
+[node name="dev_mode_button" type="MarginContainer" parent="Power_Swapper"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 24
+theme_override_constants/margin_top = 24
+theme_override_constants/margin_right = 24
+theme_override_constants/margin_bottom = 24
+
+[node name="Control" type="Control" parent="Power_Swapper/dev_mode_button"]
+layout_mode = 2
+
+[node name="Control" type="Control" parent="Power_Swapper/dev_mode_button/Control"]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Control" type="Control" parent="Power_Swapper/dev_mode_button/Control/Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="0" type="Button" parent="Power_Swapper/dev_mode_button/Control/Control/Control"]
+layout_mode = 2
+offset_right = 153.0
+offset_bottom = 54.0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+theme_override_font_sizes/font_size = 24
+action_mode = 0
+text = "Dev
+"
+script = ExtResource("4_g5ncs")
+
+[node name="swap_buttons" type="PanelContainer" parent="Power_Swapper"]
+custom_minimum_size = Vector2(696, 472)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -348.0
+offset_top = -236.0
+offset_right = 348.0
+offset_bottom = 236.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="Power_Swapper/swap_buttons"]
+layout_mode = 2
+theme_override_constants/margin_left = 24
+theme_override_constants/margin_top = 24
+theme_override_constants/margin_right = 24
+theme_override_constants/margin_bottom = 24
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Power_Swapper/swap_buttons/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 24
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Power_Swapper/swap_buttons/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 24
+
+[node name="1" type="Button" parent="Power_Swapper/swap_buttons/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 64
+text = "1"
+script = ExtResource("4_g5ncs")
+
+[node name="2" type="Button" parent="Power_Swapper/swap_buttons/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 64
+text = "2"
+script = ExtResource("4_g5ncs")
+
+[node name="3" type="Button" parent="Power_Swapper/swap_buttons/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 64
+text = "3"
+script = ExtResource("4_g5ncs")
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="Power_Swapper/swap_buttons/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 24
+
+[node name="4" type="Button" parent="Power_Swapper/swap_buttons/MarginContainer/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 64
+text = "4"
+script = ExtResource("4_g5ncs")
+
+[node name="5" type="Button" parent="Power_Swapper/swap_buttons/MarginContainer/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 64
+text = "5"
+script = ExtResource("4_g5ncs")
+
+[node name="6" type="Button" parent="Power_Swapper/swap_buttons/MarginContainer/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 64
+text = "6"
+script = ExtResource("4_g5ncs")
 
 [node name="Pause_Menu" type="ColorRect" parent="."]
 process_mode = 3

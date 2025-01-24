@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://d2atdtckeyuxs"
+path="res://.godot/imported/Inside Night Rain.ogg-6584fd9d0fe10f3c4c8cc49fef393d4f.oggvorbisstr"
+
+[deps]
+
+source_file="res://assets/Sound/SFX/tommusic/Free Fantasy SFX Pack By TomMusic/OGG Files/BGS Loops/Interior Night/Inside Night Rain.ogg"
+dest_files=["res://.godot/imported/Inside Night Rain.ogg-6584fd9d0fe10f3c4c8cc49fef393d4f.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

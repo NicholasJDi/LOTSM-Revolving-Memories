@@ -8,6 +8,7 @@ extends Control
 @onready var Load: Button = $Main/VBoxContainer2/PanelContainer/VBoxContainer/Load
 @onready var start: Button = $New_Save/PanelContainer/VBoxContainer/MarginContainer/VBoxContainer/Start
 @onready var timer: Timer = $New_Save/PanelContainer/VBoxContainer/MarginContainer/VBoxContainer/Timer
+@onready var line_edit: LineEdit = $New_Save/PanelContainer/VBoxContainer/MarginContainer/VBoxContainer/LineEdit
 
 @export var save_file_scene : PackedScene = null
 @onready var v_box_container : VBoxContainer = $Load_Menu/PanelContainer/VBoxContainer/File_List/VBoxContainer
@@ -23,6 +24,9 @@ func _ready() -> void:
 		v_box_container.add_child(new_scene)
 
 func _process(_delta: float) -> void:
+	if line_edit.text.is_empty():
+		new_save_file = SaveManager.Save_File_Get("New Game")
+		label.text = "Will Be Saved As: " + new_save_file.replace("user://Saves/", "").replace(".save", "")
 	if DirAccess.get_files_at("user://Saves").is_empty():
 		Load.disabled = true
 		if load_menu.visible:

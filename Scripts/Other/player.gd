@@ -5,10 +5,13 @@ extends CharacterBody2D
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var camera_2d: Camera2D = $Camera2D
 @onready var hitbox: CollisionShape2D = $Hitbox
+@onready var right_wall_grab_hitbox: Area2D = $Hitbox/Right_Wall_Grab_Hitbox
+@onready var left_wall_grab_hitbox: Area2D = $Hitbox/Left_Wall_Grab_Hitbox
 
 # timers
 @onready var death_timer: Timer = $Timers/DeathTimer
 @onready var movement_timer: Timer = $Timers/MovementTimer
+@onready var wall_grab_timer: Timer = $Timers/WallGrabTimer
 
 # sfx
 @onready var walk_sfx: AudioStreamPlayer2D = $SFX/Walk
@@ -25,7 +28,8 @@ extends CharacterBody2D
 @export var dash_force : float = 360
 @export var jump_bufer : float = 15
 @export var gravity_buffer : float = 15
-@export var current_power_set : float
+@export var wall_grab_time_limit : float = 1.3
+@export var current_power_set : int = 1
 @export var checkpoint_pos : Vector2
 @export var can_move : bool = true
 @export var invincible : bool = false
@@ -100,14 +104,20 @@ func _physics_process(_delta: float) -> void:
 			temp_buffer -= jump_bufer
 		velocity.y += gravity_force + temp_buffer
 	var direction = get_direction()
+	var wall_grab = get_wall()
 	
 	# wall grab
-	if is_on_wall_only() and Input.is_action_pressed("wall_grab") and grab:
-		animated_sprite.flip_h = !animated_sprite.flip_h
-		grab = false
-		wall = true
-		animated_sprite.play("wall")
-		locked = true
+	if is_on_wall_only() and wall_grab != 0 and Input.is_action_pressed("wall_grab") and grab and can_move:
+		if current_power_set == 0 or current_power_set == 1:
+			if wall_grab == -1:
+				animated_sprite.flip_h = false
+			elif wall_grab == 1:
+				animated_sprite.flip_h = true
+			grab = false
+			wall = true
+			animated_sprite.play("wall")
+			wall_grab_timer.start(wall_grab_time_limit)
+			locked = true
 	if is_on_wall_only() and Input.is_action_pressed("wall_grab") and wall:
 		velocity.y = 0
 		buffer = 5
@@ -145,9 +155,10 @@ func _physics_process(_delta: float) -> void:
 		animated_sprite.flip_h = false
 	elif direction == -1:
 		animated_sprite.flip_h = true
-	else:
-		if not locked:
-			animated_sprite.play("idle")
+	elif not locked:
+		animated_sprite.play("idle")
+	if velocity.x == 0 and not locked:
+		animated_sprite.play("idle")
 	velocity.x = move_toward(velocity.x, temp_target_speed, temp_acceleration)
 	
 	# jump
@@ -157,10 +168,11 @@ func _physics_process(_delta: float) -> void:
 		hight = true
 		if not slide:
 			slide = true
-			hitbox.position.y == 1
-			hitbox.scale.y == 1
+			hitbox.position.y = 1
+			hitbox.scale.y = 1
 		locked = false
 		if not is_on_floor():
+			wall_grab_timer.stop()
 			wall = false
 			if animated_sprite.flip_h:
 				velocity.x += -(dash_force / 2)
@@ -170,42 +182,45 @@ func _physics_process(_delta: float) -> void:
 	
 	# double jump
 	if not is_on_floor() and Input.is_action_just_pressed("jump") and not jump and double and buffer == 6 and can_move:
-		if velocity.y < 0:
-			velocity.y += -(jump_force * .75)
-		else:
-			velocity.y = -(jump_force * .75)
-		double = false
-		hight = true
-		slide = true
-		locked = false
+		if current_power_set == 0 or current_power_set == 2:
+			if velocity.y < 0:
+				velocity.y += -(jump_force * .75)
+			else:
+				velocity.y = -(jump_force * .75)
+			double = false
+			hight = true
+			slide = true
+			locked = false
 	
 	# dash
-	if not is_on_floor() and Input.is_action_just_pressed("dash") and dash and can_move and not wall:
-		if animated_sprite.flip_h:
-			velocity.x += -dash_force
-		else:
-			velocity.x += dash_force
-		if velocity.y < 0:
-			velocity.y += -(jump_force / 3)
-		else:
-			velocity.y = -(jump_force / 3)
-		dash = false
-		slide = true
-		locked = false
+	if not is_on_floor() and Input.is_action_just_pressed("dash") and dash and not wall and can_move:
+		if current_power_set == 0 or current_power_set == 2:
+			if animated_sprite.flip_h:
+				velocity.x += -dash_force
+			else:
+				velocity.x += dash_force
+			if velocity.y < 0:
+				velocity.y += -(jump_force / 3)
+			else:
+				velocity.y = -(jump_force / 3)
+			dash = false
+			slide = true
+			locked = false
 	
 	# slide
-	if is_on_floor() and direction != 0 and Input.is_action_just_pressed("slide") and slide and can_move:
-		if animated_sprite.flip_h:
-			velocity.x += -dash_force
-		else:
-			velocity.x += dash_force
-		velocity.y = (jump_force / 3)
-		slide = false
-		locked = true
-		animated_sprite.play("slide")
+	if is_on_floor() and direction != 0 and animated_sprite.animation != "idle" and Input.is_action_just_pressed("slide") and slide and can_move:
+		if current_power_set == 0 or current_power_set == 1:
+			if animated_sprite.flip_h:
+				velocity.x += -dash_force
+			else:
+				velocity.x += dash_force
+			velocity.y = (jump_force / 3)
+			slide = false
+			locked = true
+			animated_sprite.play("slide")
 	
 	# in air
-	if not is_on_floor() and not animated_sprite.animation == "jump" and not locked:
+	if not is_on_floor() and animated_sprite.animation != "jump" and not locked:
 		animated_sprite.play("jump")
 	
 	# max speed
@@ -234,6 +249,13 @@ func get_direction() -> int:
 	if Input.is_action_pressed("move_left") and not Input.is_action_pressed("move_right"):
 		return -1
 	if Input.is_action_pressed("move_right") and not Input.is_action_pressed("move_left"):
+		return 1
+	return 0
+
+func get_wall() -> int:
+	if left_wall_grab_hitbox.get_overlapping_bodies().size() != 0 and not right_wall_grab_hitbox.get_overlapping_bodies().size() != 0:
+		return -1
+	if right_wall_grab_hitbox.get_overlapping_bodies().size() != 0 and not left_wall_grab_hitbox.get_overlapping_bodies().size() != 0:
 		return 1
 	return 0
 
@@ -267,12 +289,13 @@ func _on_animated_sprite_2d_animation_finished() -> void:
 	if locked and animated_sprite.animation == "slide":
 		slide = true
 		locked = false
-	if locked and animated_sprite.animation == "wall":
-		wall = false
-		jump = false
-		locked = false
-		buffer = 6
-		if animated_sprite.flip_h:
-			velocity.x += -(dash_force / 4)
-		else:
-			velocity.x += dash_force / 4
+
+func _on_wall_grab_timer_timeout() -> void:
+	wall = false
+	jump = false
+	locked = false
+	buffer = 5
+	if animated_sprite.flip_h:
+		velocity.x += -(dash_force / 4)
+	else:
+		velocity.x += dash_force / 4
