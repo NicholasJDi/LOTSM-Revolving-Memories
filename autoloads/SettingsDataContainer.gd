@@ -28,6 +28,8 @@ var save_file_data : Dictionary
 
 var Storage_Dict = {
 	"accsesability":{
+		"timer_visible":false,
+		"unfocused_pause":true
 	},
 	"controls":{
 	"crouch":null,
@@ -44,9 +46,9 @@ var Storage_Dict = {
 	"master_music_volume":0.5,
 	"master_sfx_volume":0.5,
 	"master_volume":0.5,
-	"music_boss_volume":1,
 	"music_game_volume":1,
 	"music_menu_volume":0.5,
+	"sfx_dialogue_volume":1,
 	"sfx_environment_volume":1,
 	"sfx_player_volume":1
 	}

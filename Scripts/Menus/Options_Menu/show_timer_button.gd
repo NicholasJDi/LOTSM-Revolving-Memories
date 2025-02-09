@@ -4,13 +4,10 @@ extends Control
 
 
 func _process(_delta) -> void:
-	if Global.timer:
+	if SettingsDataContainer.Storage_Dict.accsesability.timer_visible:
 		button.text = "Hide"
 	else:
 		button.text = "Show"
 
 func _on_button_pressed() -> void:
-	if Global.timer:
-		Global.timer = false
-	else:
-		Global.timer = true
+	SettingsDataContainer.Storage_Dict.accsesability.timer_visible = !SettingsDataContainer.Storage_Dict.accsesability.timer_visible

@@ -1,12 +1,15 @@
-[gd_scene load_steps=34 format=3 uid="uid://dxoyhhainhhyv"]
+[gd_scene load_steps=38 format=3 uid="uid://dxoyhhainhhyv"]
 
 [ext_resource type="Texture2D" uid="uid://c4vi5kl203eb1" path="res://assets/Textures/vilrink/AdventureCharacter_Spreadsheet.png" id="1_knk32"]
 [ext_resource type="Script" path="res://Scripts/Other/player.gd" id="1_wpvhi"]
 [ext_resource type="PackedScene" uid="uid://cod64obpin5x0" path="res://Scenes/UIs/UI.tscn" id="3_7eor7"]
 [ext_resource type="AudioStream" uid="uid://bbx8ialkoaj3n" path="res://assets/Sound/SFX/tommusic/Free Fantasy SFX Pack By TomMusic/OGG Files/SFX/Footsteps/Stone/Stone Run 1.ogg" id="4_cb8e3"]
+[ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="4_vef81"]
 [ext_resource type="AudioStream" uid="uid://bdxdb2dl0dt83" path="res://assets/Sound/SFX/tommusic/Free Fantasy SFX Pack By TomMusic/OGG Files/SFX/Footsteps/Stone/Stone Walk 3.ogg" id="5_ix00a"]
 [ext_resource type="AudioStream" uid="uid://c6cttbbiovaci" path="res://assets/Sound/SFX/tommusic/Free Fantasy SFX Pack By TomMusic/OGG Files/SFX/Footsteps/Stone/Stone Jump.ogg" id="6_0grft"]
 [ext_resource type="AudioStream" uid="uid://csib2d1n21dp8" path="res://assets/Sound/SFX/tommusic/Free Fantasy SFX Pack By TomMusic/OGG Files/SFX/Footsteps/Stone/Stone Land.ogg" id="7_lj7b5"]
+[ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_2d.gd" id="9_co4pg"]
+[ext_resource type="Script" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="10_spirh"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_o20ky"]
 atlas = ExtResource("1_knk32")
@@ -209,6 +212,12 @@ height = 14.0
 [sub_resource type="CircleShape2D" id="CircleShape2D_t0wn5"]
 radius = 1.0
 
+[sub_resource type="Resource" id="Resource_ssx6a"]
+script = ExtResource("10_spirh")
+duration = 1.0
+transition = 0
+ease = 2
+
 [node name="Player" type="CharacterBody2D"]
 collision_mask = 6
 floor_constant_speed = true
@@ -265,19 +274,24 @@ shape = SubResource("CapsuleShape2D_yakbs")
 debug_color = Color(0.7, 0, 0, 0.286275)
 
 [node name="Camera2D" type="Camera2D" parent="."]
-zoom = Vector2(3, 3)
+physics_interpolation_mode = 1
+zoom = Vector2(2, 2)
 process_callback = 0
 limit_smoothed = true
-position_smoothing_enabled = true
 position_smoothing_speed = 6.0
-drag_horizontal_enabled = true
-drag_vertical_enabled = true
-drag_left_margin = 0.25
-drag_right_margin = 0.25
+drag_left_margin = 0.15
+drag_top_margin = 0.1
+drag_right_margin = 0.15
+drag_bottom_margin = 0.1
 editor_draw_limits = true
 editor_draw_drag_margin = true
 
 [node name="UI" parent="Camera2D" instance=ExtResource("3_7eor7")]
+
+[node name="PhantomCameraHost" type="Node" parent="Camera2D"]
+process_priority = 300
+process_physics_priority = 300
+script = ExtResource("4_vef81")
 
 [node name="SFX" type="Node2D" parent="."]
 
@@ -309,6 +323,20 @@ autostart = true
 
 [node name="WallGrabTimer" type="Timer" parent="Timers"]
 one_shot = true
+
+[node name="PhantomCamera2D" type="Node2D" parent="." node_paths=PackedStringArray("follow_target")]
+top_level = true
+script = ExtResource("9_co4pg")
+priority = 1
+follow_mode = 1
+follow_target = NodePath("..")
+zoom = Vector2(2, 2)
+snap_to_pixel = true
+tween_resource = SubResource("Resource_ssx6a")
+tween_on_load = false
+follow_damping = true
+follow_damping_value = Vector2(0.2, 0.2)
+draw_limits = true
 
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="area_entered" from="Hitbox/Checkpoint_Hitbox" to="." method="_on_checkpoint_hitbox_area_entered"]

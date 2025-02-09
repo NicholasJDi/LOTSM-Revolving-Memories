@@ -1,7 +1,8 @@
-[gd_scene load_steps=10 format=3 uid="uid://cod64obpin5x0"]
+[gd_scene load_steps=11 format=3 uid="uid://cod64obpin5x0"]
 
 [ext_resource type="FontFile" uid="uid://bl6ovrue03k0f" path="res://assets/Fonts/minecraftia/Minecraftia.ttf" id="1_j6b60"]
-[ext_resource type="Script" path="res://Scripts/Other/timer.gd" id="2_bqkqm"]
+[ext_resource type="Script" path="res://Scripts/uis/ui.gd" id="1_okarm"]
+[ext_resource type="Script" path="res://Scripts/uis/timer.gd" id="2_bqkqm"]
 [ext_resource type="Script" path="res://Scripts/uis/pause_menu.gd" id="2_w0mxb"]
 [ext_resource type="Shader" path="res://Resources/Blur.gdshader" id="3_0bw8f"]
 [ext_resource type="Script" path="res://Scripts/uis/power_swapper.gd" id="3_vvanb"]
@@ -24,6 +25,7 @@ shader_parameter/lod = 0.5
 
 [node name="UI" type="CanvasLayer"]
 process_mode = 1
+script = ExtResource("1_okarm")
 metadata/_edit_horizontal_guides_ = [12393.0]
 
 [node name="Main_UI" type="MarginContainer" parent="."]
@@ -132,15 +134,7 @@ anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="Control" type="Control" parent="Power_Swapper/dev_mode_button/Control/Control"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="0" type="Button" parent="Power_Swapper/dev_mode_button/Control/Control/Control"]
+[node name="0" type="Button" parent="Power_Swapper/dev_mode_button/Control/Control"]
 layout_mode = 2
 offset_right = 153.0
 offset_bottom = 54.0
@@ -174,59 +168,61 @@ theme_override_constants/margin_top = 24
 theme_override_constants/margin_right = 24
 theme_override_constants/margin_bottom = 24
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Power_Swapper/swap_buttons/MarginContainer"]
+[node name="GridContainer" type="GridContainer" parent="Power_Swapper/swap_buttons/MarginContainer"]
 layout_mode = 2
-theme_override_constants/separation = 24
+theme_override_constants/h_separation = 24
+theme_override_constants/v_separation = 24
+columns = 3
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Power_Swapper/swap_buttons/MarginContainer/VBoxContainer"]
-layout_mode = 2
-size_flags_vertical = 3
-theme_override_constants/separation = 24
-
-[node name="1" type="Button" parent="Power_Swapper/swap_buttons/MarginContainer/VBoxContainer/HBoxContainer"]
+[node name="1" type="Button" parent="Power_Swapper/swap_buttons/MarginContainer/GridContainer"]
+custom_minimum_size = Vector2(200, 200)
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_font_sizes/font_size = 64
 text = "1"
 script = ExtResource("4_g5ncs")
 
-[node name="2" type="Button" parent="Power_Swapper/swap_buttons/MarginContainer/VBoxContainer/HBoxContainer"]
+[node name="2" type="Button" parent="Power_Swapper/swap_buttons/MarginContainer/GridContainer"]
+custom_minimum_size = Vector2(200, 200)
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_font_sizes/font_size = 64
 text = "2"
 script = ExtResource("4_g5ncs")
 
-[node name="3" type="Button" parent="Power_Swapper/swap_buttons/MarginContainer/VBoxContainer/HBoxContainer"]
+[node name="3" type="Button" parent="Power_Swapper/swap_buttons/MarginContainer/GridContainer"]
+custom_minimum_size = Vector2(200, 200)
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_font_sizes/font_size = 64
+disabled = true
 text = "3"
 script = ExtResource("4_g5ncs")
 
-[node name="HBoxContainer2" type="HBoxContainer" parent="Power_Swapper/swap_buttons/MarginContainer/VBoxContainer"]
-layout_mode = 2
-size_flags_vertical = 3
-theme_override_constants/separation = 24
-
-[node name="4" type="Button" parent="Power_Swapper/swap_buttons/MarginContainer/VBoxContainer/HBoxContainer2"]
+[node name="4" type="Button" parent="Power_Swapper/swap_buttons/MarginContainer/GridContainer"]
+custom_minimum_size = Vector2(200, 200)
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_font_sizes/font_size = 64
+disabled = true
 text = "4"
 script = ExtResource("4_g5ncs")
 
-[node name="5" type="Button" parent="Power_Swapper/swap_buttons/MarginContainer/VBoxContainer/HBoxContainer2"]
+[node name="5" type="Button" parent="Power_Swapper/swap_buttons/MarginContainer/GridContainer"]
+custom_minimum_size = Vector2(200, 200)
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_font_sizes/font_size = 64
+disabled = true
 text = "5"
 script = ExtResource("4_g5ncs")
 
-[node name="6" type="Button" parent="Power_Swapper/swap_buttons/MarginContainer/VBoxContainer/HBoxContainer2"]
+[node name="6" type="Button" parent="Power_Swapper/swap_buttons/MarginContainer/GridContainer"]
+custom_minimum_size = Vector2(200, 200)
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_font_sizes/font_size = 64
+disabled = true
 text = "6"
 script = ExtResource("4_g5ncs")
 

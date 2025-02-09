@@ -38,6 +38,7 @@ func Save_File_Save(Data : Dictionary, File : String, New : bool = false) -> voi
 	var save_data_file = FileAccess.open(File, FileAccess.WRITE)
 	var json_data_string = JSON.stringify(temp_data)
 	save_data_file.store_line(json_data_string)
+	save_data_file.close()
 
 func Save_File_Load(File : String) -> void:
 	if not FileAccess.file_exists(File):
@@ -50,6 +51,7 @@ func Save_File_Load(File : String) -> void:
 		var json = JSON.new()
 		var _passed_result = json.parse(json_string)
 		Loaded_Data = json.get_data()
+	save_data_file.close()
 	SettingsDataContainer.save_file_data = Loaded_Data
 
 func Save_Data(Data : Dictionary, Type : String) -> void:
@@ -57,6 +59,7 @@ func Save_Data(Data : Dictionary, Type : String) -> void:
 	var save_data_file = FileAccess.open(File, FileAccess.WRITE)
 	var json_data_string = JSON.stringify(Data)
 	save_data_file.store_line(json_data_string)
+	save_data_file.close()
 
 func Load_Data(Type : String) -> void:
 	var File = Data_Path[Type]
@@ -73,3 +76,4 @@ func Load_Data(Type : String) -> void:
 		SettingsDataContainer.On_Data_Loaded(Loaded_Data)
 	elif Type == "Console":
 		ConsoleWindow.on_console_data_loaded(Loaded_Data)
+	save_data_file.close()

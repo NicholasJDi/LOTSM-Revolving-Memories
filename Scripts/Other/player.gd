@@ -4,6 +4,7 @@ extends CharacterBody2D
 # stuff
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var camera_2d: Camera2D = $Camera2D
+@onready var phantom_camera_2d: PhantomCamera2D = $PhantomCamera2D
 @onready var hitbox: CollisionShape2D = $Hitbox
 @onready var right_wall_grab_hitbox: Area2D = $Hitbox/Right_Wall_Grab_Hitbox
 @onready var left_wall_grab_hitbox: Area2D = $Hitbox/Left_Wall_Grab_Hitbox
@@ -46,17 +47,14 @@ var grab : bool = true
 
 
 func _ready() -> void:
-	camera_2d.position_smoothing_enabled = false
-	camera_2d.drag_horizontal_enabled = false
-	camera_2d.drag_vertical_enabled = false
-	
 	position = Vector2(SettingsDataContainer.save_file_data.data.player.location.x, SettingsDataContainer.save_file_data.data.player.location.y)
-	camera_2d.zoom = Vector2(SettingsDataContainer.save_file_data.data.player.zoom.x, SettingsDataContainer.save_file_data.data.player.zoom.y)
+	phantom_camera_2d.zoom = Vector2(SettingsDataContainer.save_file_data.data.player.zoom.x, SettingsDataContainer.save_file_data.data.player.zoom.y)
 	checkpoint_pos = Vector2(SettingsDataContainer.save_file_data.data.player.checkpoint.x, SettingsDataContainer.save_file_data.data.player.checkpoint.y)
 	current_power_set = SettingsDataContainer.save_file_data.data.player.powers
 	
 	movement_timer.start(0.1)
 	await movement_timer.timeout
+	phantom_camera_2d.follow_damping = true
 	camera_2d.position_smoothing_enabled = true
 	camera_2d.drag_horizontal_enabled = true
 	camera_2d.drag_vertical_enabled = true
@@ -65,17 +63,17 @@ func _process(_delta: float) -> void:
 	if not buffer == 6:
 		buffer += 1
 	if Input.is_action_just_pressed("zoom_in"):
-		if not camera_2d.zoom.x == 7:
-			camera_2d.zoom.x += 0.5
-			camera_2d.zoom.y += 0.5
-			SettingsDataContainer.save_file_data.data.player.zoom.x = camera_2d.zoom.x
-			SettingsDataContainer.save_file_data.data.player.zoom.y = camera_2d.zoom.y
+		if not phantom_camera_2d.zoom.x == 6:
+			phantom_camera_2d.zoom.x += 0.5
+			phantom_camera_2d.zoom.y += 0.5
+			SettingsDataContainer.save_file_data.data.player.zoom.x = phantom_camera_2d.zoom.x
+			SettingsDataContainer.save_file_data.data.player.zoom.y = phantom_camera_2d.zoom.y
 	if Input.is_action_just_pressed("zoom_out"):
-		if not camera_2d.zoom.x == 2:
-			camera_2d.zoom.x -= 0.5
-			camera_2d.zoom.y -= 0.5
-			SettingsDataContainer.save_file_data.data.player.zoom.x = camera_2d.zoom.x
-			SettingsDataContainer.save_file_data.data.player.zoom.y = camera_2d.zoom.y
+		if not phantom_camera_2d.zoom.x == 2:
+			phantom_camera_2d.zoom.x -= 0.5
+			phantom_camera_2d.zoom.y -= 0.5
+			SettingsDataContainer.save_file_data.data.player.zoom.x = phantom_camera_2d.zoom.x
+			SettingsDataContainer.save_file_data.data.player.zoom.y = phantom_camera_2d.zoom.y
 
 func _physics_process(_delta: float) -> void:
 	# reset
@@ -280,8 +278,8 @@ func _on_death_hitbox_body_entered(_body: Node2D) -> void:
 func _on_death_hitbox_area_entered(_area: Area2D) -> void:
 	if not invincible: death()
 
-func _on_checkpoint_hitbox_area_entered(_area: Area2D) -> void:
-	checkpoint_pos = position
+func _on_checkpoint_hitbox_area_entered(area: Area2D) -> void:
+	checkpoint_pos = area.position
 	SettingsDataContainer.save_file_data.data.player.checkpoint.x = checkpoint_pos.x
 	SettingsDataContainer.save_file_data.data.player.checkpoint.y = checkpoint_pos.y
 

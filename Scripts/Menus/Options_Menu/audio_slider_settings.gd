@@ -5,8 +5,6 @@ extends Control
 @onready var audio_num: Label = $HBoxContainer/Audio_Num
 @onready var h_slider: HSlider = $HBoxContainer/HSlider
 
-@export var bus_name = ""
-
 var bus_index = 0
 
 
@@ -35,14 +33,14 @@ func index_to_name():
 		4:
 			return "music_game_volume"
 		5:
-			return "music_boss_volume"
-		6:
 			return "sfx_environment_volume"
-		7:
+		6:
 			return "sfx_player_volume"
+		7:
+			return "sfx_dialogue_volume"
 
 func set_name_text():
-	audio_name.text = str(bus_name) + " Volume"
+	audio_name.text = str(name) + " Volume"
 
 
 func set_num_text():
@@ -55,7 +53,7 @@ func set_num_text():
 
 
 func get_bus_name_by_index():
-	bus_index = AudioServer.get_bus_index(bus_name)
+	bus_index = AudioServer.get_bus_index(name)
 
 
 func set_slider_value():

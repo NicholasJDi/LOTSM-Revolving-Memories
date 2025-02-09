@@ -90,35 +90,28 @@ theme_override_styles/separator = SubResource("StyleBoxEmpty_jx0rt")
 
 [node name="Master" parent="MarginContainer/VBoxContainer/TabContainer/Sound/ScrollContainer/VBoxContainer" instance=ExtResource("3_4dtb6")]
 layout_mode = 2
-bus_name = "Master"
 
 [node name="Master - Music" parent="MarginContainer/VBoxContainer/TabContainer/Sound/ScrollContainer/VBoxContainer" instance=ExtResource("3_4dtb6")]
 layout_mode = 2
-bus_name = "Master - Music"
 
 [node name="Master - SFX" parent="MarginContainer/VBoxContainer/TabContainer/Sound/ScrollContainer/VBoxContainer" instance=ExtResource("3_4dtb6")]
 layout_mode = 2
-bus_name = "Master - SFX"
 
 [node name="Music - Menu" parent="MarginContainer/VBoxContainer/TabContainer/Sound/ScrollContainer/VBoxContainer" instance=ExtResource("3_4dtb6")]
 layout_mode = 2
-bus_name = "Music - Menu"
 
 [node name="Music - Game" parent="MarginContainer/VBoxContainer/TabContainer/Sound/ScrollContainer/VBoxContainer" instance=ExtResource("3_4dtb6")]
 layout_mode = 2
-bus_name = "Music - Game"
-
-[node name="Music - Boss" parent="MarginContainer/VBoxContainer/TabContainer/Sound/ScrollContainer/VBoxContainer" instance=ExtResource("3_4dtb6")]
-layout_mode = 2
-bus_name = "Music - Boss"
 
 [node name="SFX - Environment" parent="MarginContainer/VBoxContainer/TabContainer/Sound/ScrollContainer/VBoxContainer" instance=ExtResource("3_4dtb6")]
 layout_mode = 2
-bus_name = "SFX - Environment"
 
 [node name="SFX - Player" parent="MarginContainer/VBoxContainer/TabContainer/Sound/ScrollContainer/VBoxContainer" instance=ExtResource("3_4dtb6")]
 layout_mode = 2
-bus_name = "SFX - Player"
+
+[node name="SFX - Dialogue" parent="MarginContainer/VBoxContainer/TabContainer/Sound/ScrollContainer/VBoxContainer" instance=ExtResource("3_4dtb6")]
+visible = false
+layout_mode = 2
 
 [node name="HSeparator_Bottom" type="HSeparator" parent="MarginContainer/VBoxContainer/TabContainer/Sound/ScrollContainer/VBoxContainer"]
 layout_mode = 2

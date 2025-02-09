@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://by8ksoxd3mme3"]
 
-[ext_resource type="Script" path="res://Scripts/Other/console_window.gd" id="1_urwak"]
+[ext_resource type="Script" path="res://Scripts/uis/console_window.gd" id="1_urwak"]
 
 [node name="Console Window" type="Window" node_paths=PackedStringArray("console_log", "input_label", "input_field")]
 process_mode = 3
@@ -58,6 +58,7 @@ size_flags_vertical = 3
 layout_mode = 2
 size_flags_vertical = 3
 bbcode_enabled = true
+text = "[color=#ff9700][Help][/color] [color=#ffffff]Type: \"/help\" For Commands.[/color]"
 scroll_following = true
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Console/MarginContainer/VBoxContainer"]
