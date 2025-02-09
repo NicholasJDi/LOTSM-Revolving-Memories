@@ -168,6 +168,7 @@ size = Vector2(24, 318)
 script = ExtResource("1_u056q")
 
 [node name="EnvironmentStreamPlayer" type="AudioStreamPlayer" parent="."]
+process_mode = 3
 stream = ExtResource("2_17w8g")
 autoplay = true
 bus = &"SFX - Environment"
