@@ -171,7 +171,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"slide",
-"speed": 2.5
+"speed": 1.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -223,12 +223,13 @@ collision_mask = 6
 floor_constant_speed = true
 floor_snap_length = 5.0
 script = ExtResource("1_wpvhi")
+dash_force = 345.0
 metadata/_edit_horizontal_guides_ = [19.0]
 metadata/_edit_vertical_guides_ = [-194.0]
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_sgrli")
-animation = &"idle"
+animation = &"slide"
 autoplay = "idle"
 
 [node name="Hitbox" type="CollisionShape2D" parent="."]
@@ -315,13 +316,21 @@ area_mask = 2
 [node name="Timers" type="Node2D" parent="."]
 
 [node name="DeathTimer" type="Timer" parent="Timers"]
+process_callback = 0
 wait_time = 0.5
 one_shot = true
 autostart = true
 
 [node name="MovementTimer" type="Timer" parent="Timers"]
+process_callback = 0
 
 [node name="WallGrabTimer" type="Timer" parent="Timers"]
+process_callback = 0
+one_shot = true
+
+[node name="SlideTimer" type="Timer" parent="Timers"]
+process_callback = 0
+wait_time = 0.25
 one_shot = true
 
 [node name="PhantomCamera2D" type="Node2D" parent="." node_paths=PackedStringArray("follow_target")]
@@ -338,8 +347,8 @@ follow_damping = true
 follow_damping_value = Vector2(0.2, 0.2)
 draw_limits = true
 
-[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="area_entered" from="Hitbox/Checkpoint_Hitbox" to="." method="_on_checkpoint_hitbox_area_entered"]
 [connection signal="area_entered" from="Hitbox/Death_Hitbox" to="." method="_on_death_hitbox_area_entered"]
 [connection signal="body_entered" from="Hitbox/Death_Hitbox" to="." method="_on_death_hitbox_body_entered"]
 [connection signal="timeout" from="Timers/WallGrabTimer" to="." method="_on_wall_grab_timer_timeout"]
+[connection signal="timeout" from="Timers/SlideTimer" to="." method="_on_slide_timer_timeout"]

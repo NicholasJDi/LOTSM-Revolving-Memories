@@ -13,6 +13,7 @@ extends CharacterBody2D
 @onready var death_timer: Timer = $Timers/DeathTimer
 @onready var movement_timer: Timer = $Timers/MovementTimer
 @onready var wall_grab_timer: Timer = $Timers/WallGrabTimer
+@onready var slide_timer: Timer = $Timers/SlideTimer
 
 # sfx
 @onready var walk_sfx: AudioStreamPlayer2D = $SFX/Walk
@@ -21,10 +22,10 @@ extends CharacterBody2D
 @onready var land_sfx: AudioStreamPlayer2D = $SFX/Land
 
 # exports
-@export var target_speed : float = 250
+@export var target_speed : float = 235
 @export var max_speed : float = 1000
 @export var acceleration : float = 25
-@export var jump_force : float = 360
+@export var jump_force : float = 320
 @export var gravity_force : float = 30
 @export var dash_force : float = 360
 @export var jump_bufer : float = 15
@@ -34,12 +35,14 @@ extends CharacterBody2D
 @export var checkpoint_pos : Vector2
 @export var can_move : bool = true
 @export var invincible : bool = false
+@export var cam_zoom : float = 1
 
 var double : bool = true
 var jump : bool = true
 var buffer : int = 0
 var dash : bool = true
 var slide : bool = true
+var count : int = 0
 var hight : bool = false
 var locked : bool = false
 var wall : bool = false
@@ -181,10 +184,7 @@ func _physics_process(_delta: float) -> void:
 	# double jump
 	if not is_on_floor() and Input.is_action_just_pressed("jump") and not jump and double and buffer == 6 and can_move:
 		if current_power_set == 0 or current_power_set == 2:
-			if velocity.y < 0:
-				velocity.y += -(jump_force * .75)
-			else:
-				velocity.y = -(jump_force * .75)
+			velocity.y = -(jump_force * .75)
 			double = false
 			hight = true
 			slide = true
@@ -194,19 +194,16 @@ func _physics_process(_delta: float) -> void:
 	if not is_on_floor() and Input.is_action_just_pressed("dash") and dash and not wall and can_move:
 		if current_power_set == 0 or current_power_set == 2:
 			if animated_sprite.flip_h:
-				velocity.x += -dash_force
+				velocity.x += -(dash_force * .85)
 			else:
-				velocity.x += dash_force
-			if velocity.y < 0:
-				velocity.y += -(jump_force / 3)
-			else:
-				velocity.y = -(jump_force / 3)
+				velocity.x += dash_force * .85
+			velocity.y = -(jump_force / 2)
 			dash = false
 			slide = true
 			locked = false
 	
 	# slide
-	if is_on_floor() and direction != 0 and animated_sprite.animation != "idle" and Input.is_action_just_pressed("slide") and slide and can_move:
+	if is_on_floor() and direction != 0 and Input.is_action_just_pressed("slide") and slide and can_move:
 		if current_power_set == 0 or current_power_set == 1:
 			if animated_sprite.flip_h:
 				velocity.x += -dash_force
@@ -216,6 +213,8 @@ func _physics_process(_delta: float) -> void:
 			slide = false
 			locked = true
 			animated_sprite.play("slide")
+			slide_timer.start(.25)
+			count = 0
 	
 	# in air
 	if not is_on_floor() and animated_sprite.animation != "jump" and not locked:
@@ -283,11 +282,6 @@ func _on_checkpoint_hitbox_area_entered(area: Area2D) -> void:
 	SettingsDataContainer.save_file_data.data.player.checkpoint.x = checkpoint_pos.x
 	SettingsDataContainer.save_file_data.data.player.checkpoint.y = checkpoint_pos.y
 
-func _on_animated_sprite_2d_animation_finished() -> void:
-	if locked and animated_sprite.animation == "slide":
-		slide = true
-		locked = false
-
 func _on_wall_grab_timer_timeout() -> void:
 	wall = false
 	jump = false
@@ -297,3 +291,12 @@ func _on_wall_grab_timer_timeout() -> void:
 		velocity.x += -(dash_force / 4)
 	else:
 		velocity.x += dash_force / 4
+
+func _on_slide_timer_timeout() -> void:
+	count += 1
+	if count == 1:
+		locked = false
+		slide_timer.start(.5)
+	elif count == 2:
+		slide = true
+		slide_timer.stop()

@@ -1,6 +1,6 @@
 extends Node
 
-var unfocused_pause = true
+var unfocused_pause = false
 
 func _ready() -> void:
 	self.process_mode = Node.PROCESS_MODE_ALWAYS
