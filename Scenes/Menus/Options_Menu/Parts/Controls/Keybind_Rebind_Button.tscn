@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://ce48xkvgs1ech"]
 
 [ext_resource type="Script" path="res://Scripts/Menus/Options_Menu/keybind_rebind_button.gd" id="1_n33cd"]
-[ext_resource type="FontFile" uid="uid://bl6ovrue03k0f" path="res://assets/Fonts/minecraftia/Minecraftia.ttf" id="2_xucgs"]
+[ext_resource type="FontFile" uid="uid://bl6ovrue03k0f" path="res://assets/Fonts/AndrewTyler/Minecraftia.ttf" id="2_xucgs"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_lnwkf"]
 

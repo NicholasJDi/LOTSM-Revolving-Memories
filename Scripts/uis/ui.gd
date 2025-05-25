@@ -1,11 +1,8 @@
 extends CanvasLayer
 
-
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(_delta: float) -> void:
-	pass
+@onready var scene_transition: ColorRect = $Scene_Transition
+@onready var pause_menu: PauseMenu = $Pause_Menu
+@onready var power_swapper: ColorRect = $Power_Swapper
+@onready var main_ui: MarginContainer = $Main_UI
+@onready var timer: Label = $Main_UI/Control/Overlays/Timer
+@onready var light_refracter: ColorRect = $Light_Refracter

@@ -1,55 +1,50 @@
-class_name player_controller
+class_name PlayerCharacter
 extends CharacterBody2D
 
 # stuff
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var camera_2d: Camera2D = $Camera2D
 @onready var phantom_camera_2d: PhantomCamera2D = $PhantomCamera2D
+@onready var ui: CanvasLayer = $Camera2D/UI
 @onready var hitbox: CollisionShape2D = $Hitbox
 @onready var right_wall_grab_hitbox: Area2D = $Hitbox/Right_Wall_Grab_Hitbox
 @onready var left_wall_grab_hitbox: Area2D = $Hitbox/Left_Wall_Grab_Hitbox
-
 # timers
 @onready var death_timer: Timer = $Timers/DeathTimer
 @onready var movement_timer: Timer = $Timers/MovementTimer
 @onready var wall_grab_timer: Timer = $Timers/WallGrabTimer
 @onready var slide_timer: Timer = $Timers/SlideTimer
 
-# sfx
-@onready var walk_sfx: AudioStreamPlayer2D = $SFX/Walk
-@onready var crouch_sfx: AudioStreamPlayer2D = $SFX/Crouch
-@onready var jump_sfx: AudioStreamPlayer2D = $SFX/Jump
-@onready var land_sfx: AudioStreamPlayer2D = $SFX/Land
-
 # exports
 @export var target_speed : float = 235
 @export var max_speed : float = 1000
-@export var acceleration : float = 25
+@export var acceleration_force : float = 25
 @export var jump_force : float = 320
 @export var gravity_force : float = 30
-@export var dash_force : float = 360
-@export var jump_bufer : float = 15
-@export var gravity_buffer : float = 15
+@export var dash_force : float = 345
+@export var jump_force_buffer : float = 15
+@export var gravity_force_buffer : float = 15
 @export var wall_grab_time_limit : float = 1.3
+@export var max_double_jumps : int = 1
 @export var current_power_set : int = 1
 @export var checkpoint_pos : Vector2
 @export var can_move : bool = true
 @export var invincible : bool = false
-@export var cam_zoom : float = 1
+@export var frozen : bool = false
 
-var double : bool = true
-var jump : bool = true
-var buffer : int = 0
-var dash : bool = true
-var slide : bool = true
-var count : int = 0
-var hight : bool = false
-var locked : bool = false
-var wall : bool = false
-var grab : bool = true
-
+var double_jump_count : int = 0
+var can_jump : bool = true
+var jump_buffer : int = 0
+var can_dash : bool = true
+var can_slide : bool = true
+var slide_count_idk : int = 0
+var extra_jump_hight : bool = false
+var animation_locked : bool = false
+var is_wall_grabbing : bool = false
+var can_wall_grab : bool = true
 
 func _ready() -> void:
+	Global.Player = self
 	position = Vector2(SettingsDataContainer.save_file_data.data.player.location.x, SettingsDataContainer.save_file_data.data.player.location.y)
 	phantom_camera_2d.zoom = Vector2(SettingsDataContainer.save_file_data.data.player.zoom.x, SettingsDataContainer.save_file_data.data.player.zoom.y)
 	checkpoint_pos = Vector2(SettingsDataContainer.save_file_data.data.player.checkpoint.x, SettingsDataContainer.save_file_data.data.player.checkpoint.y)
@@ -63,10 +58,8 @@ func _ready() -> void:
 	camera_2d.drag_vertical_enabled = true
 
 func _process(_delta: float) -> void:
-	if not buffer == 6:
-		buffer += 1
 	if Input.is_action_just_pressed("zoom_in"):
-		if not phantom_camera_2d.zoom.x == 6:
+		if not phantom_camera_2d.zoom.x == 5:
 			phantom_camera_2d.zoom.x += 0.5
 			phantom_camera_2d.zoom.y += 0.5
 			SettingsDataContainer.save_file_data.data.player.zoom.x = phantom_camera_2d.zoom.x
@@ -79,16 +72,20 @@ func _process(_delta: float) -> void:
 			SettingsDataContainer.save_file_data.data.player.zoom.y = phantom_camera_2d.zoom.y
 
 func _physics_process(_delta: float) -> void:
+	# jump buffer
+	if not jump_buffer == 6:
+		jump_buffer += 1
+	
 	# reset
 	if is_on_floor():
-		double = true
-		jump = true
-		buffer = 0
-		dash = true
-		grab = true
+		double_jump_count = max_double_jumps
+		can_jump = true
+		jump_buffer = 0
+		can_dash = true
+		can_wall_grab = true
 		velocity.y = 0
 	if Input.is_action_just_released("jump"):
-		hight = false
+		extra_jump_hight = false
 	
 	# one way ground
 	if Input.is_action_pressed("crouch"):
@@ -98,39 +95,38 @@ func _physics_process(_delta: float) -> void:
 	
 	# gravity
 	if not is_on_floor():
-		var temp_buffer : float = 0
+		var temp_force_buffer : float = 0
 		if velocity.y > 0:
-			temp_buffer += gravity_buffer
-		if hight:
-			temp_buffer -= jump_bufer
-		velocity.y += gravity_force + temp_buffer
+			temp_force_buffer += gravity_force_buffer
+		if extra_jump_hight:
+			temp_force_buffer -= jump_force_buffer
+		velocity.y += gravity_force + temp_force_buffer
 	var direction = get_direction()
 	var wall_grab = get_wall()
 	
 	# wall grab
-	if is_on_wall_only() and wall_grab != 0 and Input.is_action_pressed("wall_grab") and grab and can_move:
+	if is_on_wall_only() and wall_grab != 0 and Input.is_action_pressed("wall_grab") and can_wall_grab and can_move:
 		if current_power_set == 0 or current_power_set == 1:
 			if wall_grab == -1:
 				animated_sprite.flip_h = false
 			elif wall_grab == 1:
 				animated_sprite.flip_h = true
-			grab = false
-			wall = true
+			can_wall_grab = false
+			is_wall_grabbing = true
 			animated_sprite.play("wall")
 			wall_grab_timer.start(wall_grab_time_limit)
-			locked = true
-	if is_on_wall_only() and Input.is_action_pressed("wall_grab") and wall:
+			animation_locked = true
+	if is_on_wall_only() and Input.is_action_pressed("wall_grab") and is_wall_grabbing:
 		velocity.y = 0
-		buffer = 5
-		jump = true
-		double = true
-		dash = true
+		jump_buffer = 5
+		can_jump = true
+		double_jump_count = 1
+		can_dash = true
 		direction = 0
-	if is_on_wall_only() and Input.is_action_just_released("wall_grab") and wall:
-		wall = false
-		jump = false
-		locked = false
-		buffer = 6
+	if is_on_wall_only() and not Input.is_action_pressed("wall_grab") and is_wall_grabbing:
+		is_wall_grabbing = false
+		jump_buffer = 6
+		animation_locked = false
 		if animated_sprite.flip_h:
 			velocity.x += -(dash_force / 2)
 		else:
@@ -138,86 +134,85 @@ func _physics_process(_delta: float) -> void:
 	
 	# movement
 	var temp_target_speed = target_speed * direction
-	var temp_acceleration = acceleration
+	var temp_acceleration_force = acceleration_force
 	if not is_on_floor():
 		if direction != 0:
-			temp_acceleration /= 2
+			temp_acceleration_force /= 2
 		else:
-			temp_acceleration /= 4
+			temp_acceleration_force /= 4
 	if Input.is_action_pressed("crouch"):
-		temp_target_speed /= 2
-		temp_acceleration /= 2
-		if not locked:
+		if is_on_floor():
+			temp_target_speed /= 2
+			temp_acceleration_force /= 2
+		if not animation_locked:
 			animated_sprite.play("crouch")
 	else:
-		if not locked:
+		if not animation_locked:
 			animated_sprite.play("walk")
 	if direction == 1:
 		animated_sprite.flip_h = false
 	elif direction == -1:
 		animated_sprite.flip_h = true
-	elif not locked:
+	elif not animation_locked:
 		animated_sprite.play("idle")
-	if velocity.x == 0 and not locked:
+	if velocity.x == 0 and not animation_locked:
 		animated_sprite.play("idle")
-	velocity.x = move_toward(velocity.x, temp_target_speed, temp_acceleration)
+	velocity.x = move_toward(velocity.x, temp_target_speed, temp_acceleration_force)
 	
 	# jump
-	if not buffer == 6 and Input.is_action_just_pressed("jump") and jump and can_move:
+	if not jump_buffer == 6 and Input.is_action_just_pressed("jump") and can_jump and can_move:
 		velocity.y = -jump_force
-		jump = false
-		hight = true
-		if not slide:
-			slide = true
-			hitbox.position.y = 1
-			hitbox.scale.y = 1
-		locked = false
+		can_jump = false
+		extra_jump_hight = true
+		if not can_slide:
+			can_slide = true
+		animation_locked = false
 		if not is_on_floor():
 			wall_grab_timer.stop()
-			wall = false
+			is_wall_grabbing = false
 			if animated_sprite.flip_h:
 				velocity.x += -(dash_force / 2)
 			else:
 				velocity.x += dash_force / 2
-		buffer = 5
+		jump_buffer = 5
 	
 	# double jump
-	if not is_on_floor() and Input.is_action_just_pressed("jump") and not jump and double and buffer == 6 and can_move:
+	if not is_on_floor() and Input.is_action_just_pressed("jump") and not can_jump and double_jump_count != 0 and jump_buffer == 6 and can_move:
 		if current_power_set == 0 or current_power_set == 2:
 			velocity.y = -(jump_force * .75)
-			double = false
-			hight = true
-			slide = true
-			locked = false
+			double_jump_count -= 1
+			extra_jump_hight = true
+			can_slide = true
+			animation_locked = false
 	
 	# dash
-	if not is_on_floor() and Input.is_action_just_pressed("dash") and dash and not wall and can_move:
+	if not is_on_floor() and Input.is_action_just_pressed("dash") and can_dash and double_jump_count < max_double_jumps and not is_wall_grabbing and can_move:
 		if current_power_set == 0 or current_power_set == 2:
 			if animated_sprite.flip_h:
 				velocity.x += -(dash_force * .85)
 			else:
 				velocity.x += dash_force * .85
 			velocity.y = -(jump_force / 2)
-			dash = false
-			slide = true
-			locked = false
-	
+			can_dash = false
+			can_slide = true
+			animation_locked = false
 	# slide
-	if is_on_floor() and direction != 0 and Input.is_action_just_pressed("slide") and slide and can_move:
+	if is_on_floor() and direction != 0 and Input.is_action_just_pressed("slide") and can_slide and can_move:
 		if current_power_set == 0 or current_power_set == 1:
 			if animated_sprite.flip_h:
 				velocity.x += -dash_force
 			else:
 				velocity.x += dash_force
 			velocity.y = (jump_force / 3)
-			slide = false
-			locked = true
+			can_slide = false
+			animation_locked = true
+			set_collision_mask_value(4,false)
 			animated_sprite.play("slide")
 			slide_timer.start(.25)
-			count = 0
+			slide_count_idk = 0
 	
 	# in air
-	if not is_on_floor() and animated_sprite.animation != "jump" and not locked:
+	if not is_on_floor() and animated_sprite.animation != "jump" and not animation_locked:
 		animated_sprite.play("jump")
 	
 	# max speed
@@ -235,6 +230,10 @@ func _physics_process(_delta: float) -> void:
 		velocity.y = max_speed / 2
 	if velocity.y < -(max_speed / 2):
 		velocity.y = -(max_speed / 2)
+	
+	# frozen
+	if frozen:
+		velocity = Vector2.ZERO
 	
 	move_and_slide()
 	SettingsDataContainer.save_file_data.data.player.location.x = position.x
@@ -258,9 +257,9 @@ func get_wall() -> int:
 
 func death():
 	invincible = true
-	hight = false
+	extra_jump_hight = false
 	can_move = false
-	locked = true
+	animation_locked = true
 	velocity *= -1
 	death_timer.start(2)
 	await death_timer.timeout
@@ -270,7 +269,7 @@ func death():
 	await death_timer.timeout
 	can_move = true
 	invincible = false
-	locked = false
+	animation_locked = false
 
 func _on_death_hitbox_body_entered(_body: Node2D) -> void:
 	if not invincible: death()
@@ -283,20 +282,20 @@ func _on_checkpoint_hitbox_area_entered(area: Area2D) -> void:
 	SettingsDataContainer.save_file_data.data.player.checkpoint.y = checkpoint_pos.y
 
 func _on_wall_grab_timer_timeout() -> void:
-	wall = false
-	jump = false
-	locked = false
-	buffer = 5
+	is_wall_grabbing = false
+	can_jump = false
+	animation_locked = false
+	jump_buffer = 5
 	if animated_sprite.flip_h:
 		velocity.x += -(dash_force / 4)
 	else:
 		velocity.x += dash_force / 4
 
 func _on_slide_timer_timeout() -> void:
-	count += 1
-	if count == 1:
-		locked = false
+	slide_count_idk += 1
+	if slide_count_idk == 1:
+		animation_locked = false
 		slide_timer.start(.5)
-	elif count == 2:
-		slide = true
+	elif slide_count_idk == 2:
+		can_slide = true
 		slide_timer.stop()

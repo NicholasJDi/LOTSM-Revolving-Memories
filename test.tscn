@@ -1,6 +1,5 @@
-[gd_scene load_steps=3 format=3 uid="uid://cfrwcjrickupt"]
+[gd_scene load_steps=2 format=3 uid="uid://cfrwcjrickupt"]
 
-[ext_resource type="Script" path="res://addons/jdi_tools/dialog/dialog_bubble.gd" id="1_nqgqf"]
 [ext_resource type="Script" path="res://test.gd" id="3_ryips"]
 
 [node name="Test" type="Control"]
@@ -12,6 +11,7 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
+script = ExtResource("3_ryips")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 0
@@ -22,21 +22,6 @@ offset_bottom = 401.0
 scale = Vector2(4.3234, 4.26653)
 color = Color(1, 0, 0.372549, 1)
 
-[node name="DialogueBubble" type="Control" parent="ColorRect"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 12.4902
-offset_top = -1.64068
-offset_right = -11.5098
-offset_bottom = -25.6407
-grow_horizontal = 2
-grow_vertical = 2
-scale = Vector2(0.3, 0.3)
-script = ExtResource("1_nqgqf")
-character_name = "2"
-
 [node name="ColorRect2" type="ColorRect" parent="."]
 layout_mode = 0
 offset_left = 736.0
@@ -46,21 +31,6 @@ offset_bottom = 352.0
 scale = Vector2(4.3234, 4.26653)
 color = Color(0, 1, 0.329412, 1)
 
-[node name="DialogueBubble" type="Control" parent="ColorRect2"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 12.0276
-offset_top = -2.10944
-offset_right = -11.9724
-offset_bottom = -26.1094
-grow_horizontal = 2
-grow_vertical = 2
-scale = Vector2(0.3, 0.3)
-script = ExtResource("1_nqgqf")
-character_name = "1"
-
 [node name="Button" type="Button" parent="."]
 layout_mode = 0
 offset_left = 66.0
@@ -68,8 +38,7 @@ offset_top = 57.0
 offset_right = 218.0
 offset_bottom = 101.0
 text = "Start Button"
-script = ExtResource("3_ryips")
 
 [node name="Timer" type="Timer" parent="."]
 
-[connection signal="pressed" from="Button" to="Button" method="_on_pressed"]
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

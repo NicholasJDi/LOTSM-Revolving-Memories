@@ -1,7 +1,7 @@
 [gd_scene load_steps=13 format=3 uid="uid://4x6fafcgdalm"]
 
 [ext_resource type="Script" path="res://Scripts/Menus/Options_Menu/options_menu.gd" id="1_v8u0g"]
-[ext_resource type="FontFile" uid="uid://bl6ovrue03k0f" path="res://assets/Fonts/minecraftia/Minecraftia.ttf" id="2_bp3et"]
+[ext_resource type="FontFile" uid="uid://bl6ovrue03k0f" path="res://assets/Fonts/AndrewTyler/Minecraftia.ttf" id="2_bp3et"]
 [ext_resource type="PackedScene" uid="uid://ceph2t5ia72su" path="res://Scenes/Menus/Options_Menu/Parts/Sound/Audio_Slider_Settings.tscn" id="3_4dtb6"]
 [ext_resource type="PackedScene" uid="uid://ce48xkvgs1ech" path="res://Scenes/Menus/Options_Menu/Parts/Controls/Keybind_Rebind_Button.tscn" id="4_4rm0o"]
 [ext_resource type="PackedScene" uid="uid://b8ccrt8vuveje" path="res://Scenes/Menus/Options_Menu/Parts/Accsesability/Show_Console_Button.tscn" id="5_vian4"]

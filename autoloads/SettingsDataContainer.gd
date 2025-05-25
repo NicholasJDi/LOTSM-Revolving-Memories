@@ -9,17 +9,17 @@ var default_save_file_data = {
 	"data":{
 	"player":{
 	"time" : 0.0,
-	"zoom":{"x":3.0,"y":3.0},
+	"zoom":{"x":3.0,"y":2.5},
 	"location":{"x":0,"y":0},
 	"checkpoint":{"x":0,"y":0},
 	"level" : "0",
 	"powers":1
 	}, # player
 	"world" : {
+	"level_dev" : {
+	}, # level dev
 	"level_0" : {
-	}, # level 0
-	"level_1" : {
-	} # level 1
+	} # level 0
 	} # world
 	} # data
 	}

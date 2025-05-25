@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="DialogicGlossary" load_steps=2 format=3 uid="uid://e8h533uwnkp3"]
+
+[ext_resource type="Script" path="res://addons/dialogic/Modules/Glossary/glossary_resource.gd" id="1_46etg"]
+
+[resource]
+script = ExtResource("1_46etg")
+entries = {}
+enabled = true
+_translation_id = ""
+_translation_keys = {}
