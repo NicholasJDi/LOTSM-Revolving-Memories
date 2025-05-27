@@ -1,0 +1,38 @@
+[gd_scene load_steps=3 format=3 uid="uid://delj1n4rqbu5m"]
+
+[ext_resource type="Script" uid="uid://c7ddrudnlmmyc" path="res://scripts/menus/options_menu/keybind_rebind_button.gd" id="1_bji2g"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_bji2g"]
+
+[node name="Keybind_Rebind_Button" type="Control"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+script = ExtResource("1_bji2g")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 28
+text = "Display Name"
+
+[node name="Button" type="Button" parent="HBoxContainer"]
+custom_minimum_size = Vector2(200, 50)
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_font_sizes/font_size = 24
+theme_override_styles/focus = SubResource("StyleBoxEmpty_bji2g")
+text = "Key"

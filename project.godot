@@ -15,21 +15,15 @@ config/description="A Platformer Game"
 config/version="0.05a (Alpha)"
 run/main_scene="res://Scenes/Menus/Main_Menu.tscn"
 config/custom_user_dir_name="LOtSM - Revolving Memories"
-config/features=PackedStringArray("4.3", "Forward Plus")
+config/features=PackedStringArray("4.4", "Forward Plus")
 run/max_fps=60
 boot_splash/bg_color=Color(0, 0, 0, 1)
-boot_splash/image="res://assets/Textures/NicholasJDi/blank.png"
+boot_splash/image="uid://d07m1asb4s668"
 config/icon="res://icon.svg"
 
 [autoload]
 
-SettingsDataContainer="*res://autoloads/SettingsDataContainer.gd"
-SaveManager="*res://autoloads/SaveManager.gd"
-SignalBus="*res://autoloads/SignalBus.gd"
 ConsoleWindow="*res://autoloads/console_window.tscn"
-Global="*res://autoloads/Global.gd"
-Dialogic="*res://addons/dialogic/Core/DialogicGameHandler.gd"
-PhantomCameraManager="*res://addons/phantom_camera/scripts/managers/phantom_camera_manager.gd"
 
 [debug]
 
@@ -37,13 +31,8 @@ file_logging/max_log_files=10
 
 [dialogic]
 
-directories/dch_directory={
-"1": "res://Dialogic/1.dch",
-"2": "res://Dialogic/2.dch"
-}
-directories/dtl_directory={
-"test": "res://Dialogic/test.dtl"
-}
+directories/dch_directory={}
+directories/dtl_directory={}
 layout/style_list=["res://Dialogic/bubblestyle.tres"]
 layout/default_style="res://Dialogic/bubblestyle.tres"
 variables={}
@@ -79,9 +68,17 @@ window/stretch/mode="canvas_items"
 window/stretch/aspect="expand"
 window/per_pixel_transparency/allowed=true
 
-[editor_plugins]
+[file_customization]
 
-enabled=PackedStringArray("res://addons/dialogic/plugin.cfg", "res://addons/phantom_camera/plugin.cfg")
+folder_colors={
+"res://addons/": "gray",
+"res://assets/": "red",
+"res://autoloads/": "orange",
+"res://builds/": "yellow",
+"res://resources/": "green",
+"res://scenes/": "blue",
+"res://scripts/": "purple"
+}
 
 [gui]
 

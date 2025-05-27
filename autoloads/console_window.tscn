@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://by8ksoxd3mme3"]
 
-[ext_resource type="Script" path="res://Scripts/uis/console_window.gd" id="1_urwak"]
+[ext_resource type="Script" uid="uid://saamy1abojw3" path="res://scripts/uis/console_window.gd" id="1_urwak"]
 
 [node name="Console Window" type="Window" node_paths=PackedStringArray("console_log", "input_label", "input_field")]
 process_mode = 3
