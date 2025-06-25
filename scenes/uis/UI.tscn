@@ -78,7 +78,8 @@ light_mode = 2
 
 [node name="UI" type="CanvasLayer"]
 process_mode = 1
-metadata/_edit_horizontal_guides_ = [12393.0]
+metadata/_edit_horizontal_guides_ = [12393.0, 6753.0]
+metadata/_edit_vertical_guides_ = [-292.0, 1289.0, 3519.0]
 
 [node name="Main_UI" type="MarginContainer" parent="."]
 anchors_preset = 15
@@ -366,20 +367,6 @@ size_flags_vertical = 4
 theme_override_fonts/font = ExtResource("1_j6b60")
 theme_override_font_sizes/font_size = 24
 text = "Exit"
-
-[node name="Options_Menu" parent="Pause_Menu"]
-_import_path = NodePath("")
-unique_name_in_owner = false
-process_mode = 0
-process_priority = 0
-process_physics_priority = 0
-process_thread_group = 0
-physics_interpolation_mode = 0
-auto_translate_mode = 0
-editor_description = ""
-visible = false
-layout_mode = 1
-script = null
 
 [node name="Timer" type="Timer" parent="Pause_Menu"]
 

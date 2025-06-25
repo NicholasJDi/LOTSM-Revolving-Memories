@@ -220,12 +220,12 @@ metadata/_edit_vertical_guides_ = [-194.0]
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 use_parent_material = true
+position = Vector2(0, -1)
 sprite_frames = SubResource("SpriteFrames_sgrli")
 animation = &"idle"
 autoplay = "idle"
 
 [node name="Hitbox" type="CollisionShape2D" parent="."]
-position = Vector2(0, 1)
 shape = SubResource("CapsuleShape2D_yakbs")
 debug_color = Color(0, 0.618333, 0.7, 0.419608)
 
@@ -280,7 +280,6 @@ editor_draw_limits = true
 editor_draw_drag_margin = true
 
 [node name="UI" parent="Camera2D" instance=ExtResource("3_7eor7")]
-script = null
 
 [node name="Timers" type="Node2D" parent="."]
 

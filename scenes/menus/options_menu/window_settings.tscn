@@ -26,10 +26,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 12
 
-[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
-layout_mode = 2
-
-[node name="Fullscreen" type="CheckButton" parent="VBoxContainer/HBoxContainer"]
+[node name="Fullscreen" type="CheckButton" parent="VBoxContainer"]
 custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
 size_flags_horizontal = 3
@@ -38,10 +35,8 @@ theme_override_styles/focus = SubResource("StyleBoxEmpty_6v46f")
 button_pressed = true
 text = "Fullscreen"
 
-[node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer"]
-layout_mode = 2
-
-[node name="Borderless" type="CheckButton" parent="VBoxContainer/HBoxContainer2"]
+[node name="Borderless" type="CheckButton" parent="VBoxContainer"]
+visible = false
 custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
 size_flags_horizontal = 3
@@ -50,5 +45,5 @@ theme_override_font_sizes/font_size = 28
 theme_override_styles/focus = SubResource("StyleBoxEmpty_rl2e2")
 text = "Borderless"
 
-[connection signal="toggled" from="VBoxContainer/HBoxContainer/Fullscreen" to="." method="_on_fullscreen_toggled"]
-[connection signal="toggled" from="VBoxContainer/HBoxContainer2/Borderless" to="." method="_on_borderless_toggled"]
+[connection signal="toggled" from="VBoxContainer/Fullscreen" to="." method="_on_fullscreen_toggled"]
+[connection signal="toggled" from="VBoxContainer/Borderless" to="." method="_on_borderless_toggled"]

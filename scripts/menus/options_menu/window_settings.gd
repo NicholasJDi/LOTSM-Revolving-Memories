@@ -2,8 +2,8 @@ extends Control
 
 @export var Parent : OptionsMenu
 
-@onready var fullscreen: CheckButton = $VBoxContainer/HBoxContainer/Fullscreen
-@onready var borderless: CheckButton = $VBoxContainer/HBoxContainer2/Borderless
+@onready var fullscreen: CheckButton = $VBoxContainer/Fullscreen
+@onready var borderless: CheckButton = $VBoxContainer/Borderless
 
 func _ready() -> void:
 	await get_tree().create_timer(.1).timeout
@@ -24,8 +24,11 @@ func _on_borderless_toggled(toggled_on: bool) -> void:
 
 func Set_Fullscreen(enabled : bool):
 	if enabled:
+		borderless.hide()
+		Set_Borderless(false)
 		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_EXCLUSIVE_FULLSCREEN)
 	else:
+		borderless.show()
 		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
 	Parent.config_file.set_value("Graphics", "Fullscreen", enabled)
 

@@ -69,6 +69,6 @@ func _on_back_pressed() -> void:
 
 ##Hides The Options Menu, Shows The [member Parent_Menu], And Saves Changes.
 func exit():
+	config_file.save(SETTINGS_FILE_PATH)
 	Parent_Menu.visible = true
 	self.visible = false
-	config_file.save(SETTINGS_FILE_PATH)
