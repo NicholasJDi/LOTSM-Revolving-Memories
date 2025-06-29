@@ -14,11 +14,13 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_ovrgc")
+metadata/_edit_vertical_guides_ = [15.0, 15.0]
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("2_2o76q")
 autoplay = true
 bus = &"Music - Menu"
+parameters/looping = true
 
 [node name="TextureRect" type="TextureRect" parent="."]
 layout_mode = 1
@@ -68,89 +70,107 @@ theme_override_font_sizes/font_size = 36
 text = "LOTSM - Revolving Memories"
 vertical_alignment = 1
 
-[node name="InteractiveButton" parent="Main" instance=ExtResource("5_imvie")]
+[node name="New Game" parent="Main" instance=ExtResource("5_imvie")]
 layout_mode = 2
 anchors_preset = 0
 anchor_right = 0.0
 anchor_bottom = 0.0
-offset_left = -639.0
+offset_left = -461.0
 offset_top = 166.0
-offset_right = 934.0
+offset_right = 691.0
 offset_bottom = 262.0
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 10
-theme_override_font_sizes/font_size = 45
-text = "New Game
-"
+theme_override_font_sizes/font_size = 32
+text = "New Game"
 hover_move = 50.0
-top_distance = 40.0
-right_offset = 510.0
+top_distance = 30.0
+right_offset = 370.0
+shadow_offset = Vector2(-13, 7)
+shadow_color = Color(0, 0, 0, 0.294118)
 
-[node name="InteractiveButton2" parent="Main" instance=ExtResource("5_imvie")]
+[node name="Continue" parent="Main" instance=ExtResource("5_imvie")]
 layout_mode = 2
 anchors_preset = 0
 anchor_right = 0.0
 anchor_bottom = 0.0
-offset_left = -668.0
+offset_left = -480.0
 offset_top = 262.0
-offset_right = 934.0
+offset_right = 691.0
 offset_bottom = 358.0
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 10
-theme_override_font_sizes/font_size = 45
-text = "Continue"
+theme_override_font_sizes/font_size = 32
+text = "Continue
+"
 hover_move = 50.0
-top_distance = 40.0
-right_offset = 550.0
+top_distance = 30.0
+right_offset = 400.0
+shadow_offset = Vector2(-13, 7)
+shadow_color = Color(0, 0, 0, 0.294118)
 
-[node name="InteractiveButton3" parent="Main" instance=ExtResource("5_imvie")]
+[node name="Settings" parent="Main" instance=ExtResource("5_imvie")]
 layout_mode = 2
 anchors_preset = 0
 anchor_right = 0.0
 anchor_bottom = 0.0
-offset_left = -679.0
+offset_left = -488.0
 offset_top = 358.0
-offset_right = 934.0
+offset_right = 691.0
 offset_bottom = 455.0
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 10
-theme_override_font_sizes/font_size = 45
-text = "Settings"
+theme_override_font_sizes/font_size = 32
+text = "Settings
+"
 hover_move = 50.0
-top_distance = 40.0
-right_offset = 590.0
+top_distance = 30.0
+right_offset = 430.0
+shadow_offset = Vector2(-13, 7)
+shadow_color = Color(0, 0, 0, 0.294118)
 
-[node name="InteractiveButton5" parent="Main" instance=ExtResource("5_imvie")]
+[node name="Badges" parent="Main" instance=ExtResource("5_imvie")]
 layout_mode = 2
 anchors_preset = 0
 anchor_right = 0.0
 anchor_bottom = 0.0
-offset_left = -705.0
+offset_left = -505.0
 offset_top = 455.0
-offset_right = 934.0
+offset_right = 691.0
 offset_bottom = 551.0
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 10
-theme_override_font_sizes/font_size = 45
+theme_override_font_sizes/font_size = 32
 text = "Badges"
 hover_move = 50.0
-top_distance = 40.0
-right_offset = 630.0
+top_distance = 30.0
+right_offset = 460.0
+shadow_offset = Vector2(-13, 7)
+shadow_color = Color(0, 0, 0, 0.294118)
 
-[node name="InteractiveButton4" parent="Main" instance=ExtResource("5_imvie")]
+[node name="Quit" parent="Main" instance=ExtResource("5_imvie")]
 layout_mode = 2
 anchors_preset = 0
 anchor_right = 0.0
 anchor_bottom = 0.0
-offset_left = -793.0
+offset_left = -576.0
 offset_top = 551.0
-offset_right = 934.0
+offset_right = 691.0
 offset_bottom = 648.0
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 10
-theme_override_font_sizes/font_size = 45
-text = "Quit
-"
+theme_override_font_sizes/font_size = 32
+text = "Quit"
 hover_move = 50.0
-top_distance = 40.0
-right_offset = 670.0
+top_distance = 30.0
+right_offset = 490.0
+shadow_offset = Vector2(-13, 7)
+shadow_color = Color(0, 0, 0, 0.294118)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Main"]
+
+[connection signal="pressed" from="Main/New Game" to="." method="_on_new_game_pressed"]
+[connection signal="pressed" from="Main/Continue" to="." method="_on_continue_pressed"]
+[connection signal="pressed" from="Main/Settings" to="." method="_on_settings_pressed"]
+[connection signal="pressed" from="Main/Badges" to="." method="_on_badges_pressed"]
+[connection signal="pressed" from="Main/Quit" to="." method="_on_quit_pressed"]
