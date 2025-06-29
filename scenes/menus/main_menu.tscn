@@ -3,8 +3,8 @@
 [ext_resource type="Script" uid="uid://dcsvhqdscuj2f" path="res://scripts/menus/main_menu.gd" id="1_ovrgc"]
 [ext_resource type="Texture2D" uid="uid://dxxq37daehguu" path="res://assets/Textures/NicholasJDi/Back.png" id="1_xqga4"]
 [ext_resource type="AudioStream" uid="uid://ueuwlkf4o0xh" path="res://assets/Sound/Music/AZALI/stargazing.mp3" id="2_2o76q"]
-[ext_resource type="Script" uid="uid://38yw4m4odqev" path="res://scripts/other/components/interactive_button.gd" id="4_6bivr"]
 [ext_resource type="PackedScene" uid="uid://dbhgwqf1hclox" path="res://scenes/menus/options_menu/options_menu.tscn" id="4_imvie"]
+[ext_resource type="PackedScene" uid="uid://bhn5xcjkbx18r" path="res://scenes/other/components/interactive_button.tscn" id="5_imvie"]
 
 [node name="Main_Menu" type="Control"]
 layout_mode = 3
@@ -30,11 +30,11 @@ grow_vertical = 2
 texture = ExtResource("1_xqga4")
 
 [node name="Options_Menu" parent="." node_paths=PackedStringArray("Parent_Menu") instance=ExtResource("4_imvie")]
+visible = false
 layout_mode = 1
 Parent_Menu = NodePath("../Main")
 
 [node name="Main" type="Control" parent="."]
-visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -43,14 +43,114 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 
-[node name="InteractiveButton" type="Button" parent="Main"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Main"]
 layout_mode = 1
-anchors_preset = 2
-anchor_top = 1.0
+anchors_preset = 15
+anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = -201.0
-offset_right = 428.0
-grow_vertical = 0
-text = "efsfefesfdh"
-script = ExtResource("4_6bivr")
-metadata/_custom_type_script = "uid://38yw4m4odqev"
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 0
+
+[node name="MarginContainer" type="MarginContainer" parent="Main/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 32
+theme_override_constants/margin_top = 16
+
+[node name="Label" type="Label" parent="Main/VBoxContainer/MarginContainer"]
+custom_minimum_size = Vector2(0, 150)
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_colors/font_color = Color(0.141498, 0.612409, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0.319954, 0.556452, 1)
+theme_override_constants/outline_size = 10
+theme_override_font_sizes/font_size = 36
+text = "LOTSM - Revolving Memories"
+vertical_alignment = 1
+
+[node name="InteractiveButton" parent="Main" instance=ExtResource("5_imvie")]
+layout_mode = 2
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = -639.0
+offset_top = 166.0
+offset_right = 934.0
+offset_bottom = 262.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_font_sizes/font_size = 45
+text = "New Game
+"
+hover_move = 50.0
+top_distance = 40.0
+right_offset = 510.0
+
+[node name="InteractiveButton2" parent="Main" instance=ExtResource("5_imvie")]
+layout_mode = 2
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = -668.0
+offset_top = 262.0
+offset_right = 934.0
+offset_bottom = 358.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_font_sizes/font_size = 45
+text = "Continue"
+hover_move = 50.0
+top_distance = 40.0
+right_offset = 550.0
+
+[node name="InteractiveButton3" parent="Main" instance=ExtResource("5_imvie")]
+layout_mode = 2
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = -679.0
+offset_top = 358.0
+offset_right = 934.0
+offset_bottom = 455.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_font_sizes/font_size = 45
+text = "Settings"
+hover_move = 50.0
+top_distance = 40.0
+right_offset = 590.0
+
+[node name="InteractiveButton5" parent="Main" instance=ExtResource("5_imvie")]
+layout_mode = 2
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = -705.0
+offset_top = 455.0
+offset_right = 934.0
+offset_bottom = 551.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_font_sizes/font_size = 45
+text = "Badges"
+hover_move = 50.0
+top_distance = 40.0
+right_offset = 630.0
+
+[node name="InteractiveButton4" parent="Main" instance=ExtResource("5_imvie")]
+layout_mode = 2
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = -793.0
+offset_top = 551.0
+offset_right = 934.0
+offset_bottom = 648.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_font_sizes/font_size = 45
+text = "Quit
+"
+hover_move = 50.0
+top_distance = 40.0
+right_offset = 670.0
