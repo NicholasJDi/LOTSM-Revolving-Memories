@@ -1,6 +1,6 @@
 extends Control
 
-@export var Parent : OptionsMenu
+@export var Parent : Control
 
 @export var Key : String
 @export var Display_Name : String
@@ -31,10 +31,11 @@ func _unhandled_key_input(event: InputEvent) -> void:
 
 func update_button_text():
 	var Event = InputMap.action_get_events(Key)
-	if Event is Array: 
-			Event = Event.front()
-	if not Event == null:
-		button.text = Event.as_text().replace(" (Physical)","")
+	if not Event.is_empty():
+		if Event is Array: 
+				Event = Event.front()
+		if not Event == null:
+			button.text = Event.as_text().replace(" (Physical)","")
 
 func Bind(event : InputEvent):
 	InputMap.action_erase_events(Key)

@@ -1,6 +1,6 @@
 extends Control
 
-@export var Parent : OptionsMenu
+@export var Parent : Control
 
 @export var Bus : String
 

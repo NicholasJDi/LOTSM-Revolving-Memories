@@ -1,5 +1,6 @@
-[gd_scene load_steps=11 format=3 uid="uid://cod64obpin5x0"]
+[gd_scene load_steps=12 format=3 uid="uid://cod64obpin5x0"]
 
+[ext_resource type="Script" uid="uid://dyvoilickfmia" path="res://scripts/uis/ui.gd" id="1_d1yfi"]
 [ext_resource type="FontFile" uid="uid://bl6ovrue03k0f" path="res://assets/Fonts/AndrewTyler/Minecraftia.ttf" id="1_j6b60"]
 [ext_resource type="Script" uid="uid://dclxrp8a3eaw3" path="res://scripts/uis/timer.gd" id="2_bqkqm"]
 [ext_resource type="Shader" uid="uid://pxg3m6vxkv0r" path="res://resources/Blur.gdshader" id="3_0bw8f"]
@@ -78,6 +79,7 @@ light_mode = 2
 
 [node name="UI" type="CanvasLayer"]
 process_mode = 1
+script = ExtResource("1_d1yfi")
 metadata/_edit_horizontal_guides_ = [12393.0, 6753.0]
 metadata/_edit_vertical_guides_ = [-292.0, 1289.0, 3519.0]
 

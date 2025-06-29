@@ -1,6 +1,6 @@
 extends Control
 
-@export var Parent : OptionsMenu
+@export var Parent : Control
 
 @onready var fullscreen: CheckButton = $VBoxContainer/Fullscreen
 @onready var borderless: CheckButton = $VBoxContainer/Borderless

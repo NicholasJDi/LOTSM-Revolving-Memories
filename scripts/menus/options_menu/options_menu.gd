@@ -1,14 +1,10 @@
 extends Control
-class_name OptionsMenu
 ##A Easy To Use Options Menu.
 ##
 ##A Simple And Easy To Use Options Menu That Uses Godots Built In ConfigFile System.[br]
 ##[br]
 ##Make Sure To Set [member Parent_Menu] Properly!
 
-##Force All Other Instances Of The Options Menu To Use This Instances Settings.[br]
-##(Excluding: [member Parent_Menu] And [member Globalize_Settings].)
-@export var Globalize_Settings : bool
 ##The Parent Of The Options Menu. For Example: A Main Menu Or Pause Menu.[br][br]
 ##This Is Used To Show The Parent Menu When [method exit] Is Called
 @export var Parent_Menu : Node
@@ -16,15 +12,33 @@ class_name OptionsMenu
 ##[br]
 ##Keys Act As Bus Names,[br]
 ##Values Act As Default Values. (0.0 - 100.0)
-@export var Audio_Busses : Dictionary[String, float] = {}
+@export var Audio_Busses : Dictionary[String, float] = {
+	"Master":50.0,
+	"Master - Music":50.0,
+	"Master - SFX":50.0,
+	"Music - Menu":100.0,
+	"Music - Game":100.0,
+	"SFX - Environment":100.0,
+	"SFX - Player":100.0,
+	"SFX - Dialogue":100.0}
 ##A List Of Keybinds.[br]
 ##[br]
 ##Keys Act As Input Actions,[br]
 ##Values Act As Display Names.[br]
 ##[br]
 ##Prefix Keys With A / To Make The Keybind Unchangable,[br]
-@export var Keybind_List : Dictionary[String, String] = {}
-
+@export var Keybind_List : Dictionary[String, String] = {
+	"move_left": "Move Left",
+	"move_right": "Move Right",
+	"crouch":"Crouch",
+	"jump": "Jump",
+	"dash":"Dash",
+	"slide":"Slide",
+	"wall_grab":"Wall Grab",
+	"interact": "Interact",
+	"swap_powers":"Swap Powers",
+	"/pause": "Pause"
+	}
 ##The Tab Container.
 @onready var tab_container: TabContainer = $MarginContainer/TabContainer
 ##The Gameplay Tab.
@@ -62,7 +76,7 @@ func _ready() -> void:
 
 func _input(event: InputEvent) -> void:
 	if event.is_action("pause") and self.visible:
-		exit()
+		exit() 
 
 func _on_back_pressed() -> void:
 	exit()
