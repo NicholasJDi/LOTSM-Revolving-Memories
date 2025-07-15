@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="Badge" load_steps=3 format=3 uid="uid://br17iw00pgdjr"]
+
+[ext_resource type="Texture2D" uid="uid://7hwoojfi2njq" path="res://icon.svg" id="1_bscga"]
+[ext_resource type="Script" uid="uid://bm34ev6sapfrh" path="res://resources/custom/badge.gd" id="1_gaemc"]
+
+[resource]
+script = ExtResource("1_gaemc")
+id = "test"
+icon = ExtResource("1_bscga")
+display_name = "Test Badge"
+description = "this is a test badge
+ mehehehehehehehehehehehehehehehehehehehehehehehehehehehehehehehehehehehehehehehehehehehehehehehehehehehehehehehehehehehehehehehehehehehehehehehehehehehehehehehehehehehehehehehehehehe"
+border_color = Color(0.8, 0.215686, 0.584314, 1)
+background_color = Color(0.898039, 0.239216, 0.658824, 1)
+locked_visibility = "Icon Name & Description"
+metadata/_custom_type_script = "uid://bm34ev6sapfrh"

@@ -55,6 +55,9 @@ var config_file = ConfigFile.new()
 ##Config File Path.
 const SETTINGS_FILE_PATH = "user://settings.cfg"
 
+signal exited
+
+
 func _ready() -> void:
 	if FileAccess.file_exists(SETTINGS_FILE_PATH):
 		config_file.load(SETTINGS_FILE_PATH)
@@ -84,5 +87,6 @@ func _on_back_pressed() -> void:
 ##Hides The Options Menu, Shows The [member Parent_Menu], And Saves Changes.
 func exit():
 	config_file.save(SETTINGS_FILE_PATH)
-	Parent_Menu.visible = true
-	self.visible = false
+	Parent_Menu.show()
+	hide()
+	exited.emit()
