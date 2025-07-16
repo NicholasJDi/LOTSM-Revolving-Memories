@@ -1,7 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://d3k4mvtu861ke"]
+[gd_scene load_steps=8 format=3 uid="uid://d3k4mvtu861ke"]
 
 [ext_resource type="PackedScene" uid="uid://bhn5xcjkbx18r" path="res://scenes/other/components/interactive_button.tscn" id="1_7nh2y"]
 [ext_resource type="Script" uid="uid://uaqr4oftfaww" path="res://scripts/menus/badge_menu/badge_menu.gd" id="1_ra7u8"]
+[ext_resource type="PackedScene" uid="uid://d3j0m7aidcmo5" path="res://scenes/other/components/badge_card.tscn" id="2_7j3oi"]
+[ext_resource type="Resource" uid="uid://br17iw00pgdjr" path="res://resources/badges/test_badge.tres" id="3_01reb"]
 
 [sub_resource type="Animation" id="Animation_ra7u8"]
 resource_name = "Enter"
@@ -148,20 +150,129 @@ grow_vertical = 2
 color = Color(0.7, 0.105, 0.481833, 0)
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer"]
 layout_mode = 2
+horizontal_scroll_mode = 0
+vertical_scroll_mode = 2
 
 [node name="GridContainer" type="GridContainer" parent="MarginContainer/ScrollContainer"]
 layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+columns = 4
+
+[node name="Control1" type="Control" parent="MarginContainer/ScrollContainer/GridContainer"]
+custom_minimum_size = Vector2(0, 175)
+layout_mode = 2
+
+[node name="Control2" type="Control" parent="MarginContainer/ScrollContainer/GridContainer"]
+custom_minimum_size = Vector2(0, 175)
+layout_mode = 2
+
+[node name="Control3" type="Control" parent="MarginContainer/ScrollContainer/GridContainer"]
+custom_minimum_size = Vector2(0, 175)
+layout_mode = 2
+
+[node name="Control4" type="Control" parent="MarginContainer/ScrollContainer/GridContainer"]
+custom_minimum_size = Vector2(0, 175)
+layout_mode = 2
+
+[node name="BadgeCard1" parent="MarginContainer/ScrollContainer/GridContainer" instance=ExtResource("2_7j3oi")]
+custom_minimum_size = Vector2(0, 361.471)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+badge = ExtResource("3_01reb")
+
+[node name="BadgeCard2" parent="MarginContainer/ScrollContainer/GridContainer" instance=ExtResource("2_7j3oi")]
+custom_minimum_size = Vector2(0, 361.471)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+badge = ExtResource("3_01reb")
+
+[node name="BadgeCard3" parent="MarginContainer/ScrollContainer/GridContainer" instance=ExtResource("2_7j3oi")]
+custom_minimum_size = Vector2(0, 361.471)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+badge = ExtResource("3_01reb")
+
+[node name="BadgeCard4" parent="MarginContainer/ScrollContainer/GridContainer" instance=ExtResource("2_7j3oi")]
+custom_minimum_size = Vector2(0, 361.471)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+badge = ExtResource("3_01reb")
+
+[node name="BadgeCard5" parent="MarginContainer/ScrollContainer/GridContainer" instance=ExtResource("2_7j3oi")]
+custom_minimum_size = Vector2(0, 361.471)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+badge = ExtResource("3_01reb")
+
+[node name="BadgeCard6" parent="MarginContainer/ScrollContainer/GridContainer" instance=ExtResource("2_7j3oi")]
+custom_minimum_size = Vector2(0, 361.471)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+badge = ExtResource("3_01reb")
+
+[node name="BadgeCard7" parent="MarginContainer/ScrollContainer/GridContainer" instance=ExtResource("2_7j3oi")]
+custom_minimum_size = Vector2(0, 361.471)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+badge = ExtResource("3_01reb")
+
+[node name="BadgeCard8" parent="MarginContainer/ScrollContainer/GridContainer" instance=ExtResource("2_7j3oi")]
+custom_minimum_size = Vector2(0, 361.471)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+badge = ExtResource("3_01reb")
+
+[node name="BadgeCard9" parent="MarginContainer/ScrollContainer/GridContainer" instance=ExtResource("2_7j3oi")]
+custom_minimum_size = Vector2(0, 361.471)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+badge = ExtResource("3_01reb")
+
+[node name="BadgeCard10" parent="MarginContainer/ScrollContainer/GridContainer" instance=ExtResource("2_7j3oi")]
+custom_minimum_size = Vector2(0, 361.471)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+badge = ExtResource("3_01reb")
+
+[node name="BadgeCard11" parent="MarginContainer/ScrollContainer/GridContainer" instance=ExtResource("2_7j3oi")]
+custom_minimum_size = Vector2(0, 361.471)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+badge = ExtResource("3_01reb")
+
+[node name="BadgeCard12" parent="MarginContainer/ScrollContainer/GridContainer" instance=ExtResource("2_7j3oi")]
+custom_minimum_size = Vector2(0, 361.471)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+badge = ExtResource("3_01reb")
 
 [node name="Title" type="MarginContainer" parent="."]
-layout_mode = 0
-offset_right = 1152.0
-offset_bottom = 166.0
+custom_minimum_size = Vector2(569, 163)
+layout_mode = 1
+offset_right = 569.0
+offset_bottom = 163.0
 theme_override_constants/margin_left = 32
 
 [node name="TitleLabel" type="Label" parent="Title"]
@@ -215,7 +326,7 @@ position = Vector2(0, -3)
 color = Color(0.9, 0.243, 0.6591, 1)
 polygon = PackedVector2Array(-32, 0, -32, 152, 430, 152, 518, 0)
 
-[node name="ShadowPolygon" type="Polygon2D" parent="Title/TitleLabel/BackgroundPolygon"]
+[node name="OutlinePolygon" type="Polygon2D" parent="Title/TitleLabel/BackgroundPolygon"]
 show_behind_parent = true
 color = Color(0.8, 0.216, 0.585867, 1)
 polygon = PackedVector2Array(-32, 166, 441, 166, 537, 0, -32, 0)

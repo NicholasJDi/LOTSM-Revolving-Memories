@@ -1392,11 +1392,8 @@ vertical_alignment = 2
 [node name="Title" type="MarginContainer" parent="Main"]
 custom_minimum_size = Vector2(569, 163)
 layout_mode = 1
-anchors_preset = 9
-anchor_bottom = 1.0
 offset_right = 569.0
-offset_bottom = -485.0
-grow_vertical = 2
+offset_bottom = 163.0
 theme_override_constants/margin_left = 32
 
 [node name="TitleLabel" type="Label" parent="Main/Title"]
