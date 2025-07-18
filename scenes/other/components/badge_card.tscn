@@ -1,9 +1,22 @@
-[gd_scene load_steps=3 format=3 uid="uid://d3j0m7aidcmo5"]
+[gd_scene load_steps=5 format=3 uid="uid://d3j0m7aidcmo5"]
 
 [ext_resource type="Script" uid="uid://dq3ut2kd7eu84" path="res://scripts/other/components/badge_card.gd" id="1_v1ff8"]
-[ext_resource type="Texture2D" uid="uid://7hwoojfi2njq" path="res://icon.svg" id="2_cgaij"]
+[ext_resource type="Texture2D" uid="uid://dxxq37daehguu" path="res://assets/Textures/NicholasJDi/Back.png" id="2_5ke61"]
+[ext_resource type="Script" uid="uid://bm34ev6sapfrh" path="res://resources/custom/badge.gd" id="3_5bk0w"]
+
+[sub_resource type="Resource" id="Resource_5bohj"]
+script = ExtResource("3_5bk0w")
+id = "ee"
+icon = ExtResource("2_5ke61")
+display_name = "ee"
+description = "ee"
+border_color = Color(0.8, 0.215686, 0.584314, 1)
+background_color = Color(0.898039, 0.239216, 0.658824, 1)
+locked_visibility = "Icon Name & Description"
+metadata/_custom_type_script = "uid://bm34ev6sapfrh"
 
 [node name="BadgeCard" type="Control"]
+custom_minimum_size = Vector2(0, 360)
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -11,6 +24,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_v1ff8")
+badge = SubResource("Resource_5bohj")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 1
@@ -27,15 +41,16 @@ layout_mode = 2
 layout_mode = 2
 
 [node name="Icon" type="TextureRect" parent="VBoxContainer/Icon&NameSection/VBoxContainer"]
+custom_minimum_size = Vector2(0, 120)
 layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-texture = ExtResource("2_cgaij")
-stretch_mode = 2
+size_flags_vertical = 3
+texture = ExtResource("2_5ke61")
+expand_mode = 1
+stretch_mode = 5
 
 [node name="Name" type="Label" parent="VBoxContainer/Icon&NameSection/VBoxContainer"]
 layout_mode = 2
-text = "Badge Name"
+text = "ee"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -47,4 +62,4 @@ layout_mode = 2
 size_flags_vertical = 3
 theme_override_constants/outline_size = 5
 bbcode_enabled = true
-text = "Badge Description"
+text = "ee"

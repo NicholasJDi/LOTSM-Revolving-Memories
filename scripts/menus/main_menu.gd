@@ -16,6 +16,7 @@ extends Control
 func _on_new_game_pressed() -> void:
 	animation_player.play("Main_Menu/Exit - New Game")
 	await animation_player.animation_finished
+	BadgeManager.award_badge("welcome")
 	animation_player.play("Main_Menu/Enter")
 
 func _on_continue_pressed() -> void:

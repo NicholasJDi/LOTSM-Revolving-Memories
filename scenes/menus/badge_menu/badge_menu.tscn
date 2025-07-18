@@ -1,9 +1,33 @@
-[gd_scene load_steps=8 format=3 uid="uid://d3k4mvtu861ke"]
+[gd_scene load_steps=12 format=3 uid="uid://d3k4mvtu861ke"]
 
 [ext_resource type="PackedScene" uid="uid://bhn5xcjkbx18r" path="res://scenes/other/components/interactive_button.tscn" id="1_7nh2y"]
 [ext_resource type="Script" uid="uid://uaqr4oftfaww" path="res://scripts/menus/badge_menu/badge_menu.gd" id="1_ra7u8"]
 [ext_resource type="PackedScene" uid="uid://d3j0m7aidcmo5" path="res://scenes/other/components/badge_card.tscn" id="2_7j3oi"]
 [ext_resource type="Resource" uid="uid://br17iw00pgdjr" path="res://resources/badges/test_badge.tres" id="3_01reb"]
+[ext_resource type="Texture2D" uid="uid://7hwoojfi2njq" path="res://icon.svg" id="3_841gd"]
+[ext_resource type="Script" uid="uid://bm34ev6sapfrh" path="res://resources/custom/badge.gd" id="4_lw38o"]
+
+[sub_resource type="Resource" id="Resource_p0g73"]
+script = ExtResource("4_lw38o")
+id = "welcome"
+icon = ExtResource("3_841gd")
+display_name = "Welcome, to Reality..?"
+description = "Welcome To Revolving Memories."
+border_color = Color(0.8, 0.215686, 0.584314, 1)
+background_color = Color(0.898039, 0.239216, 0.658824, 1)
+locked_visibility = "Icon"
+metadata/_custom_type_script = "uid://bm34ev6sapfrh"
+
+[sub_resource type="Resource" id="Resource_841gd"]
+script = ExtResource("4_lw38o")
+id = "Immersion_Break"
+icon = ExtResource("3_841gd")
+display_name = "What Is Immersion?"
+description = "Wait Hold On That Isnt Right."
+border_color = Color(0.8, 0.215686, 0.584314, 1)
+background_color = Color(0.898039, 0.239216, 0.658824, 1)
+locked_visibility = "Name"
+metadata/_custom_type_script = "uid://bm34ev6sapfrh"
 
 [sub_resource type="Animation" id="Animation_ra7u8"]
 resource_name = "Enter"
@@ -184,85 +208,72 @@ layout_mode = 2
 custom_minimum_size = Vector2(0, 175)
 layout_mode = 2
 
-[node name="BadgeCard1" parent="MarginContainer/ScrollContainer/GridContainer" instance=ExtResource("2_7j3oi")]
-custom_minimum_size = Vector2(0, 361.471)
+[node name="Welcome" parent="MarginContainer/ScrollContainer/GridContainer" instance=ExtResource("2_7j3oi")]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-badge = ExtResource("3_01reb")
+badge = SubResource("Resource_p0g73")
 
-[node name="BadgeCard2" parent="MarginContainer/ScrollContainer/GridContainer" instance=ExtResource("2_7j3oi")]
-custom_minimum_size = Vector2(0, 361.471)
+[node name="Immersion_Break" parent="MarginContainer/ScrollContainer/GridContainer" instance=ExtResource("2_7j3oi")]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-badge = ExtResource("3_01reb")
+badge = SubResource("Resource_841gd")
 
 [node name="BadgeCard3" parent="MarginContainer/ScrollContainer/GridContainer" instance=ExtResource("2_7j3oi")]
-custom_minimum_size = Vector2(0, 361.471)
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-badge = ExtResource("3_01reb")
 
 [node name="BadgeCard4" parent="MarginContainer/ScrollContainer/GridContainer" instance=ExtResource("2_7j3oi")]
-custom_minimum_size = Vector2(0, 361.471)
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 badge = ExtResource("3_01reb")
 
 [node name="BadgeCard5" parent="MarginContainer/ScrollContainer/GridContainer" instance=ExtResource("2_7j3oi")]
-custom_minimum_size = Vector2(0, 361.471)
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 badge = ExtResource("3_01reb")
 
 [node name="BadgeCard6" parent="MarginContainer/ScrollContainer/GridContainer" instance=ExtResource("2_7j3oi")]
-custom_minimum_size = Vector2(0, 361.471)
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 badge = ExtResource("3_01reb")
 
 [node name="BadgeCard7" parent="MarginContainer/ScrollContainer/GridContainer" instance=ExtResource("2_7j3oi")]
-custom_minimum_size = Vector2(0, 361.471)
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 badge = ExtResource("3_01reb")
 
 [node name="BadgeCard8" parent="MarginContainer/ScrollContainer/GridContainer" instance=ExtResource("2_7j3oi")]
-custom_minimum_size = Vector2(0, 361.471)
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 badge = ExtResource("3_01reb")
 
 [node name="BadgeCard9" parent="MarginContainer/ScrollContainer/GridContainer" instance=ExtResource("2_7j3oi")]
-custom_minimum_size = Vector2(0, 361.471)
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 badge = ExtResource("3_01reb")
 
 [node name="BadgeCard10" parent="MarginContainer/ScrollContainer/GridContainer" instance=ExtResource("2_7j3oi")]
-custom_minimum_size = Vector2(0, 361.471)
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 badge = ExtResource("3_01reb")
 
 [node name="BadgeCard11" parent="MarginContainer/ScrollContainer/GridContainer" instance=ExtResource("2_7j3oi")]
-custom_minimum_size = Vector2(0, 361.471)
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 badge = ExtResource("3_01reb")
 
 [node name="BadgeCard12" parent="MarginContainer/ScrollContainer/GridContainer" instance=ExtResource("2_7j3oi")]
-custom_minimum_size = Vector2(0, 361.471)
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
