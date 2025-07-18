@@ -5,6 +5,8 @@ extends Button
 @export var disable_interactions : bool
 @export var flip_polygon : bool
 @export var hover_move : float
+@export var toggle_move : float
+@export var focus_move : float
 @export var target_position : float
 @export var top_distance : float
 @export var bottom_distance : float
@@ -102,3 +104,18 @@ func _on_mouse_exited() -> void:
 		current_button_color = idle_color
 		current_outline_color = outline_idle_color
 	target_position -= hover_move
+
+
+func _on_toggled(toggled_on: bool) -> void:
+	if toggled_on:
+		target_position += toggle_move
+	else:
+		target_position -= toggle_move
+
+
+func _on_focus_entered() -> void:
+	target_position += focus_move
+
+
+func _on_focus_exited() -> void:
+	target_position -= focus_move
