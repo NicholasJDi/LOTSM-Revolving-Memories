@@ -24,7 +24,7 @@ extends Button
 @export_group("Colors")
 @export var idle_color : Color = "d93b9f"
 @export var hovered_color : Color = "ed40ae"
-@export var shadow_color : Color = "52163c64"
+@export var shadow_color : Color = "52163c50"
 @export var outline_idle_color : Color = "ed40ae"
 @export var outline_hover_color : Color = "e53da8"
 @export_group("Current Colors")

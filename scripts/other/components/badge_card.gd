@@ -5,17 +5,18 @@ extends Control
 @export var locked : bool
 @export var id : float
 
-@onready var badge_icon: TextureRect = $"VBoxContainer/Icon&NameSection/VBoxContainer/Icon"
-@onready var badge_name: Label = $"VBoxContainer/Icon&NameSection/VBoxContainer/Name"
-@onready var badge_description: RichTextLabel = $VBoxContainer/Description
+@onready var badge_icon: TextureRect = $"MarginContainer/VBoxContainer/Icon&NameSection/VBoxContainer/Icon"
+@onready var badge_name: Label = $"MarginContainer/VBoxContainer/Icon&NameSection/VBoxContainer/Name"
+@onready var badge_description: RichTextLabel = $MarginContainer/VBoxContainer/Description
 
 var last_locked : bool
 
 var locked_badge = {
 	"icon" : load("res://icon.svg"),
 	"display_name" : "???",
-	"description" : "You Cannot Veiw This Badges Description Until It Has Been Unlocked."
+	"description" : "You Cannot Veiw This Badge's Description Until It Has Been Unlocked."
 }
+
 
 func _ready() -> void:
 	if badge != null and not Engine.is_editor_hint():
