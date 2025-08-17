@@ -4,6 +4,7 @@ extends Control
 
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var back: Button = $Back
+@onready var menu_container: ColorRect = $MenuContainer
 
 signal exited
 
@@ -28,5 +29,6 @@ func exit():
 
 func enter():
 	animation_player.play("Enter")
+	await get_tree().process_frame
 	show()
 	parent_menu.hide()

@@ -95,14 +95,14 @@ tracks/4/keys = {
 tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("Background:color")
+tracks/5/path = NodePath("MenuContainer:modulate")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
 "times": PackedFloat32Array(0, 0.6),
 "transitions": PackedFloat32Array(0.4, 1),
 "update": 0,
-"values": [Color(0.7, 0.105, 0.481833, 0), Color(0.75, 0.1725, 0.53825, 1)]
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
 }
 
 [sub_resource type="Animation" id="Animation_7j3oi"]
@@ -135,14 +135,14 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Background:color")
+tracks/2/path = NodePath("MenuContainer:modulate")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
 "times": PackedFloat32Array(0, 0.6),
 "transitions": PackedFloat32Array(0.4, 1),
 "update": 0,
-"values": [Color(0.74902, 0.172549, 0.537255, 1), Color(0.7, 0.105, 0.481833, 0)]
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_7j3oi"]
@@ -161,119 +161,155 @@ grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 script = ExtResource("1_ra7u8")
-metadata/_edit_vertical_guides_ = [18.0]
 metadata/_edit_use_anchors_ = true
 
-[node name="Background" type="ColorRect" parent="."]
+[node name="MenuContainer" type="ColorRect" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.7, 0.105, 0.481833, 0)
+color = Color(0.75, 0.1725, 0.53825, 1)
 
-[node name="MarginContainer" type="MarginContainer" parent="."]
+[node name="ColorRect" type="ColorRect" parent="MenuContainer"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+color = Color(0.74902, 0.172549, 0.537255, 1)
 
-[node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="MenuContainer"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 0
+
+[node name="Sorting" type="Control" parent="MenuContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 163)
 layout_mode = 2
-horizontal_scroll_mode = 0
-vertical_scroll_mode = 2
 
-[node name="GridContainer" type="GridContainer" parent="MarginContainer/ScrollContainer"]
+[node name="BackgroundPolygon" type="Polygon2D" parent="MenuContainer/VBoxContainer/Sorting"]
+show_behind_parent = true
+position = Vector2(0, -3)
+color = Color(0.86, 0.215, 0.6235, 1)
+polygon = PackedVector2Array(567, 3, 481, 152, 1152, 152, 1152, 3)
+
+[node name="OutlinePolygon" type="Polygon2D" parent="MenuContainer/VBoxContainer/Sorting/BackgroundPolygon"]
+show_behind_parent = true
+color = Color(0.8, 0.216, 0.585867, 1)
+polygon = PackedVector2Array(473, 166, 1152, 166, 1152, 152, 481, 152)
+uv = PackedVector2Array(-32, 152, -32, 166, 444, 166, 532, 0, 518, 0, 430, 152)
+
+[node name="Label" type="Label" parent="MenuContainer/VBoxContainer/Sorting"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -638.0
+offset_bottom = 151.0
+grow_horizontal = 0
+theme_override_constants/outline_size = 10
+theme_override_font_sizes/font_size = 41
+text = "Insert Soring
+Settings Here"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ScrollContainer" type="ScrollContainer" parent="MenuContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+follow_focus = true
+horizontal_scroll_mode = 0
+
+[node name="MarginContainer" type="MarginContainer" parent="MenuContainer/VBoxContainer/ScrollContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="GridContainer" type="GridContainer" parent="MenuContainer/VBoxContainer/ScrollContainer/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/h_separation = 10
+theme_override_constants/v_separation = 10
 columns = 4
 
-[node name="Control1" type="Control" parent="MarginContainer/ScrollContainer/GridContainer"]
-custom_minimum_size = Vector2(0, 175)
-layout_mode = 2
-
-[node name="Control2" type="Control" parent="MarginContainer/ScrollContainer/GridContainer"]
-custom_minimum_size = Vector2(0, 175)
-layout_mode = 2
-
-[node name="Control3" type="Control" parent="MarginContainer/ScrollContainer/GridContainer"]
-custom_minimum_size = Vector2(0, 175)
-layout_mode = 2
-
-[node name="Control4" type="Control" parent="MarginContainer/ScrollContainer/GridContainer"]
-custom_minimum_size = Vector2(0, 175)
-layout_mode = 2
-
-[node name="Welcome" parent="MarginContainer/ScrollContainer/GridContainer" instance=ExtResource("2_7j3oi")]
+[node name="Welcome" parent="MenuContainer/VBoxContainer/ScrollContainer/MarginContainer/GridContainer" instance=ExtResource("2_7j3oi")]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 badge = SubResource("Resource_p0g73")
 
-[node name="Immersion_Break" parent="MarginContainer/ScrollContainer/GridContainer" instance=ExtResource("2_7j3oi")]
+[node name="Immersion_Break" parent="MenuContainer/VBoxContainer/ScrollContainer/MarginContainer/GridContainer" instance=ExtResource("2_7j3oi")]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 badge = SubResource("Resource_841gd")
 
-[node name="BadgeCard3" parent="MarginContainer/ScrollContainer/GridContainer" instance=ExtResource("2_7j3oi")]
+[node name="BadgeCard3" parent="MenuContainer/VBoxContainer/ScrollContainer/MarginContainer/GridContainer" instance=ExtResource("2_7j3oi")]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="BadgeCard4" parent="MarginContainer/ScrollContainer/GridContainer" instance=ExtResource("2_7j3oi")]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-badge = ExtResource("3_01reb")
-
-[node name="BadgeCard5" parent="MarginContainer/ScrollContainer/GridContainer" instance=ExtResource("2_7j3oi")]
+[node name="BadgeCard4" parent="MenuContainer/VBoxContainer/ScrollContainer/MarginContainer/GridContainer" instance=ExtResource("2_7j3oi")]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 badge = ExtResource("3_01reb")
 
-[node name="BadgeCard6" parent="MarginContainer/ScrollContainer/GridContainer" instance=ExtResource("2_7j3oi")]
+[node name="BadgeCard5" parent="MenuContainer/VBoxContainer/ScrollContainer/MarginContainer/GridContainer" instance=ExtResource("2_7j3oi")]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 badge = ExtResource("3_01reb")
 
-[node name="BadgeCard7" parent="MarginContainer/ScrollContainer/GridContainer" instance=ExtResource("2_7j3oi")]
+[node name="BadgeCard6" parent="MenuContainer/VBoxContainer/ScrollContainer/MarginContainer/GridContainer" instance=ExtResource("2_7j3oi")]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 badge = ExtResource("3_01reb")
 
-[node name="BadgeCard8" parent="MarginContainer/ScrollContainer/GridContainer" instance=ExtResource("2_7j3oi")]
+[node name="BadgeCard7" parent="MenuContainer/VBoxContainer/ScrollContainer/MarginContainer/GridContainer" instance=ExtResource("2_7j3oi")]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 badge = ExtResource("3_01reb")
 
-[node name="BadgeCard9" parent="MarginContainer/ScrollContainer/GridContainer" instance=ExtResource("2_7j3oi")]
+[node name="BadgeCard8" parent="MenuContainer/VBoxContainer/ScrollContainer/MarginContainer/GridContainer" instance=ExtResource("2_7j3oi")]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 badge = ExtResource("3_01reb")
 
-[node name="BadgeCard10" parent="MarginContainer/ScrollContainer/GridContainer" instance=ExtResource("2_7j3oi")]
+[node name="BadgeCard9" parent="MenuContainer/VBoxContainer/ScrollContainer/MarginContainer/GridContainer" instance=ExtResource("2_7j3oi")]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 badge = ExtResource("3_01reb")
 
-[node name="BadgeCard11" parent="MarginContainer/ScrollContainer/GridContainer" instance=ExtResource("2_7j3oi")]
+[node name="BadgeCard10" parent="MenuContainer/VBoxContainer/ScrollContainer/MarginContainer/GridContainer" instance=ExtResource("2_7j3oi")]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 badge = ExtResource("3_01reb")
 
-[node name="BadgeCard12" parent="MarginContainer/ScrollContainer/GridContainer" instance=ExtResource("2_7j3oi")]
+[node name="BadgeCard11" parent="MenuContainer/VBoxContainer/ScrollContainer/MarginContainer/GridContainer" instance=ExtResource("2_7j3oi")]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+badge = ExtResource("3_01reb")
+
+[node name="BadgeCard12" parent="MenuContainer/VBoxContainer/ScrollContainer/MarginContainer/GridContainer" instance=ExtResource("2_7j3oi")]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -348,9 +384,9 @@ layout_mode = 0
 anchors_preset = 0
 anchor_right = 0.0
 anchor_bottom = 0.0
-offset_left = -737.0
+offset_left = -556.0
 offset_top = 551.0
-offset_right = 510.0
+offset_right = 691.0
 offset_bottom = 648.0
 grow_horizontal = 1
 grow_vertical = 1
@@ -358,7 +394,6 @@ theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 10
 theme_override_font_sizes/font_size = 32
 text = "Back"
-disable_interactions = true
 hover_move = 50.0
 target_position = -556.0
 bottom_distance = 30.0
@@ -369,6 +404,8 @@ outline_left = 12
 right_offset = 510.0
 shadow_offset = Vector2(-10, 5)
 outline_bottom_offset = 4.0
+current_button_color = Color(0.85098, 0.231373, 0.623529, 1)
+current_outline_color = Color(0.929412, 0.25098, 0.682353, 1)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

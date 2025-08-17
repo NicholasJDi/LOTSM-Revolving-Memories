@@ -26,8 +26,9 @@ config/stretch/aspect="expand"
 
 [autoload]
 
-ConsoleWindow="*res://autoloads/console_window.tscn"
-SaveManager="*res://autoloads/save_manager.gd"
+Code="*res://autoloads/code.gd"
+GlobalUi="*res://autoloads/scenes/Global_UI.tscn"
+ConsoleWindow="*res://autoloads/scenes/console_window.tscn"
 GameManager="*res://autoloads/game_manager.gd"
 BadgeManager="*res://autoloads/badge_manager.tscn"
 

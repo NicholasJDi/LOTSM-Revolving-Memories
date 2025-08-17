@@ -76,6 +76,7 @@ func _ready() -> void:
 		node.Parent = self
 		node.Bus = Bus
 		audio.add_child(node)
+	
 
 func _input(event: InputEvent) -> void:
 	if event.is_action("pause") and self.visible:

@@ -43,10 +43,10 @@ var is_wall_grabbing : bool = false
 var can_wall_grab : bool = true
 
 func _ready() -> void:
-	position = Vector2(SaveManager.data.player.location.x, SaveManager.data.player.location.y)
-	camera_2d.zoom = Vector2(SaveManager.data.player.zoom.x, SaveManager.data.player.zoom.y)
-	checkpoint_pos = Vector2(SaveManager.data.player.checkpoint.x, SaveManager.data.player.checkpoint.y)
-	current_power_set = SaveManager.data.player.powers
+	position = Vector2(GameManager.data.player.location.x, GameManager.data.player.location.y)
+	camera_2d.zoom = Vector2(GameManager.data.player.zoom.x, GameManager.data.player.zoom.y)
+	checkpoint_pos = Vector2(GameManager.data.player.checkpoint.x, GameManager.data.player.checkpoint.y)
+	current_power_set = GameManager.data.player.powers
 	
 	movement_timer.start(0.1)
 	await movement_timer.timeout
@@ -59,14 +59,14 @@ func _process(_delta: float) -> void:
 		if not camera_2d.zoom.x == 5:
 			camera_2d.zoom.x += 0.5
 			camera_2d.zoom.y += 0.5
-			SaveManager.data.player.zoom.x = camera_2d.zoom.x
-			SaveManager.data.player.zoom.y = camera_2d.zoom.y
+			GameManager.data.player.zoom.x = camera_2d.zoom.x
+			GameManager.data.player.zoom.y = camera_2d.zoom.y
 	if Input.is_action_just_pressed("zoom_out"):
 		if not camera_2d.zoom.x == 2:
 			camera_2d.zoom.x -= 0.5
 			camera_2d.zoom.y -= 0.5
-			SaveManager.data.player.zoom.x = camera_2d.zoom.x
-			SaveManager.data.player.zoom.y = camera_2d.zoom.y
+			GameManager.data.player.zoom.x = camera_2d.zoom.x
+			GameManager.data.player.zoom.y = camera_2d.zoom.y
 
 func _physics_process(_delta: float) -> void:
 	# jump buffer
@@ -224,7 +224,7 @@ func _physics_process(_delta: float) -> void:
 		if velocity.x < -max_speed:
 			velocity.x = -max_speed
 	if velocity.y > max_speed / 2:
-		velocity.y = max_speed / 2
+		velocity.y = max_speed / 	2
 	if velocity.y < -(max_speed / 2):
 		velocity.y = -(max_speed / 2)
 	
@@ -233,8 +233,8 @@ func _physics_process(_delta: float) -> void:
 		velocity = Vector2.ZERO
 	
 	move_and_slide()
-	SaveManager.data.player.location.x = position.x
-	SaveManager.data.player.location.y = position.y
+	GameManager.data.player.location.x = position.x
+	GameManager.data.player.location.y = position.y
 
 func get_direction() -> int:
 	if not can_move:
@@ -275,8 +275,8 @@ func _on_death_hitbox_area_entered(_area: Area2D) -> void:
 
 func _on_checkpoint_hitbox_area_entered(area: Area2D) -> void:
 	checkpoint_pos = area.position
-	SaveManager.data.player.checkpoint.x = checkpoint_pos.x
-	SaveManager.data.player.checkpoint.y = checkpoint_pos.y
+	GameManager.data.player.checkpoint.x = checkpoint_pos.x
+	GameManager.data.player.checkpoint.y = checkpoint_pos.y
 
 func _on_wall_grab_timer_timeout() -> void:
 	is_wall_grabbing = false

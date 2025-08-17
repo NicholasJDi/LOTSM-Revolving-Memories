@@ -9,6 +9,9 @@ extends Control
 @onready var badge_name: Label = $"MarginContainer/VBoxContainer/Icon&NameSection/VBoxContainer/Name"
 @onready var badge_description: RichTextLabel = $MarginContainer/VBoxContainer/Description
 
+@onready var outline_color_rect: ColorRect = $OutlineColorRect
+@onready var background_color_rect: ColorRect = $OutlineColorRect/MarginContainer/BackgroundColorRect
+
 var last_locked : bool
 
 var locked_badge = {
@@ -34,8 +37,15 @@ func update() -> void:
 		badge_icon.texture = load("res://icon.svg")
 		badge_name.text = "Badge Name"
 		badge_description.text = "Badge Description"
+		background_color_rect.color = "e53da8"
+		outline_color_rect.color = "cc3795"
 		return
 	else:
+		if locked:
+			pass
+		else:
+			background_color_rect.color = badge.background_color
+			outline_color_rect.color = badge.border_color
 		if not locked or badge.locked_visibility == "Icon Name & Description":
 			badge_icon.texture = badge.icon
 			badge_name.text = badge.display_name

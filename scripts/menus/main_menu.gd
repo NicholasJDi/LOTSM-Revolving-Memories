@@ -11,13 +11,23 @@ extends Control
 @onready var main_menu: Control = $Main
 
 @onready var animation_player: AnimationPlayer = $Main/AnimationPlayer
+@onready var audio_stream_player: AudioStreamPlayer = $AudioStreamPlayer
 
+
+func _ready() -> void:
+	if not GameManager.is_scene_transitioning:
+		GlobalUi.show_scene()
+	else:
+		while GameManager.is_scene_transitioning != false:
+			await get_tree().process_frame
+	await get_tree().process_frame
+	animation_player.play("Main_Menu/Enter_Scene")
 
 func _on_new_game_pressed() -> void:
 	animation_player.play("Main_Menu/Exit - New Game")
 	await animation_player.animation_finished
 	BadgeManager.award_badge("welcome")
-	animation_player.play("Main_Menu/Enter")
+	GameManager.transition_to_scene("res://scenes/menus/main_menu.tscn")
 
 func _on_continue_pressed() -> void:
 	animation_player.play("Main_Menu/Exit - Continue")
