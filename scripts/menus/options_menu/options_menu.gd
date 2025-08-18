@@ -39,21 +39,27 @@ extends Control
 	"swap_powers":"Swap Powers",
 	"/pause": "Pause"
 	}
-##The Tab Container.
-@onready var tab_container: TabContainer = $MarginContainer/TabContainer
-##The Gameplay Tab.
-@onready var gameplay: VBoxContainer = $MarginContainer/TabContainer/Gameplay/ScrollContainer/VBoxContainer
-##The Controls Tab.
-@onready var controls: VBoxContainer = $MarginContainer/TabContainer/Controls/ScrollContainer/VBoxContainer
-##The Audio Tab.
-@onready var audio: VBoxContainer = $MarginContainer/TabContainer/Audio/ScrollContainer/VBoxContainer
-##The Graphics Tab.
-@onready var graphics: VBoxContainer = $MarginContainer/TabContainer/Graphics/ScrollContainer/VBoxContainer
 
-##Current Conig File.
-var config_file = ConfigFile.new()
+@onready var tab_container: TabContainer = $TabContainer
+@onready var gameplay: VBoxContainer = $TabContainer/Gameplay/VBoxContainer
+@onready var controls: VBoxContainer = $TabContainer/Controls/VBoxContainer
+@onready var audio: VBoxContainer = $TabContainer/Audio/VBoxContainer
+@onready var graphics: VBoxContainer = $TabContainer/Graphics/VBoxContainer
+@onready var animation_player: AnimationPlayer = $AnimationPlayer
+
+@onready var button_gameplay: Button = $Gameplay
+@onready var button_graphics: Button = $Graphics
+@onready var button_controls: Button = $Controls
+@onready var button_audio: Button = $Audio
+@onready var button_back: Button = $Back
+
 ##Config File Path.
 const SETTINGS_FILE_PATH = "user://settings.cfg"
+##Current Conig File.
+var config_file = ConfigFile.new()
+##Whether To Prevent Toggled Recursion Or Not.
+var prevent_recursion : bool
+
 
 signal exited
 
@@ -76,18 +82,55 @@ func _ready() -> void:
 		node.Parent = self
 		node.Bus = Bus
 		audio.add_child(node)
-	
 
-func _input(event: InputEvent) -> void:
-	if event.is_action("pause") and self.visible:
-		exit() 
+func _on_toggled(_toggled_on: bool, tab: int) -> void:
+	if prevent_recursion == false:
+		prevent_recursion = true
+		tab_container.current_tab = tab
+		button_gameplay.button_pressed = false
+		button_graphics.button_pressed = false
+		button_controls.button_pressed = false
+		button_audio.button_pressed = false
+		match tab:
+			0: # Gameplay
+				button_gameplay.button_pressed = true
+			1: # Graphics
+				button_graphics.button_pressed = true
+			2: # Controls
+				button_controls.button_pressed = true
+			3: # Audio
+				button_audio.button_pressed = true
+		prevent_recursion = false
 
 func _on_back_pressed() -> void:
 	exit()
 
-##Hides The Options Menu, Shows The [member Parent_Menu], And Saves Changes.
+
 func exit():
 	config_file.save(SETTINGS_FILE_PATH)
+	match tab_container.current_tab:
+			0: # Gameplay
+				animation_player.play("Settings_Menu/Exit - Gameplay")
+			1: # Graphics
+				animation_player.play("Settings_Menu/Exit - Graphics")
+			2: # Controls
+				animation_player.play("Settings_Menu/Exit - Controls")
+			3: # Audio
+				animation_player.play("Settings_Menu/Exit - Audio")
+	await  animation_player.animation_finished
 	Parent_Menu.show()
 	hide()
 	exited.emit()
+
+func enter():
+	prevent_recursion = true
+	button_gameplay.button_pressed = true
+	button_graphics.button_pressed = false
+	button_controls.button_pressed = false
+	button_audio.button_pressed = false
+	prevent_recursion = false
+	tab_container.current_tab = 0
+	animation_player.play("Settings_Menu/Enter")
+	await get_tree().process_frame
+	show()
+	Parent_Menu.hide()

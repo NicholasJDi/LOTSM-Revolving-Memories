@@ -37,8 +37,7 @@ func _on_continue_pressed() -> void:
 func _on_settings_pressed() -> void:
 	animation_player.play("Main_Menu/Exit - Settings")
 	await animation_player.animation_finished
-	options_menu.show()
-	main_menu.hide()
+	options_menu.enter()
 
 func _on_badges_pressed() -> void:
 	animation_player.play("Main_Menu/Exit - Badges")
