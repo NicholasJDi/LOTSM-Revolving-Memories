@@ -26,6 +26,7 @@ func Set_Fullscreen(enabled : bool):
 	if enabled:
 		borderless.hide()
 		Set_Borderless(false)
+		await get_tree().process_frame
 		borderless.button_pressed = false
 		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
 	else:

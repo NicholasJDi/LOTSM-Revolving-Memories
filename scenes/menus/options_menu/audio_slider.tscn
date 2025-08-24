@@ -28,9 +28,10 @@ theme_override_font_sizes/font_size = 28
 text = "Audio Bus"
 
 [node name="HSlider" type="HSlider" parent="HBoxContainer"]
-custom_minimum_size = Vector2(300, 50)
+custom_minimum_size = Vector2(250, 50)
 layout_mode = 2
 size_flags_vertical = 4
+step = 5.0
 value = 50.0
 rounded = true
 scrollable = false

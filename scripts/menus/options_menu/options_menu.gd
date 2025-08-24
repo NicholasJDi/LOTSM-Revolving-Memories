@@ -39,12 +39,13 @@ extends Control
 	"swap_powers":"Swap Powers",
 	"/pause": "Pause"
 	}
-
-@onready var tab_container: TabContainer = $TabContainer
-@onready var gameplay: VBoxContainer = $TabContainer/Gameplay/VBoxContainer
-@onready var controls: VBoxContainer = $TabContainer/Controls/VBoxContainer
-@onready var audio: VBoxContainer = $TabContainer/Audio/VBoxContainer
-@onready var graphics: VBoxContainer = $TabContainer/Graphics/VBoxContainer
+	
+@onready var scroll_container: ScrollContainer = $HBoxContainer/ScrollContainer
+@onready var tab_container: TabContainer = $HBoxContainer/ScrollContainer/TabContainer
+@onready var gameplay: VBoxContainer = $HBoxContainer/ScrollContainer/TabContainer/Gameplay
+@onready var graphics: VBoxContainer = $HBoxContainer/ScrollContainer/TabContainer/Graphics
+@onready var controls: VBoxContainer = $HBoxContainer/ScrollContainer/TabContainer/Controls
+@onready var audio: VBoxContainer = $HBoxContainer/ScrollContainer/TabContainer/Audio
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 
 @onready var button_gameplay: Button = $Gameplay
@@ -87,6 +88,7 @@ func _on_toggled(_toggled_on: bool, tab: int) -> void:
 	if prevent_recursion == false:
 		prevent_recursion = true
 		tab_container.current_tab = tab
+		scroll_container.scroll_vertical = 0
 		button_gameplay.button_pressed = false
 		button_graphics.button_pressed = false
 		button_controls.button_pressed = false

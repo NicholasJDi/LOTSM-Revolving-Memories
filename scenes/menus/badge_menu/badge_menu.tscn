@@ -164,7 +164,6 @@ script = ExtResource("1_ra7u8")
 metadata/_edit_use_anchors_ = true
 
 [node name="MenuContainer" type="ColorRect" parent="."]
-modulate = Color(1, 1, 1, 0)
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -195,17 +194,24 @@ theme_override_constants/separation = 0
 custom_minimum_size = Vector2(0, 163)
 layout_mode = 2
 
-[node name="BackgroundPolygon" type="Polygon2D" parent="MenuContainer/VBoxContainer/Sorting"]
-show_behind_parent = true
-position = Vector2(0, -3)
-color = Color(0.86, 0.215, 0.6235, 1)
-polygon = PackedVector2Array(567, 3, 481, 152, 1152, 152, 1152, 3)
+[node name="ColorRect" type="ColorRect" parent="MenuContainer/VBoxContainer/Sorting"]
+custom_minimum_size = Vector2(0, 163)
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+grow_horizontal = 2
+color = Color(0.858824, 0.215686, 0.623529, 1)
 
-[node name="OutlinePolygon" type="Polygon2D" parent="MenuContainer/VBoxContainer/Sorting/BackgroundPolygon"]
-show_behind_parent = true
-color = Color(0.8, 0.216, 0.585867, 1)
-polygon = PackedVector2Array(473, 166, 1152, 166, 1152, 152, 481, 152)
-uv = PackedVector2Array(-32, 152, -32, 166, 444, 166, 532, 0, 518, 0, 430, 152)
+[node name="ColorRect2" type="ColorRect" parent="MenuContainer/VBoxContainer/Sorting/ColorRect"]
+custom_minimum_size = Vector2(0, 14)
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+color = Color(0.8, 0.215686, 0.584314, 1)
 
 [node name="Label" type="Label" parent="MenuContainer/VBoxContainer/Sorting"]
 layout_mode = 1
@@ -406,6 +412,8 @@ outline_left = 12
 right_offset = 510.0
 shadow_offset = Vector2(-10, 5)
 outline_bottom_offset = 4.0
+current_button_color = Color(0.85098, 0.231373, 0.623529, 1)
+current_outline_color = Color(0.929412, 0.25098, 0.682353, 1)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

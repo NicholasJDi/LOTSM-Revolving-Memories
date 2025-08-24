@@ -12,7 +12,7 @@ func _ready() -> void:
 	if Parent.config_file.has_section_key("Audio", Bus):
 		h_slider.value = Parent.config_file.get_value("Audio", Bus)
 		Set_Volume(Parent.config_file.get_value("Audio", Bus))
-	label.text = Bus + " Volume"
+	label.text = Bus
 
 func _on_h_slider_value_changed(value: float) -> void:
 	Set_Volume(h_slider.value)

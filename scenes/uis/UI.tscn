@@ -318,6 +318,7 @@ text = "Exit"
 [node name="Timer" type="Timer" parent="Pause_Menu"]
 
 [node name="Light_Refracter" type="ColorRect" parent="."]
+visible = false
 z_index = -4096
 z_as_relative = false
 material = SubResource("CanvasItemMaterial_ku2my")

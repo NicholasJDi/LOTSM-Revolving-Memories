@@ -1,7 +1,26 @@
-[gd_scene load_steps=11 format=3 uid="uid://dbhgwqf1hclox"]
+[gd_scene load_steps=21 format=3 uid="uid://dbhgwqf1hclox"]
 
 [ext_resource type="Script" uid="uid://bex1kilk8j0hg" path="res://scripts/menus/options_menu/options_menu.gd" id="1_0dyb4"]
+[ext_resource type="PackedScene" uid="uid://nrb6h0vxo2sg" path="res://scenes/menus/options_menu/window_settings.tscn" id="2_odwes"]
 [ext_resource type="PackedScene" uid="uid://bhn5xcjkbx18r" path="res://scenes/other/components/interactive_button.tscn" id="3_odwes"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_0fxk6"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_vduk8"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_odwes"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_lqrwr"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_meppv"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_35m4m"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_x0syw"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_0at57"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_icgry"]
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_euy4r"]
 
@@ -432,6 +451,254 @@ tracks/9/keys = {
 "values": [true]
 }
 
+[sub_resource type="Animation" id="Animation_meppv"]
+resource_name = "Exit - Audio"
+length = 1.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Back:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.6),
+"transitions": PackedFloat32Array(0.4, 1.5, 1),
+"update": 0,
+"values": [Vector2(-506, 551), Vector2(-456, 551), Vector2(-757, 551)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Audio:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.1, 0.401909, 0.7),
+"transitions": PackedFloat32Array(0.4, 1.5, 1),
+"update": 0,
+"values": [Vector2(-494, 454), Vector2(-446, 454), Vector2(-775, 454)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Controls:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.2, 0.5, 0.8),
+"transitions": PackedFloat32Array(0.4, 1.5, 1),
+"update": 0,
+"values": [Vector2(-477, 357), Vector2(-427, 357), Vector2(-738, 357)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Graphics:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.3, 0.598091, 0.9),
+"transitions": PackedFloat32Array(0.4, 1.5, 1),
+"update": 0,
+"values": [Vector2(-472, 260), Vector2(-422, 260), Vector2(-763, 260)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Gameplay:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0.4, 0.698091, 1),
+"transitions": PackedFloat32Array(0.4, 1.5, 1),
+"update": 0,
+"values": [Vector2(-469, 163), Vector2(-419, 163), Vector2(-790, 163)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Back:disable_interactions")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Audio:disable_interactions")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Controls:disable_interactions")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Graphics:disable_interactions")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("Gameplay:disable_interactions")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_lqrwr"]
+resource_name = "Exit - Controls"
+length = 1.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Back:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.6),
+"transitions": PackedFloat32Array(0.4, 1.5, 1),
+"update": 0,
+"values": [Vector2(-506, 551), Vector2(-456, 551), Vector2(-757, 551)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Audio:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.1, 0.401909, 0.7),
+"transitions": PackedFloat32Array(0.4, 1.5, 1),
+"update": 0,
+"values": [Vector2(-544, 454), Vector2(-496, 454), Vector2(-775, 454)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Controls:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.2, 0.5, 0.8),
+"transitions": PackedFloat32Array(0.4, 1.5, 1),
+"update": 0,
+"values": [Vector2(-427, 357), Vector2(-377, 357), Vector2(-738, 357)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Graphics:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.3, 0.598091, 0.9),
+"transitions": PackedFloat32Array(0.4, 1.5, 1),
+"update": 0,
+"values": [Vector2(-472, 260), Vector2(-422, 260), Vector2(-763, 260)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Gameplay:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0.4, 0.698091, 1),
+"transitions": PackedFloat32Array(0.4, 1.5, 1),
+"update": 0,
+"values": [Vector2(-469, 163), Vector2(-419, 163), Vector2(-790, 163)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Back:disable_interactions")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Audio:disable_interactions")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Controls:disable_interactions")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Graphics:disable_interactions")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("Gameplay:disable_interactions")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
 [sub_resource type="Animation" id="Animation_vduk8"]
 resource_name = "Exit - Gameplay"
 length = 1.1
@@ -680,254 +947,6 @@ tracks/9/keys = {
 "values": [true]
 }
 
-[sub_resource type="Animation" id="Animation_lqrwr"]
-resource_name = "Exit - Controls"
-length = 1.1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Back:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.3, 0.6),
-"transitions": PackedFloat32Array(0.4, 1.5, 1),
-"update": 0,
-"values": [Vector2(-506, 551), Vector2(-456, 551), Vector2(-757, 551)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Audio:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0.1, 0.401909, 0.7),
-"transitions": PackedFloat32Array(0.4, 1.5, 1),
-"update": 0,
-"values": [Vector2(-544, 454), Vector2(-496, 454), Vector2(-775, 454)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Controls:position")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0.2, 0.5, 0.8),
-"transitions": PackedFloat32Array(0.4, 1.5, 1),
-"update": 0,
-"values": [Vector2(-427, 357), Vector2(-377, 357), Vector2(-738, 357)]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("Graphics:position")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0.3, 0.598091, 0.9),
-"transitions": PackedFloat32Array(0.4, 1.5, 1),
-"update": 0,
-"values": [Vector2(-472, 260), Vector2(-422, 260), Vector2(-763, 260)]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("Gameplay:position")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0.4, 0.698091, 1),
-"transitions": PackedFloat32Array(0.4, 1.5, 1),
-"update": 0,
-"values": [Vector2(-469, 163), Vector2(-419, 163), Vector2(-790, 163)]
-}
-tracks/5/type = "value"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("Back:disable_interactions")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-tracks/6/type = "value"
-tracks/6/imported = false
-tracks/6/enabled = true
-tracks/6/path = NodePath("Audio:disable_interactions")
-tracks/6/interp = 1
-tracks/6/loop_wrap = true
-tracks/6/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-tracks/7/type = "value"
-tracks/7/imported = false
-tracks/7/enabled = true
-tracks/7/path = NodePath("Controls:disable_interactions")
-tracks/7/interp = 1
-tracks/7/loop_wrap = true
-tracks/7/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-tracks/8/type = "value"
-tracks/8/imported = false
-tracks/8/enabled = true
-tracks/8/path = NodePath("Graphics:disable_interactions")
-tracks/8/interp = 1
-tracks/8/loop_wrap = true
-tracks/8/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-tracks/9/type = "value"
-tracks/9/imported = false
-tracks/9/enabled = true
-tracks/9/path = NodePath("Gameplay:disable_interactions")
-tracks/9/interp = 1
-tracks/9/loop_wrap = true
-tracks/9/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-
-[sub_resource type="Animation" id="Animation_meppv"]
-resource_name = "Exit - Audio"
-length = 1.1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Back:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.3, 0.6),
-"transitions": PackedFloat32Array(0.4, 1.5, 1),
-"update": 0,
-"values": [Vector2(-506, 551), Vector2(-456, 551), Vector2(-757, 551)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Audio:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0.1, 0.401909, 0.7),
-"transitions": PackedFloat32Array(0.4, 1.5, 1),
-"update": 0,
-"values": [Vector2(-494, 454), Vector2(-446, 454), Vector2(-775, 454)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Controls:position")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0.2, 0.5, 0.8),
-"transitions": PackedFloat32Array(0.4, 1.5, 1),
-"update": 0,
-"values": [Vector2(-477, 357), Vector2(-427, 357), Vector2(-738, 357)]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("Graphics:position")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0.3, 0.598091, 0.9),
-"transitions": PackedFloat32Array(0.4, 1.5, 1),
-"update": 0,
-"values": [Vector2(-472, 260), Vector2(-422, 260), Vector2(-763, 260)]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("Gameplay:position")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0.4, 0.698091, 1),
-"transitions": PackedFloat32Array(0.4, 1.5, 1),
-"update": 0,
-"values": [Vector2(-469, 163), Vector2(-419, 163), Vector2(-790, 163)]
-}
-tracks/5/type = "value"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("Back:disable_interactions")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-tracks/6/type = "value"
-tracks/6/imported = false
-tracks/6/enabled = true
-tracks/6/path = NodePath("Audio:disable_interactions")
-tracks/6/interp = 1
-tracks/6/loop_wrap = true
-tracks/6/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-tracks/7/type = "value"
-tracks/7/imported = false
-tracks/7/enabled = true
-tracks/7/path = NodePath("Controls:disable_interactions")
-tracks/7/interp = 1
-tracks/7/loop_wrap = true
-tracks/7/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-tracks/8/type = "value"
-tracks/8/imported = false
-tracks/8/enabled = true
-tracks/8/path = NodePath("Graphics:disable_interactions")
-tracks/8/interp = 1
-tracks/8/loop_wrap = true
-tracks/8/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-tracks/9/type = "value"
-tracks/9/imported = false
-tracks/9/enabled = true
-tracks/9/path = NodePath("Gameplay:disable_interactions")
-tracks/9/interp = 1
-tracks/9/loop_wrap = true
-tracks/9/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_8r73w"]
 _data = {
 &"Enter": SubResource("Animation_8r73w"),
@@ -948,56 +967,193 @@ grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 script = ExtResource("1_0dyb4")
+metadata/_edit_vertical_guides_ = [385.0]
 
-[node name="TabContainer" type="TabContainer" parent="."]
+[node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+color = Color(0, 0, 0, 0.313726)
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 14
+
+[node name="VSeparator" type="VSeparator" parent="HBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 371
+theme_override_styles/separator = SubResource("StyleBoxEmpty_0fxk6")
+
+[node name="ScrollContainer" type="ScrollContainer" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+follow_focus = true
+horizontal_scroll_mode = 0
+vertical_scroll_mode = 2
+
+[node name="TabContainer" type="TabContainer" parent="HBoxContainer/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_styles/tab_focus = SubResource("StyleBoxEmpty_vduk8")
+theme_override_styles/tab_disabled = SubResource("StyleBoxEmpty_odwes")
+theme_override_styles/tabbar_background = SubResource("StyleBoxEmpty_lqrwr")
+theme_override_styles/panel = SubResource("StyleBoxEmpty_meppv")
+theme_override_styles/tab_selected = SubResource("StyleBoxEmpty_35m4m")
+theme_override_styles/tab_hovered = SubResource("StyleBoxEmpty_x0syw")
+theme_override_styles/tab_unselected = SubResource("StyleBoxEmpty_0at57")
 tab_alignment = 2
 current_tab = 0
 tabs_visible = false
 
-[node name="Gameplay" type="ScrollContainer" parent="TabContainer"]
+[node name="Gameplay" type="VBoxContainer" parent="HBoxContainer/ScrollContainer/TabContainer"]
 layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
 metadata/_tab_index = 0
 
-[node name="VBoxContainer" type="VBoxContainer" parent="TabContainer/Gameplay"]
+[node name="HSeparator" type="HSeparator" parent="HBoxContainer/ScrollContainer/TabContainer/Gameplay"]
+custom_minimum_size = Vector2(0, 163)
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxEmpty_icgry")
+
+[node name="Label" type="Label" parent="HBoxContainer/ScrollContainer/TabContainer/Gameplay"]
+layout_mode = 2
+size_flags_vertical = 1
+theme_override_font_sizes/font_size = 28
+text = "adiwahfuiawhfiahiufwafs"
+
+[node name="Label2" type="Label" parent="HBoxContainer/ScrollContainer/TabContainer/Gameplay"]
+layout_mode = 2
+size_flags_vertical = 1
+theme_override_font_sizes/font_size = 28
+text = "aghiawgiogjiaojg09awgu"
+
+[node name="Label3" type="Label" parent="HBoxContainer/ScrollContainer/TabContainer/Gameplay"]
+layout_mode = 2
+size_flags_vertical = 1
+theme_override_font_sizes/font_size = 28
+text = "fhwiejfihg98wehge98wg"
+
+[node name="Label4" type="Label" parent="HBoxContainer/ScrollContainer/TabContainer/Gameplay"]
+layout_mode = 2
+size_flags_vertical = 1
+theme_override_font_sizes/font_size = 28
+text = "aoiwjgioajgvisaeug9waw"
+
+[node name="Label5" type="Label" parent="HBoxContainer/ScrollContainer/TabContainer/Gameplay"]
+layout_mode = 2
+size_flags_vertical = 1
+theme_override_font_sizes/font_size = 28
+text = "knhbhijasneiucofhawuifh"
+
+[node name="Label6" type="Label" parent="HBoxContainer/ScrollContainer/TabContainer/Gameplay"]
+layout_mode = 2
+size_flags_vertical = 1
+theme_override_font_sizes/font_size = 28
+text = "wajfihwaifguHAOWighaag"
+
+[node name="Label7" type="Label" parent="HBoxContainer/ScrollContainer/TabContainer/Gameplay"]
+layout_mode = 2
+size_flags_vertical = 1
+theme_override_font_sizes/font_size = 28
+text = "oawfjiawohfoiusehogfhe"
+
+[node name="Label8" type="Label" parent="HBoxContainer/ScrollContainer/TabContainer/Gameplay"]
+layout_mode = 2
+size_flags_vertical = 1
+theme_override_font_sizes/font_size = 28
+text = "pgmishogherusguerihgei"
+
+[node name="Label9" type="Label" parent="HBoxContainer/ScrollContainer/TabContainer/Gameplay"]
+layout_mode = 2
+size_flags_vertical = 1
+theme_override_font_sizes/font_size = 28
+text = "wuhgiwuhgoahgeuwihgueh"
+
+[node name="Label10" type="Label" parent="HBoxContainer/ScrollContainer/TabContainer/Gameplay"]
+layout_mode = 2
+size_flags_vertical = 1
+theme_override_font_sizes/font_size = 28
+text = "iwgoiuwegh3hgiuewhaglhi"
+
+[node name="Label11" type="Label" parent="HBoxContainer/ScrollContainer/TabContainer/Gameplay"]
+layout_mode = 2
+size_flags_vertical = 1
+theme_override_font_sizes/font_size = 28
+text = "ghaignouheshfiushfeiuh"
+
+[node name="Label12" type="Label" parent="HBoxContainer/ScrollContainer/TabContainer/Gameplay"]
+layout_mode = 2
+size_flags_vertical = 1
+theme_override_font_sizes/font_size = 28
+text = "foaeiughwoerhgw9eghuw"
+
+[node name="Label13" type="Label" parent="HBoxContainer/ScrollContainer/TabContainer/Gameplay"]
+layout_mode = 2
+size_flags_vertical = 1
+theme_override_font_sizes/font_size = 28
+text = "gwioeghwuiehgwoihfiweehf"
+
+[node name="Label14" type="Label" parent="HBoxContainer/ScrollContainer/TabContainer/Gameplay"]
+layout_mode = 2
+size_flags_vertical = 1
+theme_override_font_sizes/font_size = 28
+text = "wagvbhueahfuiwhf8oewhf"
+
+[node name="Label15" type="Label" parent="HBoxContainer/ScrollContainer/TabContainer/Gameplay"]
+layout_mode = 2
+size_flags_vertical = 1
+theme_override_font_sizes/font_size = 28
+text = "ghoiaewhg90wegh8w98hgw"
+
+[node name="Graphics" type="VBoxContainer" parent="HBoxContainer/ScrollContainer/TabContainer"]
+visible = false
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-
-[node name="Graphics" type="ScrollContainer" parent="TabContainer"]
-visible = false
-layout_mode = 2
 metadata/_tab_index = 1
 
-[node name="VBoxContainer" type="VBoxContainer" parent="TabContainer/Graphics"]
+[node name="HSeparator" type="HSeparator" parent="HBoxContainer/ScrollContainer/TabContainer/Graphics"]
+custom_minimum_size = Vector2(0, 163)
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxEmpty_icgry")
+
+[node name="Window_Settings" parent="HBoxContainer/ScrollContainer/TabContainer/Graphics" node_paths=PackedStringArray("Parent") instance=ExtResource("2_odwes")]
+layout_mode = 2
+Parent = NodePath("../../../../..")
+
+[node name="Controls" type="VBoxContainer" parent="HBoxContainer/ScrollContainer/TabContainer"]
+visible = false
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-
-[node name="Controls" type="ScrollContainer" parent="TabContainer"]
-visible = false
-layout_mode = 2
 metadata/_tab_index = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="TabContainer/Controls"]
+[node name="HSeparator" type="HSeparator" parent="HBoxContainer/ScrollContainer/TabContainer/Controls"]
+custom_minimum_size = Vector2(0, 163)
 layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
+theme_override_styles/separator = SubResource("StyleBoxEmpty_icgry")
 
-[node name="Audio" type="ScrollContainer" parent="TabContainer"]
+[node name="Audio" type="VBoxContainer" parent="HBoxContainer/ScrollContainer/TabContainer"]
 visible = false
 layout_mode = 2
-metadata/_tab_index = 3
-
-[node name="VBoxContainer" type="VBoxContainer" parent="TabContainer/Audio"]
-layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
+metadata/_tab_index = 3
+
+[node name="HSeparator" type="HSeparator" parent="HBoxContainer/ScrollContainer/TabContainer/Audio"]
+custom_minimum_size = Vector2(0, 163)
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxEmpty_icgry")
 
 [node name="Title" type="MarginContainer" parent="."]
 custom_minimum_size = Vector2(569, 163)
@@ -1068,9 +1224,9 @@ layout_mode = 1
 anchors_preset = 0
 anchor_right = 0.0
 anchor_bottom = 0.0
-offset_left = -790.0
+offset_left = -419.0
 offset_top = 163.0
-offset_right = 370.0
+offset_right = 741.0
 offset_bottom = 260.0
 grow_horizontal = 1
 grow_vertical = 1
@@ -1079,8 +1235,7 @@ theme_override_constants/outline_size = 10
 theme_override_font_sizes/font_size = 32
 toggle_mode = true
 text = "Gameplay"
-disable_interactions = true
-hover_move = 30.0
+hover_move = 20.0
 toggle_move = 50.0
 target_position = -469.0
 top_distance = 30.0
@@ -1091,15 +1246,17 @@ outline_left = 12
 right_offset = 370.0
 shadow_offset = Vector2(-10, 5)
 outline_top_offset = 4.0
+current_button_color = Color(0.85098, 0.231373, 0.623529, 1)
+current_outline_color = Color(0.929412, 0.25098, 0.682353, 1)
 
 [node name="Graphics" parent="." instance=ExtResource("3_odwes")]
 layout_mode = 1
 anchors_preset = 0
 anchor_right = 0.0
 anchor_bottom = 0.0
-offset_left = -763.0
+offset_left = -472.0
 offset_top = 260.0
-offset_right = 400.0
+offset_right = 691.0
 offset_bottom = 357.0
 grow_horizontal = 1
 grow_vertical = 1
@@ -1108,8 +1265,7 @@ theme_override_constants/outline_size = 10
 theme_override_font_sizes/font_size = 32
 toggle_mode = true
 text = "Graphics"
-disable_interactions = true
-hover_move = 30.0
+hover_move = 20.0
 toggle_move = 50.0
 target_position = -472.0
 top_distance = 30.0
@@ -1120,15 +1276,17 @@ outline_left = 12
 right_offset = 400.0
 shadow_offset = Vector2(-10, 5)
 outline_top_offset = 4.0
+current_button_color = Color(0.85098, 0.231373, 0.623529, 1)
+current_outline_color = Color(0.929412, 0.25098, 0.682353, 1)
 
 [node name="Controls" parent="." instance=ExtResource("3_odwes")]
 layout_mode = 1
 anchors_preset = 0
 anchor_right = 0.0
 anchor_bottom = 0.0
-offset_left = -738.0
+offset_left = -477.0
 offset_top = 357.0
-offset_right = 430.0
+offset_right = 691.0
 offset_bottom = 454.0
 grow_horizontal = 1
 grow_vertical = 1
@@ -1137,8 +1295,7 @@ theme_override_constants/outline_size = 10
 theme_override_font_sizes/font_size = 32
 toggle_mode = true
 text = "Controls"
-disable_interactions = true
-hover_move = 30.0
+hover_move = 20.0
 toggle_move = 50.0
 target_position = -477.0
 top_distance = 30.0
@@ -1149,15 +1306,17 @@ outline_left = 12
 right_offset = 430.0
 shadow_offset = Vector2(-10, 5)
 outline_top_offset = 4.0
+current_button_color = Color(0.85098, 0.231373, 0.623529, 1)
+current_outline_color = Color(0.929412, 0.25098, 0.682353, 1)
 
 [node name="Audio" parent="." instance=ExtResource("3_odwes")]
 layout_mode = 1
 anchors_preset = 0
 anchor_right = 0.0
 anchor_bottom = 0.0
-offset_left = -775.0
+offset_left = -544.0
 offset_top = 454.0
-offset_right = 460.0
+offset_right = 691.0
 offset_bottom = 551.0
 grow_horizontal = 1
 grow_vertical = 1
@@ -1166,8 +1325,7 @@ theme_override_constants/outline_size = 10
 theme_override_font_sizes/font_size = 32
 toggle_mode = true
 text = "Audio"
-disable_interactions = true
-hover_move = 30.0
+hover_move = 20.0
 toggle_move = 50.0
 target_position = -544.0
 top_distance = 30.0
@@ -1178,6 +1336,8 @@ outline_left = 12
 right_offset = 460.0
 shadow_offset = Vector2(-10, 5)
 outline_top_offset = 4.0
+current_button_color = Color(0.85098, 0.231373, 0.623529, 1)
+current_outline_color = Color(0.929412, 0.25098, 0.682353, 1)
 
 [node name="Back" parent="." instance=ExtResource("3_odwes")]
 layout_direction = 2
@@ -1185,9 +1345,9 @@ layout_mode = 1
 anchors_preset = 0
 anchor_right = 0.0
 anchor_bottom = 0.0
-offset_left = -757.0
+offset_left = -556.0
 offset_top = 551.0
-offset_right = 490.0
+offset_right = 691.0
 offset_bottom = 648.0
 grow_horizontal = 1
 grow_vertical = 1
@@ -1195,7 +1355,6 @@ theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 10
 theme_override_font_sizes/font_size = 32
 text = "Back"
-disable_interactions = true
 hover_move = 50.0
 target_position = -556.0
 top_distance = 30.0
@@ -1206,6 +1365,8 @@ outline_left = 12
 right_offset = 490.0
 shadow_offset = Vector2(-10, 5)
 outline_top_offset = 4.0
+current_button_color = Color(0.85098, 0.231373, 0.623529, 1)
+current_outline_color = Color(0.929412, 0.25098, 0.682353, 1)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
