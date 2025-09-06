@@ -46,7 +46,7 @@ func _ready() -> void:
 	position = Vector2(GameManager.data.player.location.x, GameManager.data.player.location.y)
 	camera_2d.zoom = Vector2(GameManager.data.player.zoom.x, GameManager.data.player.zoom.y)
 	checkpoint_pos = Vector2(GameManager.data.player.checkpoint.x, GameManager.data.player.checkpoint.y)
-	current_power_set = GameManager.data.player.powers
+	current_power_set = GameManager.data.player.power_set
 	
 	movement_timer.start(0.1)
 	await movement_timer.timeout
@@ -194,7 +194,7 @@ func _physics_process(_delta: float) -> void:
 			can_slide = true
 			animation_locked = false
 	# slide
-	if is_on_floor() and direction != 0 and Input.is_action_just_pressed("slide") and can_slide and can_move:
+	if is_on_floor() and direction != 0 and velocity.x != 0 and Input.is_action_just_pressed("slide") and can_slide and can_move:
 		if current_power_set == 0 or current_power_set == 1:
 			if animated_sprite.flip_h:
 				velocity.x += -dash_force

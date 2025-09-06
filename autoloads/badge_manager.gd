@@ -1,11 +1,11 @@
-extends Control
+extends Node
 
 ##List Of Badge Cards.
 var badge_cards : Dictionary[String,Array]
 ##Badges That Are Currently Unlocked.
 var unlocked_badges : Array[String]
 ##Badges File Path.
-const BADGES_FILE_PATH = "user://badges."
+const BADGES_FILE_PATH = "user://badges.data"
 
 func _ready() -> void:
 	if FileAccess.file_exists(BADGES_FILE_PATH):

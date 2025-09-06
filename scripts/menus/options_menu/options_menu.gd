@@ -54,6 +54,8 @@ extends Control
 @onready var button_audio: Button = $Audio
 @onready var button_back: Button = $Back
 
+@onready var background: ColorRect = $ColorRect
+
 ##Config File Path.
 const SETTINGS_FILE_PATH = "user://settings.cfg"
 ##Current Conig File.

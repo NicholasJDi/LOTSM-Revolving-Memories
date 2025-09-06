@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://cod64obpin5x0"]
+[gd_scene load_steps=7 format=3 uid="uid://cod64obpin5x0"]
 
 [ext_resource type="Script" uid="uid://dyvoilickfmia" path="res://scripts/uis/ui.gd" id="1_d1yfi"]
 [ext_resource type="FontFile" uid="uid://bl6ovrue03k0f" path="res://assets/Fonts/AndrewTyler/Minecraftia.ttf" id="1_j6b60"]
@@ -19,14 +19,9 @@ shadow_offset = Vector2(1, 2)
 shader = ExtResource("3_0bw8f")
 shader_parameter/lod = 0.5
 
-[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_ku2my"]
-light_mode = 2
-
 [node name="UI" type="CanvasLayer"]
 process_mode = 1
 script = ExtResource("1_d1yfi")
-metadata/_edit_horizontal_guides_ = [12393.0, 6753.0]
-metadata/_edit_vertical_guides_ = [-292.0, 1289.0, 3519.0]
 
 [node name="Main_UI" type="MarginContainer" parent="."]
 anchors_preset = 15
@@ -76,8 +71,7 @@ offset_left = -110.0
 offset_bottom = 32.0
 grow_horizontal = 0
 size_flags_vertical = 1
-text = "00:00:00.0
-"
+text = "00:00:00.0"
 horizontal_alignment = 1
 vertical_alignment = 1
 script = ExtResource("2_bqkqm")
@@ -91,134 +85,6 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Power_Swapper" type="ColorRect" parent="."]
-process_mode = 3
-visible = false
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-color = Color(0, 0, 0, 0.196078)
-
-[node name="ColorRect" type="ColorRect" parent="Power_Swapper"]
-material = SubResource("ShaderMaterial_1q3h8")
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0, 0, 0, 0.588235)
-
-[node name="dev_mode_button" type="MarginContainer" parent="Power_Swapper"]
-visible = false
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_constants/margin_left = 24
-theme_override_constants/margin_top = 24
-theme_override_constants/margin_right = 24
-theme_override_constants/margin_bottom = 24
-
-[node name="Control" type="Control" parent="Power_Swapper/dev_mode_button"]
-layout_mode = 2
-
-[node name="Control" type="Control" parent="Power_Swapper/dev_mode_button/Control"]
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
-
-[node name="0" type="Button" parent="Power_Swapper/dev_mode_button/Control/Control"]
-layout_mode = 2
-offset_right = 153.0
-offset_bottom = 54.0
-size_flags_horizontal = 0
-size_flags_vertical = 0
-theme_override_font_sizes/font_size = 24
-action_mode = 0
-text = "Dev
-"
-
-[node name="swap_buttons" type="PanelContainer" parent="Power_Swapper"]
-custom_minimum_size = Vector2(696, 472)
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -348.0
-offset_top = -236.0
-offset_right = 348.0
-offset_bottom = 236.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="MarginContainer" type="MarginContainer" parent="Power_Swapper/swap_buttons"]
-layout_mode = 2
-theme_override_constants/margin_left = 24
-theme_override_constants/margin_top = 24
-theme_override_constants/margin_right = 24
-theme_override_constants/margin_bottom = 24
-
-[node name="GridContainer" type="GridContainer" parent="Power_Swapper/swap_buttons/MarginContainer"]
-layout_mode = 2
-theme_override_constants/h_separation = 24
-theme_override_constants/v_separation = 24
-columns = 3
-
-[node name="1" type="Button" parent="Power_Swapper/swap_buttons/MarginContainer/GridContainer"]
-custom_minimum_size = Vector2(200, 200)
-layout_mode = 2
-size_flags_horizontal = 3
-theme_override_font_sizes/font_size = 64
-text = "1"
-
-[node name="2" type="Button" parent="Power_Swapper/swap_buttons/MarginContainer/GridContainer"]
-custom_minimum_size = Vector2(200, 200)
-layout_mode = 2
-size_flags_horizontal = 3
-theme_override_font_sizes/font_size = 64
-text = "2"
-
-[node name="3" type="Button" parent="Power_Swapper/swap_buttons/MarginContainer/GridContainer"]
-custom_minimum_size = Vector2(200, 200)
-layout_mode = 2
-size_flags_horizontal = 3
-theme_override_font_sizes/font_size = 64
-disabled = true
-text = "3"
-
-[node name="4" type="Button" parent="Power_Swapper/swap_buttons/MarginContainer/GridContainer"]
-custom_minimum_size = Vector2(200, 200)
-layout_mode = 2
-size_flags_horizontal = 3
-theme_override_font_sizes/font_size = 64
-disabled = true
-text = "4"
-
-[node name="5" type="Button" parent="Power_Swapper/swap_buttons/MarginContainer/GridContainer"]
-custom_minimum_size = Vector2(200, 200)
-layout_mode = 2
-size_flags_horizontal = 3
-theme_override_font_sizes/font_size = 64
-disabled = true
-text = "5"
-
-[node name="6" type="Button" parent="Power_Swapper/swap_buttons/MarginContainer/GridContainer"]
-custom_minimum_size = Vector2(200, 200)
-layout_mode = 2
-size_flags_horizontal = 3
-theme_override_font_sizes/font_size = 64
-disabled = true
-text = "6"
-
 [node name="Pause_Menu" type="ColorRect" parent="."]
 process_mode = 3
 visible = false
@@ -231,7 +97,7 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 color = Color(0, 0, 0, 0.196078)
 
-[node name="ColorRect" type="ColorRect" parent="Pause_Menu"]
+[node name="BlurRect" type="ColorRect" parent="Pause_Menu"]
 material = SubResource("ShaderMaterial_1q3h8")
 layout_mode = 1
 anchors_preset = 15
@@ -240,99 +106,3 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 0.588235)
-
-[node name="Menu" type="PanelContainer" parent="Pause_Menu"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -150.0
-offset_top = -139.0
-offset_right = 150.0
-offset_bottom = 211.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="Control" type="Control" parent="Pause_Menu/Menu"]
-layout_mode = 2
-
-[node name="Label" type="Label" parent="Pause_Menu/Menu/Control"]
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -150.0
-offset_top = -150.0
-offset_right = 150.0
-offset_bottom = -66.0
-grow_horizontal = 2
-text = "Paused
-"
-label_settings = SubResource("LabelSettings_oakvf")
-horizontal_alignment = 1
-
-[node name="MarginContainer" type="MarginContainer" parent="Pause_Menu/Menu"]
-layout_mode = 2
-theme_override_constants/margin_left = 32
-theme_override_constants/margin_right = 32
-
-[node name="VBoxContainer" type="VBoxContainer" parent="Pause_Menu/Menu/MarginContainer"]
-layout_mode = 2
-theme_override_constants/separation = 32
-alignment = 1
-
-[node name="Resume" type="Button" parent="Pause_Menu/Menu/MarginContainer/VBoxContainer"]
-custom_minimum_size = Vector2(200, 50)
-layout_mode = 2
-size_flags_vertical = 4
-theme_override_fonts/font = ExtResource("1_j6b60")
-theme_override_font_sizes/font_size = 24
-text = "Resume"
-
-[node name="Options" type="Button" parent="Pause_Menu/Menu/MarginContainer/VBoxContainer"]
-custom_minimum_size = Vector2(200, 50)
-layout_mode = 2
-size_flags_vertical = 4
-theme_override_fonts/font = ExtResource("1_j6b60")
-theme_override_font_sizes/font_size = 24
-text = "Options"
-
-[node name="Save" type="Button" parent="Pause_Menu/Menu/MarginContainer/VBoxContainer"]
-custom_minimum_size = Vector2(200, 50)
-layout_mode = 2
-size_flags_vertical = 4
-theme_override_fonts/font = ExtResource("1_j6b60")
-theme_override_font_sizes/font_size = 24
-text = "Save"
-
-[node name="Exit" type="Button" parent="Pause_Menu/Menu/MarginContainer/VBoxContainer"]
-custom_minimum_size = Vector2(200, 50)
-layout_mode = 2
-size_flags_vertical = 4
-theme_override_fonts/font = ExtResource("1_j6b60")
-theme_override_font_sizes/font_size = 24
-text = "Exit"
-
-[node name="Timer" type="Timer" parent="Pause_Menu"]
-
-[node name="Light_Refracter" type="ColorRect" parent="."]
-visible = false
-z_index = -4096
-z_as_relative = false
-material = SubResource("CanvasItemMaterial_ku2my")
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-mouse_filter = 2
-color = Color(1, 1, 1, 0.0941176)
-
-[connection signal="pressed" from="Pause_Menu/Menu/MarginContainer/VBoxContainer/Resume" to="Pause_Menu" method="_on_resume_pressed"]
-[connection signal="pressed" from="Pause_Menu/Menu/MarginContainer/VBoxContainer/Options" to="Pause_Menu" method="_on_options_pressed"]
-[connection signal="pressed" from="Pause_Menu/Menu/MarginContainer/VBoxContainer/Save" to="Pause_Menu" method="_on_save_pressed"]
-[connection signal="pressed" from="Pause_Menu/Menu/MarginContainer/VBoxContainer/Exit" to="Pause_Menu" method="_on_exit_pressed"]

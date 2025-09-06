@@ -11,37 +11,30 @@ size = Vector2(24, 318)
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_5r04u"]
 cull_mode = 1
-polygon = PackedVector2Array(-24, -72, -600, -72, -600, 824, 616, 824, 616, -72, 24, -72, 27, 200, 184, 200, 184, 344, -200, 344, -200, 200, -27, 200)
+polygon = PackedVector2Array(-24, -72, -600, -72, -600, 824, 616, 824, 616, -72, 24, -72, 27, 200, 184, 200, 184, 344, -184, 344, -184, 200, -27, 200)
 
-[sub_resource type="Gradient" id="Gradient_4mmy7"]
+[sub_resource type="Gradient" id="Gradient_s2q83"]
 offsets = PackedFloat32Array(0, 0.771084)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_c28bh"]
-gradient = SubResource("Gradient_4mmy7")
+gradient = SubResource("Gradient_s2q83")
 fill_from = Vector2(0, 0.994302)
 fill_to = Vector2(0, 0)
 
 [node name="Level_0" type="Node2D"]
 
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_left = -24320.0
+offset_top = -13056.0
+offset_right = -24280.0
+offset_bottom = -13016.0
+scale = Vector2(1333.94, 678.045)
+color = Color(0.0901961, 0.0784314, 0.141176, 1)
+
 [node name="EnvironmentStreamPlayer" type="AudioStreamPlayer" parent="."]
 process_mode = 3
 autoplay = true
 bus = &"SFX - Environment"
-
-[node name="ColorRect" type="ColorRect" parent="."]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -3331.0
-offset_top = -2546.0
-offset_right = -3265.0
-offset_bottom = -2472.0
-grow_horizontal = 2
-grow_vertical = 2
-scale = Vector2(118.774, 73.6026)
-size_flags_horizontal = 3
-size_flags_vertical = 3
-color = Color(0.0901961, 0.0784314, 0.141176, 1)
 
 [node name="Tilesets" type="Node2D" parent="."]
 material = SubResource("CanvasItemMaterial_5hx4p")
