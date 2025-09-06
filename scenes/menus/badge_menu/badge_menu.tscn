@@ -363,7 +363,7 @@ text = "Alpha"
 show_behind_parent = true
 position = Vector2(0, -3)
 color = Color(0.9, 0.243, 0.6591, 1)
-polygon = PackedVector2Array(-32, 0, -32, 152, 430, 152, 518, 0)
+polygon = PackedVector2Array(-32, 0, -32, 152, 430, 152, 519, 0)
 
 [node name="OutlinePolygon" type="Polygon2D" parent="Title/TitleLabel/BackgroundPolygon"]
 show_behind_parent = true
