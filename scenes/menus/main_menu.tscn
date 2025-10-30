@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://7snym6hi12we"]
+[gd_scene load_steps=17 format=3 uid="uid://7snym6hi12we"]
 
 [ext_resource type="Script" uid="uid://dcsvhqdscuj2f" path="res://scripts/menus/main_menu.gd" id="1_ovrgc"]
 [ext_resource type="Texture2D" uid="uid://dxxq37daehguu" path="res://assets/Textures/NicholasJDi/Back.png" id="1_xqga4"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://dbhgwqf1hclox" path="res://scenes/menus/options_menu/options_menu.tscn" id="4_imvie"]
 [ext_resource type="PackedScene" uid="uid://d3k4mvtu861ke" path="res://scenes/menus/badge_menu/badge_menu.tscn" id="4_ng0o5"]
 [ext_resource type="PackedScene" uid="uid://bhn5xcjkbx18r" path="res://scenes/other/components/interactive_button.tscn" id="5_imvie"]
+[ext_resource type="Script" uid="uid://bg56eubff8yto" path="res://scripts/uis/version.gd" id="6_8r73w"]
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_euy4r"]
 
@@ -1386,9 +1387,10 @@ offset_bottom = 25.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/outline_size = 5
-text = "Version: 0.06 2 (Alpha) "
+text = "Version"
 horizontal_alignment = 2
 vertical_alignment = 2
+script = ExtResource("6_8r73w")
 
 [node name="Title" type="MarginContainer" parent="Main"]
 custom_minimum_size = Vector2(569, 163)
@@ -1480,8 +1482,8 @@ outline_left = 12
 right_offset = 370.0
 shadow_offset = Vector2(-10, 5)
 outline_top_offset = 4.0
-current_button_color = Color(0.85098, 0.231373, 0.623529, 1)
-current_outline_color = Color(0.929412, 0.25098, 0.682353, 1)
+current_button_color = Color(0.8509804, 0.23137255, 0.62352943, 1)
+current_outline_color = Color(0.92941177, 0.2509804, 0.68235296, 1)
 
 [node name="Continue" parent="Main" instance=ExtResource("5_imvie")]
 layout_mode = 1
@@ -1510,8 +1512,8 @@ outline_left = 12
 right_offset = 400.0
 shadow_offset = Vector2(-10, 5)
 outline_top_offset = 4.0
-current_button_color = Color(0.85098, 0.231373, 0.623529, 1)
-current_outline_color = Color(0.929412, 0.25098, 0.682353, 1)
+current_button_color = Color(0.8509804, 0.23137255, 0.62352943, 1)
+current_outline_color = Color(0.92941177, 0.2509804, 0.68235296, 1)
 
 [node name="Settings" parent="Main" instance=ExtResource("5_imvie")]
 layout_mode = 1
@@ -1540,8 +1542,8 @@ outline_left = 12
 right_offset = 430.0
 shadow_offset = Vector2(-10, 5)
 outline_top_offset = 4.0
-current_button_color = Color(0.85098, 0.231373, 0.623529, 1)
-current_outline_color = Color(0.929412, 0.25098, 0.682353, 1)
+current_button_color = Color(0.8509804, 0.23137255, 0.62352943, 1)
+current_outline_color = Color(0.92941177, 0.2509804, 0.68235296, 1)
 
 [node name="Badges" parent="Main" instance=ExtResource("5_imvie")]
 layout_mode = 1
@@ -1569,8 +1571,8 @@ outline_left = 12
 right_offset = 460.0
 shadow_offset = Vector2(-10, 5)
 outline_top_offset = 4.0
-current_button_color = Color(0.85098, 0.231373, 0.623529, 1)
-current_outline_color = Color(0.929412, 0.25098, 0.682353, 1)
+current_button_color = Color(0.8509804, 0.23137255, 0.62352943, 1)
+current_outline_color = Color(0.92941177, 0.2509804, 0.68235296, 1)
 
 [node name="Quit" parent="Main" instance=ExtResource("5_imvie")]
 layout_direction = 2
@@ -1599,8 +1601,8 @@ outline_left = 12
 right_offset = 490.0
 shadow_offset = Vector2(-10, 5)
 outline_top_offset = 4.0
-current_button_color = Color(0.85098, 0.231373, 0.623529, 1)
-current_outline_color = Color(0.929412, 0.25098, 0.682353, 1)
+current_button_color = Color(0.8509804, 0.23137255, 0.62352943, 1)
+current_outline_color = Color(0.92941177, 0.2509804, 0.68235296, 1)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Main"]
 libraries = {

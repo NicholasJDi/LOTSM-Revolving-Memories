@@ -1,8 +1,10 @@
-[gd_scene load_steps=31 format=3 uid="uid://dxoyhhainhhyv"]
+[gd_scene load_steps=33 format=3 uid="uid://dxoyhhainhhyv"]
 
 [ext_resource type="Texture2D" uid="uid://c4vi5kl203eb1" path="res://assets/Textures/vilrink/AdventureCharacter_Spreadsheet.png" id="1_knk32"]
 [ext_resource type="Script" uid="uid://byjcmv0prxbo0" path="res://scripts/other/player.gd" id="1_wpvhi"]
 [ext_resource type="PackedScene" uid="uid://cod64obpin5x0" path="res://scenes/uis/UI.tscn" id="3_7eor7"]
+[ext_resource type="Script" uid="uid://bd046eokvcnu2" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="4_awglk"]
+[ext_resource type="Script" uid="uid://bhexx6mj1xv3q" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_2d.gd" id="5_op62r"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_ot1n0"]
 light_mode = 1
@@ -268,7 +270,6 @@ debug_color = Color(0.7, 0, 0, 0.286275)
 
 [node name="Camera2D" type="Camera2D" parent="."]
 physics_interpolation_mode = 1
-zoom = Vector2(2, 2)
 process_callback = 0
 limit_smoothed = true
 position_smoothing_speed = 6.0
@@ -276,10 +277,14 @@ drag_left_margin = 0.15
 drag_top_margin = 0.1
 drag_right_margin = 0.15
 drag_bottom_margin = 0.1
-editor_draw_limits = true
 editor_draw_drag_margin = true
 
 [node name="UI" parent="Camera2D" instance=ExtResource("3_7eor7")]
+
+[node name="PhantomCameraHost" type="Node" parent="Camera2D"]
+process_priority = 300
+process_physics_priority = 300
+script = ExtResource("4_awglk")
 
 [node name="Timers" type="Node2D" parent="."]
 
@@ -300,6 +305,15 @@ one_shot = true
 process_callback = 0
 wait_time = 0.25
 one_shot = true
+
+[node name="PhantomCamera2D" type="Node2D" parent="." node_paths=PackedStringArray("follow_target")]
+top_level = true
+script = ExtResource("5_op62r")
+follow_mode = 1
+follow_target = NodePath("..")
+snap_to_pixel = true
+tween_on_load = false
+follow_damping = true
 
 [connection signal="area_entered" from="Hitbox/Checkpoint_Hitbox" to="." method="_on_checkpoint_hitbox_area_entered"]
 [connection signal="area_entered" from="Hitbox/Death_Hitbox" to="." method="_on_death_hitbox_area_entered"]

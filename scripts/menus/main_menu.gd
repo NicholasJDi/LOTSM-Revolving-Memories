@@ -27,7 +27,7 @@ func _on_new_game_pressed() -> void:
 	animation_player.play("Main_Menu/Exit - New Game")
 	await animation_player.animation_finished
 	BadgeManager.award_badge("welcome")
-	GameManager.transition_to_scene("res://scenes/levels/Level_0.tscn")
+	GameManager.transition_to_scene("res://scenes/levels/Level_Dev.tscn")
 
 func _on_continue_pressed() -> void:
 	animation_player.play("Main_Menu/Exit - Continue")

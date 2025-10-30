@@ -15,7 +15,7 @@ config/description="A Platformer Game"
 config/version="0.06 2 (Alpha)"
 run/main_scene="uid://7snym6hi12we"
 config/custom_user_dir_name="LOtSM - Revolving Memories"
-config/features=PackedStringArray("4.4", "Forward Plus")
+config/features=PackedStringArray("4.5", "Forward Plus")
 run/max_fps=60
 boot_splash/bg_color=Color(0, 0, 0, 1)
 boot_splash/image="uid://d07m1asb4s668"
@@ -31,6 +31,7 @@ GlobalUi="*res://autoloads/scenes/Global_UI.tscn"
 ConsoleWindow="*res://autoloads/scenes/console_window.tscn"
 GameManager="*res://autoloads/game_manager.gd"
 BadgeManager="*res://autoloads/badge_manager.gd"
+PhantomCameraManager="*res://addons/phantom_camera/scripts/managers/phantom_camera_manager.gd"
 
 [debug]
 
@@ -76,6 +77,10 @@ window/stretch/aspect="expand"
 window/per_pixel_transparency/allowed=true
 window/version="0.06 1 (Alpha)"
 
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/phantom_camera/plugin.cfg")
+
 [file_customization]
 
 folder_colors={
@@ -90,8 +95,8 @@ folder_colors={
 
 [gui]
 
-theme/custom_font="res://assets/Fonts/AndrewTyler/Minecraftia.ttf"
 theme/default_font_antialiasing=0
+theme/custom_font="res://assets/Fonts/AndrewTyler/Minecraftia.ttf"
 
 [input]
 

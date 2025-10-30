@@ -5,6 +5,7 @@
 [ext_resource type="Script" uid="uid://dclxrp8a3eaw3" path="res://scripts/uis/timer.gd" id="2_bqkqm"]
 [ext_resource type="Shader" uid="uid://pxg3m6vxkv0r" path="res://resources/Blur.gdshader" id="3_0bw8f"]
 [ext_resource type="PackedScene" uid="uid://bhn5xcjkbx18r" path="res://scenes/other/components/interactive_button.tscn" id="5_nx2a1"]
+[ext_resource type="Script" uid="uid://bg56eubff8yto" path="res://scripts/uis/version.gd" id="5_v12ap"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_oakvf"]
 font = ExtResource("1_j6b60")
@@ -332,322 +333,6 @@ tracks/25/interp = 1
 tracks/25/loop_wrap = true
 tracks/25/keys = {
 "times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(0.929412, 0.25098, 0.682353, 1)]
-}
-
-[sub_resource type="Animation" id="Animation_1hnlc"]
-resource_name = "Enter_Scene"
-length = 1.1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Exit:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0.1, 0.4, 0.7),
-"transitions": PackedFloat32Array(0.4, 0.8, 1),
-"update": 0,
-"values": [Vector2(-777, 551), Vector2(-526, 551), Vector2(-576, 551)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Save:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0.2, 0.5, 0.8),
-"transitions": PackedFloat32Array(0.4, 0.8, 1),
-"update": 0,
-"values": [Vector2(-736, 454), Vector2(-455, 454), Vector2(-505, 454)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Badges:position")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0.3, 0.6, 0.9),
-"transitions": PackedFloat32Array(0.4, 0.8, 1),
-"update": 0,
-"values": [Vector2(-749, 357), Vector2(-438, 357), Vector2(-488, 357)]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("Settings:position")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0.4, 0.7, 1),
-"transitions": PackedFloat32Array(0.4, 0.8, 1),
-"update": 0,
-"values": [Vector2(-771, 260), Vector2(-430, 260), Vector2(-480, 260)]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("Continue:position")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0.5, 0.8, 1.1),
-"transitions": PackedFloat32Array(0.4, 0.8, 1),
-"update": 0,
-"values": [Vector2(-782, 163), Vector2(-431, 163), Vector2(-461, 163)]
-}
-tracks/5/type = "value"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("Exit:disable_interactions")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
-"times": PackedFloat32Array(0, 1.1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [true, false]
-}
-tracks/6/type = "value"
-tracks/6/imported = false
-tracks/6/enabled = true
-tracks/6/path = NodePath("Save:disable_interactions")
-tracks/6/interp = 1
-tracks/6/loop_wrap = true
-tracks/6/keys = {
-"times": PackedFloat32Array(0, 1.1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [true, false]
-}
-tracks/7/type = "value"
-tracks/7/imported = false
-tracks/7/enabled = true
-tracks/7/path = NodePath("Badges:disable_interactions")
-tracks/7/interp = 1
-tracks/7/loop_wrap = true
-tracks/7/keys = {
-"times": PackedFloat32Array(0, 1.1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [true, false]
-}
-tracks/8/type = "value"
-tracks/8/imported = false
-tracks/8/enabled = true
-tracks/8/path = NodePath("Settings:disable_interactions")
-tracks/8/interp = 1
-tracks/8/loop_wrap = true
-tracks/8/keys = {
-"times": PackedFloat32Array(0, 1.1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [true, false]
-}
-tracks/9/type = "value"
-tracks/9/imported = false
-tracks/9/enabled = true
-tracks/9/path = NodePath("Continue:disable_interactions")
-tracks/9/interp = 1
-tracks/9/loop_wrap = true
-tracks/9/keys = {
-"times": PackedFloat32Array(0, 1.1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [true, false]
-}
-tracks/10/type = "value"
-tracks/10/imported = false
-tracks/10/enabled = true
-tracks/10/path = NodePath("Label:position")
-tracks/10/interp = 1
-tracks/10/loop_wrap = true
-tracks/10/keys = {
-"times": PackedFloat32Array(0.8, 1.1),
-"transitions": PackedFloat32Array(0.2, 1),
-"update": 0,
-"values": [Vector2(0, 25), Vector2(0, 0)]
-}
-tracks/11/type = "value"
-tracks/11/imported = false
-tracks/11/enabled = true
-tracks/11/path = NodePath("Continue:z_index")
-tracks/11/interp = 1
-tracks/11/loop_wrap = true
-tracks/11/keys = {
-"times": PackedFloat32Array(0.0333333),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [0]
-}
-tracks/12/type = "value"
-tracks/12/imported = false
-tracks/12/enabled = true
-tracks/12/path = NodePath("Settings:z_index")
-tracks/12/interp = 1
-tracks/12/loop_wrap = true
-tracks/12/keys = {
-"times": PackedFloat32Array(0.0333333),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [0]
-}
-tracks/13/type = "value"
-tracks/13/imported = false
-tracks/13/enabled = true
-tracks/13/path = NodePath("Badges:z_index")
-tracks/13/interp = 1
-tracks/13/loop_wrap = true
-tracks/13/keys = {
-"times": PackedFloat32Array(0.0333333),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [0]
-}
-tracks/14/type = "value"
-tracks/14/imported = false
-tracks/14/enabled = true
-tracks/14/path = NodePath("Save:z_index")
-tracks/14/interp = 1
-tracks/14/loop_wrap = true
-tracks/14/keys = {
-"times": PackedFloat32Array(0.0333333),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [0]
-}
-tracks/15/type = "value"
-tracks/15/imported = false
-tracks/15/enabled = true
-tracks/15/path = NodePath("Exit:z_index")
-tracks/15/interp = 1
-tracks/15/loop_wrap = true
-tracks/15/keys = {
-"times": PackedFloat32Array(0.0333333),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [0]
-}
-tracks/16/type = "value"
-tracks/16/imported = false
-tracks/16/enabled = true
-tracks/16/path = NodePath("Continue:current_button_color")
-tracks/16/interp = 1
-tracks/16/loop_wrap = true
-tracks/16/keys = {
-"times": PackedFloat32Array(0.0333333),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(0.85098, 0.231373, 0.623529, 1)]
-}
-tracks/17/type = "value"
-tracks/17/imported = false
-tracks/17/enabled = true
-tracks/17/path = NodePath("Settings:current_button_color")
-tracks/17/interp = 1
-tracks/17/loop_wrap = true
-tracks/17/keys = {
-"times": PackedFloat32Array(0.0333333),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(0.85098, 0.231373, 0.623529, 1)]
-}
-tracks/18/type = "value"
-tracks/18/imported = false
-tracks/18/enabled = true
-tracks/18/path = NodePath("Badges:current_button_color")
-tracks/18/interp = 1
-tracks/18/loop_wrap = true
-tracks/18/keys = {
-"times": PackedFloat32Array(0.0333333),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(0.85098, 0.231373, 0.623529, 1)]
-}
-tracks/19/type = "value"
-tracks/19/imported = false
-tracks/19/enabled = true
-tracks/19/path = NodePath("Save:current_button_color")
-tracks/19/interp = 1
-tracks/19/loop_wrap = true
-tracks/19/keys = {
-"times": PackedFloat32Array(0.0333333),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(0.85098, 0.231373, 0.623529, 1)]
-}
-tracks/20/type = "value"
-tracks/20/imported = false
-tracks/20/enabled = true
-tracks/20/path = NodePath("Exit:current_button_color")
-tracks/20/interp = 1
-tracks/20/loop_wrap = true
-tracks/20/keys = {
-"times": PackedFloat32Array(0.0333333),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(0.85098, 0.231373, 0.623529, 1)]
-}
-tracks/21/type = "value"
-tracks/21/imported = false
-tracks/21/enabled = true
-tracks/21/path = NodePath("Continue:current_outline_color")
-tracks/21/interp = 1
-tracks/21/loop_wrap = true
-tracks/21/keys = {
-"times": PackedFloat32Array(0.0333333),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(0.929412, 0.25098, 0.682353, 1)]
-}
-tracks/22/type = "value"
-tracks/22/imported = false
-tracks/22/enabled = true
-tracks/22/path = NodePath("Settings:current_outline_color")
-tracks/22/interp = 1
-tracks/22/loop_wrap = true
-tracks/22/keys = {
-"times": PackedFloat32Array(0.0333333),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(0.929412, 0.25098, 0.682353, 1)]
-}
-tracks/23/type = "value"
-tracks/23/imported = false
-tracks/23/enabled = true
-tracks/23/path = NodePath("Badges:current_outline_color")
-tracks/23/interp = 1
-tracks/23/loop_wrap = true
-tracks/23/keys = {
-"times": PackedFloat32Array(0.0333333),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(0.929412, 0.25098, 0.682353, 1)]
-}
-tracks/24/type = "value"
-tracks/24/imported = false
-tracks/24/enabled = true
-tracks/24/path = NodePath("Save:current_outline_color")
-tracks/24/interp = 1
-tracks/24/loop_wrap = true
-tracks/24/keys = {
-"times": PackedFloat32Array(0.0333333),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(0.929412, 0.25098, 0.682353, 1)]
-}
-tracks/25/type = "value"
-tracks/25/imported = false
-tracks/25/enabled = true
-tracks/25/path = NodePath("Exit:current_outline_color")
-tracks/25/interp = 1
-tracks/25/loop_wrap = true
-tracks/25/keys = {
-"times": PackedFloat32Array(0.0333333),
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Color(0.929412, 0.25098, 0.682353, 1)]
@@ -1336,7 +1021,6 @@ tracks/10/keys = {
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_8r73w"]
 _data = {
 &"Enter": SubResource("Animation_8r73w"),
-&"Enter_Scene": SubResource("Animation_1hnlc"),
 &"Exit": SubResource("Animation_euy4r"),
 &"Exit - Badges": SubResource("Animation_ng0o5"),
 &"Exit - Continue": SubResource("Animation_bre17"),
@@ -1412,6 +1096,7 @@ grow_vertical = 2
 
 [node name="Pause_Menu" type="ColorRect" parent="."]
 process_mode = 3
+visible = false
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -1436,14 +1121,13 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = 25.0
-offset_bottom = 25.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/outline_size = 5
 text = "Version: 0.06 2 (Alpha) "
 horizontal_alignment = 2
 vertical_alignment = 2
+script = ExtResource("5_v12ap")
 
 [node name="Title" type="MarginContainer" parent="Pause_Menu"]
 custom_minimum_size = Vector2(569, 163)
@@ -1514,9 +1198,9 @@ layout_mode = 1
 anchors_preset = 0
 anchor_right = 0.0
 anchor_bottom = 0.0
-offset_left = -782.0
+offset_left = -461.0
 offset_top = 163.0
-offset_right = 370.0
+offset_right = 691.0
 offset_bottom = 260.0
 grow_horizontal = 1
 grow_vertical = 1
@@ -1535,17 +1219,17 @@ outline_left = 12
 right_offset = 370.0
 shadow_offset = Vector2(-10, 5)
 outline_top_offset = 4.0
-current_button_color = Color(0.85098, 0.231373, 0.623529, 1)
-current_outline_color = Color(0.929412, 0.25098, 0.682353, 1)
+current_button_color = Color(0.8509804, 0.23137255, 0.62352943, 1)
+current_outline_color = Color(0.92941177, 0.2509804, 0.68235296, 1)
 
 [node name="Settings" parent="Pause_Menu" instance=ExtResource("5_nx2a1")]
 layout_mode = 1
 anchors_preset = 0
 anchor_right = 0.0
 anchor_bottom = 0.0
-offset_left = -771.0
+offset_left = -480.0
 offset_top = 260.0
-offset_right = 400.0
+offset_right = 691.0
 offset_bottom = 357.0
 grow_horizontal = 1
 grow_vertical = 1
@@ -1564,17 +1248,17 @@ outline_left = 12
 right_offset = 400.0
 shadow_offset = Vector2(-10, 5)
 outline_top_offset = 4.0
-current_button_color = Color(0.85098, 0.231373, 0.623529, 1)
-current_outline_color = Color(0.929412, 0.25098, 0.682353, 1)
+current_button_color = Color(0.8509804, 0.23137255, 0.62352943, 1)
+current_outline_color = Color(0.92941177, 0.2509804, 0.68235296, 1)
 
 [node name="Badges" parent="Pause_Menu" instance=ExtResource("5_nx2a1")]
 layout_mode = 1
 anchors_preset = 0
 anchor_right = 0.0
 anchor_bottom = 0.0
-offset_left = -749.0
+offset_left = -488.0
 offset_top = 357.0
-offset_right = 430.0
+offset_right = 691.0
 offset_bottom = 454.0
 grow_horizontal = 1
 grow_vertical = 1
@@ -1593,17 +1277,17 @@ outline_left = 12
 right_offset = 430.0
 shadow_offset = Vector2(-10, 5)
 outline_top_offset = 4.0
-current_button_color = Color(0.85098, 0.231373, 0.623529, 1)
-current_outline_color = Color(0.929412, 0.25098, 0.682353, 1)
+current_button_color = Color(0.8509804, 0.23137255, 0.62352943, 1)
+current_outline_color = Color(0.92941177, 0.2509804, 0.68235296, 1)
 
 [node name="Save" parent="Pause_Menu" instance=ExtResource("5_nx2a1")]
 layout_mode = 1
 anchors_preset = 0
 anchor_right = 0.0
 anchor_bottom = 0.0
-offset_left = -736.0
+offset_left = -455.0
 offset_top = 454.0
-offset_right = 460.0
+offset_right = 741.0
 offset_bottom = 551.0
 grow_horizontal = 1
 grow_vertical = 1
@@ -1622,8 +1306,8 @@ outline_left = 12
 right_offset = 460.0
 shadow_offset = Vector2(-10, 5)
 outline_top_offset = 4.0
-current_button_color = Color(0.85098, 0.231373, 0.623529, 1)
-current_outline_color = Color(0.929412, 0.25098, 0.682353, 1)
+current_button_color = Color(0.8509804, 0.23137255, 0.62352943, 1)
+current_outline_color = Color(0.92941177, 0.2509804, 0.68235296, 1)
 
 [node name="Exit" parent="Pause_Menu" instance=ExtResource("5_nx2a1")]
 layout_direction = 2
@@ -1631,9 +1315,9 @@ layout_mode = 1
 anchors_preset = 0
 anchor_right = 0.0
 anchor_bottom = 0.0
-offset_left = -777.0
+offset_left = -576.0
 offset_top = 551.0
-offset_right = 490.0
+offset_right = 691.0
 offset_bottom = 648.0
 grow_horizontal = 1
 grow_vertical = 1
@@ -1652,8 +1336,8 @@ outline_left = 12
 right_offset = 490.0
 shadow_offset = Vector2(-10, 5)
 outline_top_offset = 4.0
-current_button_color = Color(0.85098, 0.231373, 0.623529, 1)
-current_outline_color = Color(0.929412, 0.25098, 0.682353, 1)
+current_button_color = Color(0.8509804, 0.23137255, 0.62352943, 1)
+current_outline_color = Color(0.92941177, 0.2509804, 0.68235296, 1)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Pause_Menu"]
 libraries = {
