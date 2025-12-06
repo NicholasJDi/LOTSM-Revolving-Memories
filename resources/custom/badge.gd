@@ -7,7 +7,7 @@ class_name Badge
 ##Badge Icon.
 @export var icon : Texture2D
 ##Badge Display Name.
-@export var display_name : String
+@export_multiline var display_name : String
 ##Badge Desciption.
 @export_multiline var description : String
 ##The Color Used As The Border Aroung The [member con].

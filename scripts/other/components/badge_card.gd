@@ -6,7 +6,7 @@ extends Control
 @export var id : float
 
 @onready var badge_icon: TextureRect = $"MarginContainer/VBoxContainer/Icon&NameSection/VBoxContainer/Icon"
-@onready var badge_name: Label = $"MarginContainer/VBoxContainer/Icon&NameSection/VBoxContainer/Name"
+@onready var badge_name: RichTextLabel = $"MarginContainer/VBoxContainer/Icon&NameSection/VBoxContainer/Name"
 @onready var badge_description: RichTextLabel = $MarginContainer/VBoxContainer/Description
 
 @onready var outline_color_rect: ColorRect = $OutlineColorRect
