@@ -8,12 +8,16 @@
 
 config_version=5
 
+[animation]
+
+compatibility/default_parent_skeleton_in_mesh_instance_3d=true
+
 [application]
 
 config/name="LOTSM - Revolving Memories"
 config/version="0.1 1 (Alpha)"
 run/main_scene="uid://b71iycwfskkl5"
-config/features=PackedStringArray("4.5")
+config/features=PackedStringArray("4.6")
 boot_splash/bg_color=Color(0.07058824, 0.07058824, 0.07058824, 1)
 boot_splash/show_image=false
 config/icon="res://icon.svg"
@@ -22,13 +26,17 @@ config/icon="res://icon.svg"
 
 Game="*res://autoloads/game_manager.gd"
 SettingsManager="*res://autoloads/settings_manager.gd"
-Audiomanager="*res://autoloads/audio_manager.gd"
+AudioManager="*res://autoloads/audio_manager.gd"
 SaveManager="*res://autoloads/save_manager.gd"
 
 [display]
 
 window/stretch/mode="viewport"
 window/stretch/aspect="expand"
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/idk/plugin.cfg")
 
 [file_customization]
 
@@ -45,6 +53,13 @@ folder_colors={
 [gui]
 
 theme/custom_font="uid://bl6ovrue03k0f"
+
+[input]
+
+test={
+"deadzone": 0.2,
+"events": []
+}
 
 [rendering]
 
