@@ -17,7 +17,7 @@ compatibility/default_parent_skeleton_in_mesh_instance_3d=true
 config/name="LOTSM - Revolving Memories"
 config/version="0.1 1 (Alpha)"
 run/main_scene="uid://b71iycwfskkl5"
-config/features=PackedStringArray("4.6")
+config/features=PackedStringArray("4.7")
 boot_splash/bg_color=Color(0.07058824, 0.07058824, 0.07058824, 1)
 boot_splash/show_image=false
 config/icon="res://icon.svg"
@@ -31,7 +31,7 @@ SaveManager="*res://autoloads/save_manager.gd"
 
 [display]
 
-window/stretch/mode="viewport"
+window/stretch/mode="canvas_items"
 window/stretch/aspect="expand"
 
 [editor_plugins]
@@ -52,6 +52,7 @@ folder_colors={
 
 [gui]
 
+theme/default_font_multichannel_signed_distance_field=true
 theme/custom_font="uid://bl6ovrue03k0f"
 
 [input]
